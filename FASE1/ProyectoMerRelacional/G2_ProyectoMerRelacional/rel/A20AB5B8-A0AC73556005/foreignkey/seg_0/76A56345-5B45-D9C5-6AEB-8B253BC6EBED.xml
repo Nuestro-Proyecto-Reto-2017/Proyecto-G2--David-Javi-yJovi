@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="76A56345-5B45-D9C5-6AEB-8B253BC6EBED" containerWithKeyObject="2803CAFF-EC27-6A24-46E1-DD73ED28E5E9" localFKIndex="F9C3AA7A-0C4B-B7DF-73B5-B7148E440604" name="Parte_aviso_FK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>4A2109F6-247F-F1FF-D2EB-7B6BCBAE9297</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<referredTableLongName>aviso</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C46D72A1-8427-9E9C-CCA4-D0B3C2A2A357</referredTableID>
+<keyObject>1E33D971-4845-B413-FC51-A41ACB00EAE2</keyObject>
+<referredKeyID>1E33D971-4845-B413-FC51-A41ACB00EAE2</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>idAviso</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2A8ABEA4-2742-78B7-7A94-71EE58F5619E" name="Salida">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>F33F7271-C9B1-9B7D-12AB-95D8FBED2F9F</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idSalida" id="C7A01894-637C-3939-3E9C-6675F3418484">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>1EC1267F-970E-7592-56D1-5EA5786DB57F</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="horaSalida" id="AD967391-3910-AA11-E233-973ADB6F07A5">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>2AC38863-D3CD-818F-EA05-334CC0D9C0FE</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="horaLlegada" id="31C13D86-89F5-F7AE-3969-5A62E69E91A6">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>CA750E76-CC44-C064-EFA9-2F18ADB9F907</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="albaran" id="A066F40B-FF4A-27FD-3612-B6FE799DB4DA">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>715E2B95-90FE-5E7C-0BD6-8830C5C24C75</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Parte_idParte" id="D192DBFE-3BC9-75DE-A230-554BD4BC13E7">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>F6604B83-5E88-C9F2-D914-43B330A62811</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="63DC5573-7FB6-501A-3C90-B55E65AF76BF" referredColumn="D688C099-33DB-BD31-1048-7E416E0F9283"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="297A2398-6B67-C452-1484-DCD1EA74567A" name="Salida_PK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>ABB7B39E-CA86-2680-3830-8736B3981AE1</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C7A01894-637C-3939-3E9C-6675F3418484"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3B203616-0DB8-CBBD-4C01-6C8E939684DA" name="Salida_Parte_FK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>BF34752C-12C4-F850-5DD5-A82DAA3973FC</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D192DBFE-3BC9-75DE-A230-554BD4BC13E7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
