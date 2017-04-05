@@ -3,17 +3,31 @@
 --   sitio:      Oracle Database 12c
 --   tipo:      Oracle Database 12c
 
-
+drop table salida cascade constraints;
+drop table parte cascade constraints;
+drop table gasto cascade constraints;
+drop table aviso cascade constraints;
+drop table usuario cascade constraints;
+drop table trabajador cascade constraints;
+drop table centro cascade constraints;
+drop table vehiculo cascade constraints;
 
 CREATE TABLE aviso (
-    idaviso       VARCHAR2(5) NOT NULL,
+    idaviso       VARCHAR2(5) Constraint aviso_pk PRIMARY KEY,
     descripcion   VARCHAR2(100) NOT NULL
 );
 
-ALTER TABLE aviso ADD CONSTRAINT aviso_pk PRIMARY KEY ( idaviso );
 
 CREATE TABLE centro (
-    idcentro       VARCHAR2(5) NOT NULL,
+    idcentro        NUMBER (5)
+      GENERATED ALWAYS AS IDENTITY 
+                        MINVALUE 1 
+                        MAXVALUE 99999
+                        INCREMENT BY 1 
+                        START WITH 1  
+                        NOORDER  
+                        NOCYCLE  NOT NULL ENABLE
+      CONSTRAINT centros_pk PRIMARY KEY ,
     nombre         VARCHAR2(15) NOT NULL,
     calle          VARCHAR2(50) NOT NULL,
     numero         VARCHAR2(3) NOT NULL,
@@ -23,50 +37,37 @@ CREATE TABLE centro (
     telefono       VARCHAR2(9) NOT NULL
 );
 
-ALTER TABLE centro ADD CONSTRAINT centro_pk PRIMARY KEY ( idcentro );
 
 CREATE TABLE gasto (
-    idgasto       VARCHAR2(5) NOT NULL,
+    idgasto       VARCHAR2(5) CONSTRAINT gasto_pk PRIMARY KEY,
     gastogasoil   float,
     gastopeajes   float,
     gastodietas   float,
     otrosgastos   float
 );
 
-ALTER TABLE gasto ADD CONSTRAINT gasto_pk PRIMARY KEY ( idgasto );
 
 CREATE TABLE parte (
-    idparte              VARCHAR2(5) NOT NULL,
+    idparte              VARCHAR2(5) CONSTRAINT parte_pk PRIMARY KEY,
     kminicio             float NOT NULL,
     kmfinal              float NOT NULL,
     tipoparte            VARCHAR2(15) NOT NULL,
-    trabajador_dni1      VARCHAR2(9) NOT NULL,
-    trabajador_dni       VARCHAR2(9) NOT NULL,
+    revisado             VARCHAR2(9) NOT NULL,
+    creado               VARCHAR2(9) NOT NULL,
     vehiculo_matricula   VARCHAR2(12) NOT NULL,
-    aviso_idaviso        VARCHAR2(5) NOT NULL,
-    gasto_idgasto        VARCHAR2(5) NOT NULL
+    aviso_idaviso        VARCHAR2(5),
+    gasto_idgasto        VARCHAR2(5)
 );
 
-CREATE UNIQUE INDEX parte__idx ON
-    parte ( aviso_idaviso ASC );
-
-CREATE UNIQUE INDEX parte__idxv1 ON
-    parte ( gasto_idgasto ASC );
-
-CREATE UNIQUE INDEX parte__idxv2 ON
-    parte ( vehiculo_matricula ASC );
-
-ALTER TABLE parte ADD CONSTRAINT parte_pk PRIMARY KEY ( idparte );
 
 CREATE TABLE salida (
-    idsalida        VARCHAR2(5) NOT NULL,
+    idsalida        VARCHAR2(5) CONSTRAINT salida_pk PRIMARY KEY,
     horasalida      DATE NOT NULL,
     horallegada     DATE NOT NULL,
     albaran         VARCHAR2(15) NOT NULL,
     parte_idparte   VARCHAR2(5) NOT NULL
 );
 
-ALTER TABLE salida ADD CONSTRAINT salida_pk PRIMARY KEY ( idsalida );
 
 CREATE TABLE trabajador (
     dni                 VARCHAR2(9) NOT NULL,
@@ -82,36 +83,28 @@ CREATE TABLE trabajador (
     salario             float,
     fechanac            DATE,
     tipotrabajador      VARCHAR2(15) NOT NULL,
-    centro_idcentro     VARCHAR2(5) NOT NULL,
-    usuario_idusuario   VARCHAR2(5) NOT NULL
+    centro_idcentro     number(5) NOT NULL
+
 );
 
-CREATE UNIQUE INDEX trabajador__idx ON
-    trabajador ( usuario_idusuario ASC );
+
 
 ALTER TABLE trabajador ADD CONSTRAINT trabajador_pk PRIMARY KEY ( dni );
 
 CREATE TABLE usuario (
-    idusuario        VARCHAR2(5) NOT NULL,
-    usuario          VARCHAR2(21) NOT NULL,
+    usuario          VARCHAR2(21) CONSTRAINT usuario_pk PRIMARY KEY,
     contraseña       VARCHAR2(15) NOT NULL,
     trabajador_dni   VARCHAR2(9) NOT NULL
 );
 
-CREATE UNIQUE INDEX usuario__idx ON
-    usuario ( trabajador_dni ASC );
-
-ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( idusuario );
 
 CREATE TABLE vehiculo (
     matricula       VARCHAR2(12) NOT NULL,
     marca           VARCHAR2(15) NOT NULL,
-    modelo          VARCHAR2(15) NOT NULL,
-    parte_idparte   VARCHAR2(5) NOT NULL
+    modelo          VARCHAR2(15) NOT NULL
 );
 
-CREATE UNIQUE INDEX vehiculo__idx ON
-    vehiculo ( parte_idparte ASC );
+
 
 ALTER TABLE vehiculo ADD CONSTRAINT vehiculo_pk PRIMARY KEY ( matricula );
 
@@ -121,10 +114,10 @@ ALTER TABLE parte ADD CONSTRAINT parte_aviso_fk FOREIGN KEY ( aviso_idaviso )
 ALTER TABLE parte ADD CONSTRAINT parte_gasto_fk FOREIGN KEY ( gasto_idgasto )
     REFERENCES gasto ( idgasto );
 
-ALTER TABLE parte ADD CONSTRAINT parte_trabajador_fk FOREIGN KEY ( trabajador_dni )
+ALTER TABLE parte ADD CONSTRAINT parte_trabajador_fk FOREIGN KEY ( revisado )
     REFERENCES trabajador ( dni );
 
-ALTER TABLE parte ADD CONSTRAINT parte_trabajador_fkv2 FOREIGN KEY ( trabajador_dni1 )
+ALTER TABLE parte ADD CONSTRAINT parte_trabajador_fkv2 FOREIGN KEY ( creado )
     REFERENCES trabajador ( dni );
 
 ALTER TABLE parte ADD CONSTRAINT parte_vehiculo_fk FOREIGN KEY ( vehiculo_matricula )
@@ -136,14 +129,9 @@ ALTER TABLE salida ADD CONSTRAINT salida_parte_fk FOREIGN KEY ( parte_idparte )
 ALTER TABLE trabajador ADD CONSTRAINT trabajador_centro_fk FOREIGN KEY ( centro_idcentro )
     REFERENCES centro ( idcentro );
 
-ALTER TABLE trabajador ADD CONSTRAINT trabajador_usuario_fk FOREIGN KEY ( usuario_idusuario )
-    REFERENCES usuario ( idusuario );
-
 ALTER TABLE usuario ADD CONSTRAINT usuario_trabajador_fk FOREIGN KEY ( trabajador_dni )
     REFERENCES trabajador ( dni );
 
-ALTER TABLE vehiculo ADD CONSTRAINT vehiculo_parte_fk FOREIGN KEY ( parte_idparte )
-    REFERENCES parte ( idparte );
 
 
 
