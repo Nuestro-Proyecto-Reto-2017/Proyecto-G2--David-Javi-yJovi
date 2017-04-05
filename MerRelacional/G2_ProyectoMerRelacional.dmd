@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="G2_ProyectoMerRelacional" id="8ECA4028-8D81-CF07-7333-470EC1010B9A" version="3.5">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:21:22 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>8ECA4028-8D81-CF07-7333-470EC1010B9A</designId>
+</OSDM_Design>
