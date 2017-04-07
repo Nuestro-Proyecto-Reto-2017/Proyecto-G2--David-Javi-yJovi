@@ -13,7 +13,7 @@ import java.sql.*;
 public class conexionBD  {
     private  Connection con;
     
-    public  Connection conectar(){
+    public static Connection conectar(){
     try{
         
      
@@ -24,7 +24,7 @@ public class conexionBD  {
     String url="jdbc:oracle:thin:@10.10.10.9:1521:db12102";
     String user="dawxml";
     String password="dawxml";
-    Connection con =DriverManager.getConnection(url, user, password);
+    con =DriverManager.getConnection(url, user, password);
     
    return con;
     
@@ -36,11 +36,11 @@ public class conexionBD  {
 }
    
     }
-    public  void dc(){
+    public  void dc(Connection con){
         try{
         con.close();
         }catch(Exception e){
-            javax.swing.JOptionPane.showMessageDialog(null,"no se pudo cerrar la conexion"+ e.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(null,"no se pudo cerrar la conexion"+ e.getMessage()+e.getClass());
         }
         
     }

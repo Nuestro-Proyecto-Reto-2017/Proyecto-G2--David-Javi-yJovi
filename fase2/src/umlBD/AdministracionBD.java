@@ -17,23 +17,25 @@ import umlBD.*;
  * @author 1GLM07
  */
 public class AdministracionBD {
+  private   Connection con=conexionBD.conectar(con);
 conexionBD c=new conexionBD();
     public  void anadirVehiculo(Vehiculo v) throws Exception {
+      
         
-        PreparedStatement insertVehiculo = c.conectar().prepareStatement("insert into vehiculo values (?,?,?)");
+        PreparedStatement insertVehiculo = c.conectar(con).prepareStatement("insert into vehiculo values (?,?,?)");
         insertVehiculo.setString(1, v.getMatricula());
         insertVehiculo.setString(2, v.getMarca());
         insertVehiculo.setString(3, v.getModelo());
         int fila=insertVehiculo.executeUpdate();
-        c.dc();
+        con.close();
     }
 
     public   void borrarVehiculo(String matricula) throws Exception {
         
-        PreparedStatement insertVehiculo = c.conectar().prepareStatement("delete from vehiculo where matricula=?");
+      /*  PreparedStatement insertVehiculo = c.conectar().prepareStatement("delete from vehiculo where matricula=?");
         insertVehiculo.setString(1, matricula);
         insertVehiculo.executeUpdate();
-        c.dc();
+        c.dc();*/
     }
 
     public void anadirUsuario() {
