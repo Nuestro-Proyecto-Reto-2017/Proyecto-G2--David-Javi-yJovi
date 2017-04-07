@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EF8AAF4B-08DC-3CFD-7B46-8E39A907AEED" name="Centro">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:21:44 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="idCentro" id="9030D400-FB62-8B91-3E33-56F64C71620E">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:22:49 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="7D110D8A-F35F-4F51-680F-506A45AEFC72">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:23:02 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="calle" id="AF0210C6-4760-373C-A427-A77EAF9A4761">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:23:28 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="numero" id="BB64741B-6197-EDD2-FFE2-90F21FF6DA40">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:24:11 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="codigoPostal" id="E105E164-4AEC-EBB5-4F80-9D418EAFEF1F">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:24:29 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ciudad" id="9C698A4B-070F-0AC7-A36A-989FAC12CF04">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:24:46 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="provincia" id="6BA9C123-7CE6-FB0C-16F2-0893556A4FDC">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:25:15 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telefono" id="77E6FE95-6FF1-D4B6-C061-ED2A30C74BCF">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:25:33 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="55D52E76-08A3-4D4B-B52E-2FA5026ADE04" name="Centro PK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:22:56 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<engineerTo>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9030D400-FB62-8B91-3E33-56F64C71620E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

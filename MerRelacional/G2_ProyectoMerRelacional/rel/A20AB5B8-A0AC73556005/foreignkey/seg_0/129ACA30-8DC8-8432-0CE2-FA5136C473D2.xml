@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="129ACA30-8DC8-8432-0CE2-FA5136C473D2" containerWithKeyObject="2803CAFF-EC27-6A24-46E1-DD73ED28E5E9" localFKIndex="043EDA55-0507-6B67-B84A-3E3B2E5CA138" name="Parte_Vehiculo_FK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>2DD31F08-BEF4-EC20-F8CD-74FD228076D5</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<referredTableLongName>Vehiculo</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>81F69A42-17AB-B54E-2432-703B160F9CAA</referredTableID>
+<keyObject>A1E0E151-5CB2-88C0-9F94-E52592681DA2</keyObject>
+<referredKeyID>A1E0E151-5CB2-88C0-9F94-E52592681DA2</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>matricula</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
