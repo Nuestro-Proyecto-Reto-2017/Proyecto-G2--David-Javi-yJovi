@@ -6,6 +6,7 @@
 package fase2;
 
 import java.sql.Date;
+import uml.Centro;
 import vistas.*;
 
 /**
@@ -46,7 +47,24 @@ cambiar java.util.Date a java.sql.Date*/
         
         
     }
-        
+public static Centro generarCentro(){
+         Centro c =new Centro();
+         c.setNombre(nombre);
+         c.setIdCentro(idCentro);
+         c.setCalle(calle);
+         c.setCiudad(ciudad);
+         c.setCodigoPostal(codigoPostal);
+         c.setProvincia(provincia);
+         c.setTelefono(telefono);
+         
+
+         c.setNumero(numero);
+            
+        return c;
     }
+public static  Trabajador generarTrabajador(){
+    
+}
+}
     
 

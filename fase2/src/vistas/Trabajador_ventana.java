@@ -613,7 +613,7 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date.getTime());
        
 
         if (opt == 'a') {
-            AdministracionBD.anadirTrabajador(
+            generarTrabajador(
                     dni, nombre, apellidoUno, apellidoDos,
                     calle, portal, piso, mano,
                      telpersonal, telempresa,

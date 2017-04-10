@@ -54,8 +54,14 @@ conexionBD c=new conexionBD();
 
     }
 
-    public  void anadirCentro() {
-
+    public  void anadirCentro(Centro c) {
+ /*  conexionBD.conectar();
+        PreparedStatement insertCentro = conexionBD.con.prepareStatement("insert into centro values(?,?,?");
+        insertCentro.setString(1, id);
+        insertCentro.setString(1, id);
+        insertCentro.setString(1, id);
+        insertCentro.executeUpdate();
+        conexionBD.dc();*/
     }
 
     public  void borrarCentro(String id) throws Exception {
@@ -76,7 +82,7 @@ conexionBD c=new conexionBD();
     }
 
     public  void anadirTrabajador(String dni, String nombre, String apellidouno, String apellidodos,
-            String calle, String portal, String piso, String mano, String telefonopersonal, String telefonoempresa,
+            String calle, String portal, String piso,String provincia, String mano, String telefonopersonal, String telefonoempresa,
             Float salario, Date fechanac, String tipotrabajador, String centro_idcentro) {/*
         try {
             conexionBD.conectar();
