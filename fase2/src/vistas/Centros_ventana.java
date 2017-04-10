@@ -14,6 +14,7 @@ public class Centros_ventana extends javax.swing.JFrame {
     /**
      * Creates new form Centros_ventana
      */
+    private boolean alta;
     public Centros_ventana() {
         initComponents();
         setLocationRelativeTo(null);
@@ -52,6 +53,7 @@ public class Centros_ventana extends javax.swing.JFrame {
         rbalta = new javax.swing.JRadioButton();
         rbmodificar = new javax.swing.JRadioButton();
         bbaja = new javax.swing.JButton();
+        baceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -224,6 +226,13 @@ public class Centros_ventana extends javax.swing.JFrame {
         bbaja.setText("baja");
         bbaja.setEnabled(false);
 
+        baceptar.setText("Aceptar");
+        baceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                baceptarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -231,25 +240,27 @@ public class Centros_ventana extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel10))
-                    .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rbmodificar)
                                 .addGap(18, 18, 18)
                                 .addComponent(bbaja))
-                            .addComponent(rbalta, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(rbalta, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(baceptar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -270,6 +281,8 @@ public class Centros_ventana extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(baceptar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -286,6 +299,8 @@ public class Centros_ventana extends javax.swing.JFrame {
             ftftelefono.setEnabled(true);
             
             tfidCentro.setEnabled(true);
+            
+            alta=true;
         
         
         
@@ -302,7 +317,26 @@ public class Centros_ventana extends javax.swing.JFrame {
             
             tfidCentro.setEnabled(true);
             bbaja.setEnabled(true);
+            
+            alta=false;
     }//GEN-LAST:event_rbmodificarActionPerformed
+
+    private void baceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baceptarActionPerformed
+         String provincia =cbprovincia.getSelectedItem().toString();
+         String cp =ftfcp.getText();
+         String telefono=ftftelefono.getText();
+         String calle=tfcalle.getText();
+         String ciudad=tfciudad.getText();
+         String idCentro=tfidCentro.getText();
+         String nombre=tfnombre.getText();
+         String numero=tfnumero.getText();
+         
+         if(alta){
+             fase2.Fase2.generarCentro(idCentro,nombre,calle,numero,cp,ciudad, provincia,telefono);
+         }
+         
+         
+    }//GEN-LAST:event_baceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,6 +374,7 @@ public class Centros_ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton baceptar;
     private javax.swing.JButton bbaja;
     private javax.swing.ButtonGroup bgaltamodificar;
     private javax.swing.JComboBox<String> cbprovincia;

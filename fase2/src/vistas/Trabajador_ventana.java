@@ -613,14 +613,18 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date.getTime());
        
 
         if (opt == 'a') {
-            generarTrabajador(
+            fase2.Fase2.generarTrabajador(
                     dni, nombre, apellidoUno, apellidoDos,
                     calle, portal, piso, mano,
                      telpersonal, telempresa,
                       salario, sqlFechaNac,
                     tipo,centro);
         } else if (opt == 'm') {
-            AdministracionBD.actualizarTrabajador();
+            fase2.Fase2.actualizarTrabajador(dni, nombre, apellidoUno, apellidoDos,
+                    calle, portal, piso, mano,
+                     telpersonal, telempresa,
+                      salario, sqlFechaNac,
+                    tipo,centro);
         }
         }catch(Exception e){
             javax.swing.JOptionPane.showMessageDialog(null,"error en la recogida de datos: "+e.getMessage() + e.getClass());
@@ -714,4 +718,6 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date.getTime());
     private javax.swing.JTextField tfportal;
     private javax.swing.JTextField tfsalario;
     // End of variables declaration//GEN-END:variables
+
+   
 }

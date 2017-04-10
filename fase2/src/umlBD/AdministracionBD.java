@@ -6,8 +6,7 @@
 package umlBD;
 
 import java.sql.*;
-import uml.Trabajador;
-import uml.Vehiculo;
+import uml.*;
 import umlBD.*;
 
 
@@ -17,12 +16,12 @@ import umlBD.*;
  * @author 1GLM07
  */
 public class AdministracionBD {
-  private   Connection con=conexionBD.conectar(con);
+  Connection con=conexionBD.conectar();
 conexionBD c=new conexionBD();
     public  void anadirVehiculo(Vehiculo v) throws Exception {
       
         
-        PreparedStatement insertVehiculo = c.conectar(con).prepareStatement("insert into vehiculo values (?,?,?)");
+        PreparedStatement insertVehiculo = c.conectar().prepareStatement("insert into vehiculo values (?,?,?)");
         insertVehiculo.setString(1, v.getMatricula());
         insertVehiculo.setString(2, v.getMarca());
         insertVehiculo.setString(3, v.getModelo());
@@ -30,7 +29,7 @@ conexionBD c=new conexionBD();
         con.close();
     }
 
-    public   void borrarVehiculo(String matricula) throws Exception {
+    public static  void borrarVehiculo(String matricula) throws Exception {
         
       /*  PreparedStatement insertVehiculo = c.conectar().prepareStatement("delete from vehiculo where matricula=?");
         insertVehiculo.setString(1, matricula);
@@ -54,17 +53,26 @@ conexionBD c=new conexionBD();
 
     }
 
-    public  void anadirCentro(Centro c) {
- /*  conexionBD.conectar();
-        PreparedStatement insertCentro = conexionBD.con.prepareStatement("insert into centro values(?,?,?");
-        insertCentro.setString(1, id);
-        insertCentro.setString(1, id);
-        insertCentro.setString(1, id);
+    public static void anadirCentro(Centro c) {
+        try{
+        conexionBD.conectar();
+        PreparedStatement insertCentro = conexionBD.conectar().prepareStatement("insert into centro values(?,?,?");
+        insertCentro.setString(1, c.getIdCentro());
+        insertCentro.setString(2, c.getNombre());
+        insertCentro.setString(3, c.getCalle());
+        insertCentro.setString(4, c.getNumero());
+        insertCentro.setString(5, c.getCodigoPostal());
+        insertCentro.setString(6, c.getCiudad());
+        insertCentro.setString(7, c.getProvincia());
+        insertCentro.setString(8, c.getTelefono());
         insertCentro.executeUpdate();
-        conexionBD.dc();*/
+        conexionBD.dc();
+        }catch(Exception e){
+            javax.swing.JOptionPane.showMessageDialog(null,"error al insertar centro: "+ e.getClass()+e.getMessage());
+        }
     }
 
-    public  void borrarCentro(String id) throws Exception {
+    public static void borrarCentro(String id) throws Exception {
       /*  conexionBD.conectar();
         PreparedStatement deleteCentro = conexionBD.con.prepareStatement("delete from centro where idcentro=?");
         deleteCentro.setString(1, id);
@@ -81,7 +89,7 @@ conexionBD c=new conexionBD();
 
     }
 
-    public  void anadirTrabajador(String dni, String nombre, String apellidouno, String apellidodos,
+    public static  void anadirTrabajador(String dni, String nombre, String apellidouno, String apellidodos,
             String calle, String portal, String piso,String provincia, String mano, String telefonopersonal, String telefonoempresa,
             Float salario, Date fechanac, String tipotrabajador, String centro_idcentro) {/*
         try {
@@ -117,17 +125,17 @@ conexionBD c=new conexionBD();
 */
     }
 
-    public  void borrarTrabajador(String dni) throws Exception {
-      /*  conexionBD.conectar();
-        PreparedStatement deleteTrabajador = conexionBD.con.prepareStatement("delete from trabajador where dni=?");
+    public static void borrarTrabajador(String dni) throws Exception {
+       conexionBD.conectar();
+        PreparedStatement deleteTrabajador = conexionBD.conectar().prepareStatement("delete from trabajador where dni=?");
         deleteTrabajador.setString(1, dni);
         
         deleteTrabajador.executeUpdate();
-        conexionBD.dc();*/
+        conexionBD.dc();
 
     }
 
-    public  void actualizarTrabajador() {
+    public static  void actualizarTrabajador() {
 
     }
 }

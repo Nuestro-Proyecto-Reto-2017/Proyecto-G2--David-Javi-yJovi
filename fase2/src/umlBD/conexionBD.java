@@ -11,17 +11,12 @@ import java.sql.*;
  * @author 1GLM07
  */
 public class conexionBD  {
-    private  Connection con;
+    private static Connection con;
     
     public static Connection conectar(){
     try{
-        
-     
-
-
-        
-    Class.forName("oracle.jdbc.driver.OracleDriver");
-    String url="jdbc:oracle:thin:@10.10.10.9:1521:db12102";
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        String url="jdbc:oracle:thin:@10.10.10.9:1521:db12102";
     String user="dawxml";
     String password="dawxml";
     con =DriverManager.getConnection(url, user, password);
@@ -36,7 +31,7 @@ public class conexionBD  {
 }
    
     }
-    public  void dc(Connection con){
+    public static  void dc(){
         try{
         con.close();
         }catch(Exception e){

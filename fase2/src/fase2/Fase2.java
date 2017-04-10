@@ -7,7 +7,9 @@ package fase2;
 
 import java.sql.Date;
 import uml.Centro;
+import uml.Trabajador;
 import vistas.*;
+import umlBD.*;
 
 /**
  *
@@ -47,7 +49,7 @@ cambiar java.util.Date a java.sql.Date*/
         
         
     }
-public static Centro generarCentro(){
+public static void generarCentro(String idCentro,String nombre, String calle,String numero,String codigoPostal, String ciudad,String provincia,String telefono){
          Centro c =new Centro();
          c.setNombre(nombre);
          c.setIdCentro(idCentro);
@@ -55,16 +57,56 @@ public static Centro generarCentro(){
          c.setCiudad(ciudad);
          c.setCodigoPostal(codigoPostal);
          c.setProvincia(provincia);
-         c.setTelefono(telefono);
-         
-
+         c.setTelefono(telefono);      
          c.setNumero(numero);
+         
+         AdministracionBD.anadirCentro(c);
             
-        return c;
+        
     }
-public static  Trabajador generarTrabajador(){
-    
-}
+
+    public static void actualizarTrabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telpersonal, String telempresa, Float salario, Date sqlFechaNac, String tipo, String centro) {
+       
+          Trabajador t =new Trabajador();
+         t.setDni(dni);
+         t.setNombre(nombre);
+         t.setApellidoUno(apellidoUno);
+         t.setApellidoDos(apellidoDos);
+         t.setCalle(calle);
+         t.setPortal(portal);
+         t.setPiso(piso);
+         t.setMano(mano);
+         t.setTelefonoPersonal(telpersonal);
+         t.setTelefonoEmpresa(telempresa);
+         t.setSalario(salario);
+         t.setFechaNac(sqlFechaNac);
+         t.setTipoTrabajador(tipo);
+         t.setCentro(centro);
+         
+         AdministracionBD.anadirTrabajador(dni, nombre, apellidoUno, apellidoDos, calle, portal, piso, piso, mano, telpersonal, telempresa, salario, sqlFechaNac, tipo, centro);
+    }
+ private static void generarTrabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telpersonal, String telempresa, Float salario, Date sqlFechaNac, String tipo, String centro) {
+        
+     Trabajador t =new Trabajador();
+         t.setDni(dni);
+         t.setNombre(nombre);
+         t.setApellidoUno(apellidoUno);
+         t.setApellidoDos(apellidoDos);
+         t.setCalle(calle);
+         t.setPortal(portal);
+         t.setPiso(piso);
+         t.setMano(mano);
+         t.setTelefonoPersonal(telpersonal);
+         t.setTelefonoEmpresa(telempresa);
+         t.setSalario(salario);
+         t.setFechaNac(sqlFechaNac);
+         t.setTipoTrabajador(tipo);
+         t.setCentro(centro);
+         
+         AdministracionBD.anadirTrabajador(dni, nombre, apellidoUno, apellidoDos, calle, portal, piso, piso, mano, telpersonal, telempresa, salario, sqlFechaNac, tipo, centro);
+            
+        
+    }
 }
     
 
