@@ -225,6 +225,11 @@ public class Centros_ventana extends javax.swing.JFrame {
 
         bbaja.setText("baja");
         bbaja.setEnabled(false);
+        bbaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbajaActionPerformed(evt);
+            }
+        });
 
         baceptar.setText("Aceptar");
         baceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -337,6 +342,11 @@ public class Centros_ventana extends javax.swing.JFrame {
          
          
     }//GEN-LAST:event_baceptarActionPerformed
+
+    private void bbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbajaActionPerformed
+    String id=  tfidCentro.getText();
+    fase2.Fase2.borrarCentro(id);
+    }//GEN-LAST:event_bbajaActionPerformed
 
     /**
      * @param args the command line arguments

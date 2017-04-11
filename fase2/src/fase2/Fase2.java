@@ -21,10 +21,10 @@ public class Fase2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      
+      falta actualizar centros y acabar trabajadores
      //centros();
-     //trabajadores();
-     vehiculos();
+     trabajadores();
+     //vehiculos();
         
       //tengo que hacer todos los metodos (estan puestos con void)
         /*        y me queda fijar relaciones entre clases
@@ -64,28 +64,38 @@ public static void generarCentro(String idCentro,String nombre, String calle,Str
             
         
     }
+public static void borrarCentro(String id){
+    Centro c1 =new Centro();
+    c1.setIdCentro(id);
+    AdministracionBD.borrarCentro(c1);
+}
+public static void actualizarCentro(){
+    
+}
 
     public static void actualizarTrabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telpersonal, String telempresa, Float salario, Date sqlFechaNac, String tipo, String centro) {
        
-          Trabajador t =new Trabajador();
-         t.setDni(dni);
-         t.setNombre(nombre);
-         t.setApellidoUno(apellidoUno);
-         t.setApellidoDos(apellidoDos);
-         t.setCalle(calle);
-         t.setPortal(portal);
-         t.setPiso(piso);
-         t.setMano(mano);
-         t.setTelefonoPersonal(telpersonal);
-         t.setTelefonoEmpresa(telempresa);
-         t.setSalario(salario);
-         t.setFechaNac(sqlFechaNac);
-         t.setTipoTrabajador(tipo);
-         t.setCentro(centro);
+          Trabajador t1 =new Trabajador();
+         t1.setDni(dni);
+         t1.setNombre(nombre);
+         t1.setApellidoUno(apellidoUno);
+         t1.setApellidoDos(apellidoDos);
+         t1.setCalle(calle);
+         t1.setPortal(portal);
+         t1.setPiso(piso);
+         t1.setMano(mano);
+         t1.setTelefonoPersonal(telpersonal);
+         t1.setTelefonoEmpresa(telempresa);
+         t1.setSalario(salario);
+         t1.setFechaNac(sqlFechaNac);
+         t1.setTipoTrabajador(tipo);
+         t1.setCentro(centro);
          
-         AdministracionBD.anadirTrabajador(dni, nombre, apellidoUno, apellidoDos, calle, portal, piso, piso, mano, telpersonal, telempresa, salario, sqlFechaNac, tipo, centro);
+         AdministracionBD.actualizarTrabajador(t1);
     }
- private static void generarTrabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telpersonal, String telempresa, Float salario, Date sqlFechaNac, String tipo, String centro) {
+    
+    
+ public static void generarTrabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telpersonal, String telempresa, Float salario, Date sqlFechaNac, String tipo, String centro) {
         
      Trabajador t =new Trabajador();
          t.setDni(dni);
@@ -103,10 +113,22 @@ public static void generarCentro(String idCentro,String nombre, String calle,Str
          t.setTipoTrabajador(tipo);
          t.setCentro(centro);
          
-         AdministracionBD.anadirTrabajador(dni, nombre, apellidoUno, apellidoDos, calle, portal, piso, piso, mano, telpersonal, telempresa, salario, sqlFechaNac, tipo, centro);
-            
+         AdministracionBD.anadirTrabajador(t);
+ }
         
-    }
-}
+         public static void borrarTrabajador(String dni){
+            try{
+             Trabajador t2= new Trabajador();
+             t2.setDni(dni);
+             AdministracionBD.borrarTrabajador(dni);
+            }catch(Exception e){
+                javax.swing.JOptionPane.showMessageDialog(null,"error al borrar al trabajador "+ e.getMessage()+e.getClass());
+            
+            }
+             
+         }
+             
+         }
+
     
 

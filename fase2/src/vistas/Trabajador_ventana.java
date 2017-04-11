@@ -6,7 +6,8 @@
 package vistas;
 
 import datechooser.beans.DateChooserPanel;
-import java.sql.Date;
+import java.sql.*;
+
 import java.text.SimpleDateFormat;
 //import java.util.Calendar;
 //import java.util.Date;
@@ -110,6 +111,11 @@ public class Trabajador_ventana extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftfdni.setEnabled(false);
+        ftfdni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftfdniActionPerformed(evt);
+            }
+        });
 
         tfnombre.setEnabled(false);
 
@@ -302,7 +308,7 @@ public class Trabajador_ventana extends javax.swing.JFrame {
     cbtipo.setSelectedIndex(-1);
     cbtipo.setEnabled(false);
 
-    cbcentro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+    cbcentro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "001", "002", "003" }));
     cbcentro.setEnabled(false);
 
     try {
@@ -463,36 +469,38 @@ public class Trabajador_ventana extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(20, 20, 20)
                     .addComponent(jLabel15)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(8, 8, 8))
+            .addGap(12, 12, 12))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        .addGroup(layout.createSequentialGroup()
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addComponent(jLabel15)))
-            .addGap(18, 18, 18)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(27, 27, 27)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(45, 45, 45)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(baceptar)
-                        .addComponent(bbaja))
-                    .addGap(60, 60, 60))
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(jLabel15)))
+                    .addGap(18, 18, 18)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(27, 27, 27)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(45, 45, 45)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(baceptar)
+                                .addComponent(bbaja))
+                            .addGap(60, 60, 60))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(49, 49, 49))))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(49, 49, 49))))
-        .addGroup(layout.createSequentialGroup()
-            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
     );
 
     pack();
@@ -575,14 +583,15 @@ public class Trabajador_ventana extends javax.swing.JFrame {
         
          salario = Float.parseFloat(tfsalario.getText());       
         
-   dcfechaNac.getSelectedDate().getTime();
-        String x= dcfechaNac.getSelectedDate().getTime().toString();
+   java.util.Date date1= dcfechaNac.getSelectedDate().getTime();
+   
+        String x= date1.toString();
         
         System.out.println(x);
        
-SimpleDateFormat sdf = new SimpleDateFormat("EE MMM dd hh:mm:ss z yyyy");
-java.util.Date date = sdf.parse(x);
-java.sql.Date sqlFechaNac = new java.sql.Date(date.getTime());
+//SimpleDateFormat sdf = new SimpleDateFormat("EE MMM dd hh:mm:ss z yyyy");
+//java.util.Date sqldate = sdf.parse(x);
+java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
         
         
        
@@ -635,11 +644,74 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date.getTime());
         try {
 
             String dni = ftfdni.getText().toString();
-            AdministracionBD.borrarTrabajador(dni);
+            fase2.Fase2.borrarTrabajador(dni);
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(null, "error en la baja: " + e.getMessage());
         }
     }//GEN-LAST:event_bbajaActionPerformed
+
+    private void ftfdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfdniActionPerformed
+        String dni=ftfdni.getText();
+        try{
+       ResultSet datos= AdministracionBD.cojerDatosTrabajador(dni);
+       
+       ftfdni.setEnabled(false);
+        
+        String nombre=datos.getString(2);
+        String apellidouno=datos.getString(3);
+        String apellidodos=datos.getString(4);
+       String calle=datos.getString(5);
+        String portal=datos.getString(6);
+        String piso=datos.getString(7);
+        String mano=datos.getString(8);
+        String telpersonal=datos.getString(9);
+        String telempresa=datos.getString(10);
+        //String salario=datos.getFloat(11).toString();
+       // Date fehanacdatos.get(12);
+       // datos.getString(13);
+        tfnombre.setText(nombre);
+        tfapellidoUno.setText(apellidouno);
+        tfapelliDos.setText(apellidodos);
+        tfcalle.setText(calle);
+        tfportal.setText(portal);
+        tfpiso.setText(piso);
+        tfmano.setText(mano);
+        ftftelpersonal.setText(telpersonal);
+        ftftelempresa.setText(telempresa);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        cbcentro.setEnabled(true);
+        cbtipo.setEnabled(true);
+        dcfechaNac.setEnabled(true);
+        tfapelliDos.setEnabled(true);
+        tfapellidoUno.setEnabled(true);
+        tfcalle.setEnabled(true);
+        tfmano.setEnabled(true);
+        tfnombre.setEnabled(true);
+        tfpiso.setEnabled(true);
+        tfportal.setEnabled(true);
+        tfsalario.setEnabled(true);
+        ftftelempresa.setEnabled(true);
+        ftftelpersonal.setEnabled(true);
+       
+        baceptar.setEnabled(true);
+         }catch(Exception e){
+            javax.swing.JOptionPane.showMessageDialog(null,"error al recoger los datos"+ e.getClass()+ e.getMessage());
+        }
+        
+    }//GEN-LAST:event_ftfdniActionPerformed
 
     /**
      * @param args the command line arguments

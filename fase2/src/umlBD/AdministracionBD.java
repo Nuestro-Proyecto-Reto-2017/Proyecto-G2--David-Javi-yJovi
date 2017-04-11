@@ -56,7 +56,7 @@ conexionBD c=new conexionBD();
     public static void anadirCentro(Centro c) {
         try{
         conexionBD.conectar();
-        PreparedStatement insertCentro = conexionBD.conectar().prepareStatement("insert into centro values(?,?,?");
+        PreparedStatement insertCentro = conexionBD.conectar().prepareStatement("insert into centro values(?,?,?,?,?,?,?,?)");
         insertCentro.setString(1, c.getIdCentro());
         insertCentro.setString(2, c.getNombre());
         insertCentro.setString(3, c.getCalle());
@@ -65,19 +65,25 @@ conexionBD c=new conexionBD();
         insertCentro.setString(6, c.getCiudad());
         insertCentro.setString(7, c.getProvincia());
         insertCentro.setString(8, c.getTelefono());
-        insertCentro.executeUpdate();
+       int filas= insertCentro.executeUpdate();
         conexionBD.dc();
+        javax.swing.JOptionPane.showMessageDialog(null, "se han insertado "+ filas+" filas");
         }catch(Exception e){
             javax.swing.JOptionPane.showMessageDialog(null,"error al insertar centro: "+ e.getClass()+e.getMessage());
         }
     }
 
-    public static void borrarCentro(String id) throws Exception {
-      /*  conexionBD.conectar();
-        PreparedStatement deleteCentro = conexionBD.con.prepareStatement("delete from centro where idcentro=?");
-        deleteCentro.setString(1, id);
-        deleteCentro.executeUpdate();
-        conexionBD.dc();*/
+    public static void borrarCentro(Centro c1){
+      try{ 
+          //conexionBD.conectar();
+        PreparedStatement deleteCentro = conexionBD.conectar().prepareStatement("delete from centro where idcentro=?");
+        deleteCentro.setString(1, c1.getIdCentro());
+        int x =deleteCentro.executeUpdate();
+        javax.swing.JOptionPane.showMessageDialog(null, "se han borrado "+x+" filas");
+        conexionBD.dc();}
+      catch(Exception e){
+          javax.swing.JOptionPane.showMessageDialog(null, "error al borrar "+e.getMessage()+e.getClass());
+      }
 
     }
 
@@ -89,40 +95,39 @@ conexionBD c=new conexionBD();
 
     }
 
-    public static  void anadirTrabajador(String dni, String nombre, String apellidouno, String apellidodos,
-            String calle, String portal, String piso,String provincia, String mano, String telefonopersonal, String telefonoempresa,
-            Float salario, Date fechanac, String tipotrabajador, String centro_idcentro) {/*
+    public static  void anadirTrabajador(Trabajador t) {
         try {
             conexionBD.conectar();
             
-            PreparedStatement insertTrabajador = conexionBD.con.prepareStatement("insert into trabajador values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            insertTrabajador.setString(1, dni);
-            insertTrabajador.setString(2, nombre);
-            insertTrabajador.setString(3, apellidouno);
-            insertTrabajador.setString(4, apellidodos);
+            PreparedStatement insertTrabajador = conexionBD.conectar().prepareStatement("insert into trabajador values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            insertTrabajador.setString(1, t.getDni());
+            insertTrabajador.setString(2, t.getNombre());
+            insertTrabajador.setString(3, t.getApellidoUno());
+            insertTrabajador.setString(4, t.getApellidoDos());
             
-            insertTrabajador.setString(5, calle);
-            insertTrabajador.setString(6, portal);
-            insertTrabajador.setString(7, piso);
-            insertTrabajador.setString(8, mano);
+            insertTrabajador.setString(5, t.getCalle());
+            insertTrabajador.setString(6, t.getPortal());
+            insertTrabajador.setString(7, t.getPiso());
+            insertTrabajador.setString(8, t.getMano());
             
-            insertTrabajador.setString(9, telefonopersonal);
-            insertTrabajador.setString(10, telefonoempresa);
+            insertTrabajador.setString(9, t.getTelefonoPersonal());
+            insertTrabajador.setString(10, t.getTelefonoEmpresa());
             
-            insertTrabajador.setFloat(11, salario);
+            insertTrabajador.setFloat(11, t.getSalario());
             
-             insertTrabajador.setDate(1, fechanac);
+             insertTrabajador.setDate(12, t.getFechaNac());
             
-            insertTrabajador.setString(13, tipotrabajador);
-            insertTrabajador.setString(14, centro_idcentro);
-
-            insertTrabajador.executeUpdate();
+            insertTrabajador.setString(13, t.getTipoTrabajador());
+            insertTrabajador.setString(14, t.getCentro());
+            
+            int x =insertTrabajador.executeUpdate();
             
             conexionBD.dc();
+            javax.swing.JOptionPane.showMessageDialog(null,"se han insertado " +x+" filas");
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(null, "error en el alta: " + e.getMessage());
         }
-*/
+
     }
 
     public static void borrarTrabajador(String dni) throws Exception {
@@ -130,12 +135,54 @@ conexionBD c=new conexionBD();
         PreparedStatement deleteTrabajador = conexionBD.conectar().prepareStatement("delete from trabajador where dni=?");
         deleteTrabajador.setString(1, dni);
         
-        deleteTrabajador.executeUpdate();
+       int x= deleteTrabajador.executeUpdate();
         conexionBD.dc();
+        javax.swing.JOptionPane.showMessageDialog(null,"se han borrado "+ x+" filas");
+    
 
     }
 
-    public static  void actualizarTrabajador() {
+    public static  void actualizarTrabajador(Trabajador t1) {
+        
+            try {
+            conexionBD.conectar();
+            
+             PreparedStatement actualizarTrabajador = conexionBD.conectar().prepareStatement("update trabajador set nombre=?,apellidouno=?,apellidodos=?,calle=?,portal=?,piso=?,mano=?,telefonopersonal=?,telefonoempresa=?,salario=?,fechanac=?,tipotrabajador=?,centro_idcentro=? where dni=?");
+            actualizarTrabajador.setString(1, t1.getDni());
+            actualizarTrabajador.setString(2, t1.getNombre());
+            actualizarTrabajador.setString(3, t1.getApellidoUno());
+            actualizarTrabajador.setString(4, t1.getApellidoDos());
+            
+            actualizarTrabajador.setString(5, t1.getCalle());
+            actualizarTrabajador.setString(6, t1.getPortal());
+            actualizarTrabajador.setString(7, t1.getPiso());
+            actualizarTrabajador.setString(8, t1.getMano());
+            
+            actualizarTrabajador.setString(9, t1.getTelefonoPersonal());
+            actualizarTrabajador.setString(10, t1.getTelefonoEmpresa());
+            
+            actualizarTrabajador.setFloat(11, t1.getSalario());
+            
+             actualizarTrabajador.setDate(12, t1.getFechaNac());
+            
+            actualizarTrabajador.setString(13, t1.getTipoTrabajador());
+            actualizarTrabajador.setString(14, t1.getCentro());
+
+            actualizarTrabajador.executeUpdate();
+            
+            conexionBD.dc();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "error en el alta: " + e.getMessage());
+        }
+        
 
     }
+    
+   public static ResultSet cojerDatosTrabajador(String dni)throws Exception{
+        CallableStatement x=conexionBD.conectar().prepareCall("{call select_trabajadores_dni(?, ?)}");
+        
+        x.setString(1, dni);
+      ResultSet datos=  x.getResultSet();
+      return datos;
+   }
 }

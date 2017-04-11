@@ -21,7 +21,7 @@ public class Logistica extends Trabajador {
     public Logistica() {
     }
 
-    public Logistica(Time horas, ArrayList<Parte> partes, String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telefonoPersonal, String telefonoEmpresa, float salario, Date fechaNac, String tipoTrabajador, String Centro_idCentro, String Usuario_idUsuario, Centro centro) {
+    public Logistica(Time horas, ArrayList<Parte> partes, String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telefonoPersonal, String telefonoEmpresa, float salario,java.sql.Date fechaNac, String tipoTrabajador, String Centro_idCentro, String Usuario_idUsuario, String centro) {
         super(dni, nombre, apellidoUno, apellidoDos, calle, portal, piso, mano, telefonoPersonal, telefonoEmpresa, salario, fechaNac, tipoTrabajador, Centro_idCentro, Usuario_idUsuario, centro);
         this.horas = horas;
         this.partes = partes;

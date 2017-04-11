@@ -41,6 +41,11 @@ public class Centro {
         this.aTrabajadores = aTrabajadores;
     }
 
+    public Centro(String idCentro) {
+        this.idCentro = idCentro;
+    }
+    
+
     public String getIdCentro() {
         return idCentro;
     }

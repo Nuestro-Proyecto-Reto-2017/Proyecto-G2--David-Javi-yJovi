@@ -23,18 +23,15 @@ public class Trabajador {
     private String telefonoPersonal;
     private String telefonoEmpresa;
     private float salario;
-    private Date fechaNac;
+    private java.sql.Date fechaNac;
     private String tipoTrabajador;
 
-    
-    
-    //Relaciones
-    private Centro centro;
+    private String centro;
 
     public Trabajador() {
     }
 
-    public Trabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telefonoPersonal, String telefonoEmpresa, float salario, Date fechaNac, String tipoTrabajador, String Centro_idCentro, String Usuario_idUsuario, Centro centro) {
+    public Trabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telefonoPersonal, String telefonoEmpresa, float salario, java.sql.Date fechaNac, String tipoTrabajador, String Centro_idCentro, String Usuario_idUsuario, String centro) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidoUno = apellidoUno;
@@ -50,6 +47,11 @@ public class Trabajador {
         this.tipoTrabajador = tipoTrabajador;
         this.centro = centro;
     }
+
+    public Trabajador(String dni) {
+        this.dni = dni;
+    }
+    
 
     public String getDni() {
         return dni;
@@ -139,11 +141,11 @@ public class Trabajador {
         this.salario = salario;
     }
 
-    public Date getFechaNac() {
+    public java.sql.Date getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(Date fechaNac) {
+    public void setFechaNac(java.sql.Date fechaNac) {
         this.fechaNac = fechaNac;
     }
 
@@ -155,16 +157,17 @@ public class Trabajador {
         this.tipoTrabajador = tipoTrabajador;
     }
 
-  
-
-    public Centro getCentro() {
+    public String getCentro() {
         return centro;
     }
 
-    public void setCentro(Centro centro) {
+    public void setCentro(String centro) {
         this.centro = centro;
     }
-    
+
+  
+
+   
     
 
    
