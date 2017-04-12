@@ -22,8 +22,8 @@ public class Fase2 {
      */
     public static void main(String[] args) {
      
-     //centros();
-     trabajadores();
+     centros();
+     //trabajadores();
      //vehiculos();
         
       //tengo que hacer todos los metodos (estan puestos con void)
@@ -72,6 +72,36 @@ public static void borrarCentro(String id){
 public static void actualizarCentro(){
     
 }
+
+ public static Centro consultarCentro(String idCentro){
+        try{
+            
+        
+      ResultSet x=  AdministracionBD.cogerDatosCentro(idCentro);
+     
+     Centro c =new Centro();
+     while(x.next()){
+      c.setIdCentro(idCentro);
+      c.setNombre(x.getString(2));
+      
+      c.setCalle(x.getString(3));
+      c.setNumero(x.getString(4));
+      c.setCodigoPostal(x.getString(5));
+      c.setCiudad(x.getString(6));
+      c.setProvincia(x.getString(7));
+      c.setTelefono(x.getString(8));
+      
+    }
+            
+             
+                    
+      
+        return c;
+        }catch(Exception e){
+            javax.swing.JOptionPane.showMessageDialog(null,"error en la busqueda de datos:"+ e.getMessage()+e.getClass());
+            return null;
+        }
+    }
 
     public static void actualizarTrabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telpersonal, String telempresa, Float salario, Date sqlFechaNac, String tipo, String centro) {
        

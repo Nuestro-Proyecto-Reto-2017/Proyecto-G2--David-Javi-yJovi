@@ -663,13 +663,18 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
     }//GEN-LAST:event_baceptarActionPerformed
 
     private void bbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbajaActionPerformed
-        try {
+       tfnombre.setEnabled(false);
+       tfnombre.setEnabled(false);
+       tfapellidoUno.setEnabled(false);
+        tfapelliDos.setEnabled(false);
+        dcfechaNac.setEnabled(false);
+        ftfdni.setEnabled(false);
+        tfcalle.setEnabled(false);
+        tfmano.setEnabled(false);
+        tfpiso.setEnabled(false);
+        tfportal.setEnabled(false);
+        
 
-            String dni = ftfdni.getText().toString();
-            fase2.Fase2.borrarTrabajador(dni);
-        } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null, "error en la baja: " + e.getMessage());
-        }
     }//GEN-LAST:event_bbajaActionPerformed
 
     private void ftfdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfdniActionPerformed

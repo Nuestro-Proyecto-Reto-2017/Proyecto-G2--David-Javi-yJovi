@@ -180,6 +180,23 @@ conexionBD c=new conexionBD();
 
     }
     
+     public static ResultSet cogerDatosCentro(String idCentro)throws Exception{
+        CallableStatement x=conexionBD.conectar().prepareCall("{call gest_centro.visualizar_datos_centro_id(?, ?)}");
+        x.setString(1, idCentro);
+        x.registerOutParameter(2, OracleTypes.CURSOR);
+        x.execute();
+         ResultSet datos = ((OracleCallableStatement)x).getCursor(2);
+         
+        
+        //como estamos buscando por la clave no hace falta hacer una repetitiva para scar datos porque solo devuelve una fila
+        
+       
+        
+         
+       
+      return datos;
+   }
+    
    public static ResultSet cogerDatosTrabajador(String dni)throws Exception{
         CallableStatement x=conexionBD.conectar().prepareCall("{call select_trabajadores_dni(?, ?)}");
         x.setString(1, dni);
