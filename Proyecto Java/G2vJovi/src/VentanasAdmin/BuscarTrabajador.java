@@ -99,6 +99,7 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         buttonGroup2.add(rbCentroId);
         rbCentroId.setText("buscar por ID");
+        rbCentroId.setEnabled(false);
         rbCentroId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbCentroIdActionPerformed(evt);
@@ -107,6 +108,7 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         buttonGroup2.add(rbCentroNombre);
         rbCentroNombre.setText("buscar por Nombre");
+        rbCentroNombre.setEnabled(false);
         rbCentroNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbCentroNombreActionPerformed(evt);
@@ -159,6 +161,7 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         cbTrabajador.setSelected(true);
         cbTrabajador.setText("Buscar por trabajador");
+        cbTrabajador.setEnabled(false);
         cbTrabajador.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 cbTrabajadorStateChanged(evt);
@@ -172,6 +175,7 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         cbCentro.setSelected(true);
         cbCentro.setText("Buscar por centro");
+        cbCentro.setEnabled(false);
         cbCentro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbCentroActionPerformed(evt);
@@ -180,7 +184,6 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar por trabajador"));
 
-        tfNombre.setEnabled(false);
         tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfNombreFocusGained(evt);
@@ -205,6 +208,7 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         buttonGroup1.add(rbTrabajadorDni);
         rbTrabajadorDni.setText("buscar por DNI");
+        rbTrabajadorDni.setEnabled(false);
         rbTrabajadorDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbTrabajadorDniActionPerformed(evt);
@@ -213,6 +217,7 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         buttonGroup1.add(rbTrabajadorNombre);
         rbTrabajadorNombre.setText("buscar por Nombre");
+        rbTrabajadorNombre.setEnabled(false);
         rbTrabajadorNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbTrabajadorNombreActionPerformed(evt);

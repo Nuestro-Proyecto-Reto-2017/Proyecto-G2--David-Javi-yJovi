@@ -35,12 +35,10 @@ public class CentroBD {
 
             llamada.registerOutParameter(1, OracleTypes.CURSOR); // Cadena devuelta
                 
-                
-                
+                 
                 llamada.execute(); // ejecutar el procedimiento
                 ResultSet rs = null;
-                rs = (ResultSet) llamada.getObject(2);
-
+                rs = (ResultSet) llamada.getObject(1);
                 
                 if(rs.next()){
                     do{
