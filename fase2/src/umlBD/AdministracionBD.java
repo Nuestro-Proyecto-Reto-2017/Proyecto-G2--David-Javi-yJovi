@@ -6,6 +6,8 @@
 package umlBD;
 
 import java.sql.*;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
 import uml.*;
 import umlBD.*;
 
@@ -178,11 +180,20 @@ conexionBD c=new conexionBD();
 
     }
     
-   public static ResultSet cojerDatosTrabajador(String dni)throws Exception{
+   public static ResultSet cogerDatosTrabajador(String dni)throws Exception{
         CallableStatement x=conexionBD.conectar().prepareCall("{call select_trabajadores_dni(?, ?)}");
-        
         x.setString(1, dni);
-      ResultSet datos=  x.getResultSet();
+        x.registerOutParameter(2, OracleTypes.CURSOR);
+        x.execute();
+         ResultSet datos = ((OracleCallableStatement)x).getCursor(2);
+         
+        
+        //como estamos buscando por la clave no hace falta hacer una repetitiva para scar datos porque solo devuelve una fila
+        
+       
+        
+         
+       
       return datos;
    }
 }

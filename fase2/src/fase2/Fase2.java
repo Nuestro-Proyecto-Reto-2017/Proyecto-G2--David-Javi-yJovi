@@ -5,7 +5,7 @@
  */
 package fase2;
 
-import java.sql.Date;
+import java.sql.*;
 import uml.Centro;
 import uml.Trabajador;
 import vistas.*;
@@ -21,7 +21,7 @@ public class Fase2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      falta actualizar centros y acabar trabajadores
+     
      //centros();
      trabajadores();
      //vehiculos();
@@ -92,6 +92,38 @@ public static void actualizarCentro(){
          t1.setCentro(centro);
          
          AdministracionBD.actualizarTrabajador(t1);
+    }
+    public static Trabajador consultarTrabajador(String dni){
+        try{
+            
+        
+      ResultSet x=  AdministracionBD.cogerDatosTrabajador(dni);
+     
+     Trabajador t =new Trabajador();
+     while(x.next()){
+      t.setDni(dni);
+        t.setNombre(x.getString(2));
+      t.setApellidoUno(x.getString(3));
+      t.setApellidoDos(x.getString(4));
+      t.setCalle(x.getString(5));
+      t.setPortal(x.getString(6));
+      t.setPiso(x.getString(7));
+      t.setMano(x.getString(8));
+      t.setTelefonoPersonal(x.getString(9));
+      t.setTelefonoEmpresa(x.getString(10));
+      t.setSalario(Float.parseFloat(x.getString(11)));
+     // t.setFechaNac(x.getString(12));
+      t.setTipoTrabajador(x.getString(13));
+      t.setCentro(x.getString(14));}
+            
+             
+                    
+      
+        return t;
+        }catch(Exception e){
+            javax.swing.JOptionPane.showMessageDialog(null,"error en la busqueda de datos:"+ e.getMessage()+e.getClass());
+            return null;
+        }
     }
     
     

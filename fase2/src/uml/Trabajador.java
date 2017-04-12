@@ -31,6 +31,23 @@ public class Trabajador {
     public Trabajador() {
     }
 
+    public Trabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telefonoPersonal, String telefonoEmpresa, float salario, String tipoTrabajador, String centro) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidoUno = apellidoUno;
+        this.apellidoDos = apellidoDos;
+        this.calle = calle;
+        this.portal = portal;
+        this.piso = piso;
+        this.mano = mano;
+        this.telefonoPersonal = telefonoPersonal;
+        this.telefonoEmpresa = telefonoEmpresa;
+        this.salario = salario;
+        this.tipoTrabajador = tipoTrabajador;
+        this.centro = centro;
+    }
+    
+
     public Trabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telefonoPersonal, String telefonoEmpresa, float salario, java.sql.Date fechaNac, String tipoTrabajador, String Centro_idCentro, String Usuario_idUsuario, String centro) {
         this.dni = dni;
         this.nombre = nombre;

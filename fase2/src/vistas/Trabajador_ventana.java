@@ -9,6 +9,7 @@ import datechooser.beans.DateChooserPanel;
 import java.sql.*;
 
 import java.text.SimpleDateFormat;
+import uml.Trabajador;
 //import java.util.Calendar;
 //import java.util.Date;
 import umlBD.AdministracionBD;
@@ -591,9 +592,7 @@ public class Trabajador_ventana extends javax.swing.JFrame {
        
 //SimpleDateFormat sdf = new SimpleDateFormat("EE MMM dd hh:mm:ss z yyyy");
 //java.util.Date sqldate = sdf.parse(x);
-java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
-        
-        
+java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());   
        
        
         
@@ -651,34 +650,24 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
     }//GEN-LAST:event_bbajaActionPerformed
 
     private void ftfdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfdniActionPerformed
+        if (rbmodificar.isSelected()){
         String dni=ftfdni.getText();
+      Trabajador t=  fase2.Fase2.consultarTrabajador(dni);
         try{
-       ResultSet datos= AdministracionBD.cojerDatosTrabajador(dni);
+       
        
        ftfdni.setEnabled(false);
         
-        String nombre=datos.getString(2);
-        String apellidouno=datos.getString(3);
-        String apellidodos=datos.getString(4);
-       String calle=datos.getString(5);
-        String portal=datos.getString(6);
-        String piso=datos.getString(7);
-        String mano=datos.getString(8);
-        String telpersonal=datos.getString(9);
-        String telempresa=datos.getString(10);
-        //String salario=datos.getFloat(11).toString();
-       // Date fehanacdatos.get(12);
-       // datos.getString(13);
-        tfnombre.setText(nombre);
-        tfapellidoUno.setText(apellidouno);
-        tfapelliDos.setText(apellidodos);
-        tfcalle.setText(calle);
-        tfportal.setText(portal);
-        tfpiso.setText(piso);
-        tfmano.setText(mano);
-        ftftelpersonal.setText(telpersonal);
-        ftftelempresa.setText(telempresa);
-        
+       
+        tfnombre.setText(t.getNombre());
+        tfapellidoUno.setText(t.getApellidoUno());
+        tfapelliDos.setText(t.getApellidoDos());
+        tfcalle.setText(t.getCalle());
+        tfportal.setText(t.getPortal());
+        tfpiso.setText(t.getPiso());
+        tfmano.setText(t.getMano());
+        ftftelpersonal.setText(t.getTelefonoPersonal());
+        ftftelempresa.setText(t.getTelefonoEmpresa());    
         
         
         
@@ -705,10 +694,13 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
         tfsalario.setEnabled(true);
         ftftelempresa.setEnabled(true);
         ftftelpersonal.setEnabled(true);
-       
+       bbaja.setEnabled(false);
         baceptar.setEnabled(true);
          }catch(Exception e){
             javax.swing.JOptionPane.showMessageDialog(null,"error al recoger los datos"+ e.getClass()+ e.getMessage());
+        }}
+        else{
+            tfnombre.requestFocus();
         }
         
     }//GEN-LAST:event_ftfdniActionPerformed
