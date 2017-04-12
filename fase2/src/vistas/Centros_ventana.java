@@ -347,7 +347,7 @@ public class Centros_ventana extends javax.swing.JFrame {
              fase2.Fase2.generarCentro(idCentro,nombre,calle,numero,cp,ciudad, provincia,telefono);
          }
          else{fase2.Fase2.actualizarCentro(idCentro,nombre,calle,numero,cp,ciudad, provincia,telefono);
-         
+         }
          
     }//GEN-LAST:event_baceptarActionPerformed
 
