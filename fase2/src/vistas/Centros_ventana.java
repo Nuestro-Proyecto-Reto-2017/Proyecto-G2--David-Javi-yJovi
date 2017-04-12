@@ -5,6 +5,8 @@
  */
 package vistas;
 
+import uml.Centro;
+
 /**
  *
  * @author 1GLM07
@@ -161,6 +163,11 @@ public class Centros_ventana extends javax.swing.JFrame {
         ftftelefono.setEnabled(false);
 
         tfidCentro.setEnabled(false);
+        tfidCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfidCentroActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("ID del centro");
 
@@ -339,6 +346,7 @@ public class Centros_ventana extends javax.swing.JFrame {
          if(alta){
              fase2.Fase2.generarCentro(idCentro,nombre,calle,numero,cp,ciudad, provincia,telefono);
          }
+         else{fase2.Fase2.actualizarCentro(idCentro,nombre,calle,numero,cp,ciudad, provincia,telefono);
          
          
     }//GEN-LAST:event_baceptarActionPerformed
@@ -347,6 +355,28 @@ public class Centros_ventana extends javax.swing.JFrame {
     String id=  tfidCentro.getText();
     fase2.Fase2.borrarCentro(id);
     }//GEN-LAST:event_bbajaActionPerformed
+
+    private void tfidCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfidCentroActionPerformed
+     String idCentro= tfidCentro.getText();
+       Centro c= fase2.Fase2.consultarCentro(idCentro);
+       
+      tfnombre.setText(c.getNombre());
+      tfcalle.setText(c.getCalle());
+      tfciudad.setText(c.getCiudad());
+      tfnumero.setText(c.getNumero());
+      ftfcp.setText(c.getCodigoPostal());
+      ftftelefono.setText(c.getTelefono());
+      cbprovincia.setSelectedItem(c.getProvincia());
+      
+      tfnombre.setEnabled(true);
+      tfcalle.setEnabled(true);
+      tfciudad.setEnabled(true);
+      tfnumero.setEnabled(true);
+      ftfcp.setEnabled(true);
+      ftftelefono.setEnabled(true);
+      cbprovincia.setEnabled(true);
+        
+    }//GEN-LAST:event_tfidCentroActionPerformed
 
     /**
      * @param args the command line arguments

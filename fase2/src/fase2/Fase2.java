@@ -21,6 +21,7 @@ public class Fase2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+    
      
      centros();
      //trabajadores();
@@ -69,7 +70,20 @@ public static void borrarCentro(String id){
     c1.setIdCentro(id);
     AdministracionBD.borrarCentro(c1);
 }
-public static void actualizarCentro(){
+public static void actualizarCentro(String idCentro,String nombre, String calle,String numero,String codigoPostal, String ciudad,String provincia,String telefono){
+    Centro c =new Centro();
+    c.setIdCentro(idCentro);
+    c.setNombre(nombre);
+    c.setCalle(calle);
+    c.setNumero(numero);
+    c.setCodigoPostal(codigoPostal);
+    c.setCiudad(ciudad);
+    c.setProvincia(provincia);
+    c.setTelefono(telefono);
+    
+    
+    umlBD.AdministracionBD.actualizarCentro(c);
+    
     
 }
 

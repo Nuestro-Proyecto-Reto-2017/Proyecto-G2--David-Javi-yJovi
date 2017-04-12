@@ -18,6 +18,34 @@ import umlBD.*;
  * @author 1GLM07
  */
 public class AdministracionBD {
+
+    public static void actualizarCentro(Centro c) {
+        
+        try {
+             conexionBD.conectar();
+            
+             PreparedStatement actualizarCentro = conexionBD.conectar().prepareStatement("update centro set nombre=?,calle=?,numero=?,codigopostal=?,ciudad=?,provincia=?,telefono=? where idcentro=?");
+            actualizarCentro.setString(8, c.getIdCentro());
+            actualizarCentro.setString(1, c.getNombre());
+            actualizarCentro.setString(2, c.getCalle());
+            actualizarCentro.setString(3, c.getNumero());
+            
+            actualizarCentro.setString(4, c.getCodigoPostal());
+            actualizarCentro.setString(5, c.getCiudad());
+            actualizarCentro.setString(6, c.getProvincia());
+            actualizarCentro.setString(7, c.getTelefono());
+            
+            
+
+            int x=actualizarCentro.executeUpdate();
+            javax.swing.JOptionPane.showMessageDialog(null,"se han actualizador " +x+"filas");
+            
+            conexionBD.dc();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "error en el alta: " + e.getMessage());
+        }
+       
+    }
   Connection con=conexionBD.conectar();
 conexionBD c=new conexionBD();
     public  void anadirVehiculo(Vehiculo v) throws Exception {
@@ -150,27 +178,28 @@ conexionBD c=new conexionBD();
             conexionBD.conectar();
             
              PreparedStatement actualizarTrabajador = conexionBD.conectar().prepareStatement("update trabajador set nombre=?,apellidouno=?,apellidodos=?,calle=?,portal=?,piso=?,mano=?,telefonopersonal=?,telefonoempresa=?,salario=?,fechanac=?,tipotrabajador=?,centro_idcentro=? where dni=?");
-            actualizarTrabajador.setString(1, t1.getDni());
-            actualizarTrabajador.setString(2, t1.getNombre());
-            actualizarTrabajador.setString(3, t1.getApellidoUno());
-            actualizarTrabajador.setString(4, t1.getApellidoDos());
+            actualizarTrabajador.setString(14, t1.getDni());
+            actualizarTrabajador.setString(1, t1.getNombre());
+            actualizarTrabajador.setString(2, t1.getApellidoUno());
+            actualizarTrabajador.setString(3, t1.getApellidoDos());
             
-            actualizarTrabajador.setString(5, t1.getCalle());
-            actualizarTrabajador.setString(6, t1.getPortal());
-            actualizarTrabajador.setString(7, t1.getPiso());
-            actualizarTrabajador.setString(8, t1.getMano());
+            actualizarTrabajador.setString(4, t1.getCalle());
+            actualizarTrabajador.setString(5, t1.getPortal());
+            actualizarTrabajador.setString(6, t1.getPiso());
+            actualizarTrabajador.setString(7, t1.getMano());
             
-            actualizarTrabajador.setString(9, t1.getTelefonoPersonal());
-            actualizarTrabajador.setString(10, t1.getTelefonoEmpresa());
+            actualizarTrabajador.setString(8, t1.getTelefonoPersonal());
+            actualizarTrabajador.setString(9, t1.getTelefonoEmpresa());
             
-            actualizarTrabajador.setFloat(11, t1.getSalario());
+            actualizarTrabajador.setFloat(10, t1.getSalario());
             
-             actualizarTrabajador.setDate(12, t1.getFechaNac());
+             actualizarTrabajador.setDate(11, t1.getFechaNac());
             
-            actualizarTrabajador.setString(13, t1.getTipoTrabajador());
-            actualizarTrabajador.setString(14, t1.getCentro());
+            actualizarTrabajador.setString(12, t1.getTipoTrabajador());
+            actualizarTrabajador.setString(13, t1.getCentro());
 
-            actualizarTrabajador.executeUpdate();
+            int x=actualizarTrabajador.executeUpdate();
+            javax.swing.JOptionPane.showMessageDialog(null,"se han actualizador " +x+"filas");
             
             conexionBD.dc();
         } catch (Exception e) {
@@ -202,7 +231,9 @@ conexionBD c=new conexionBD();
         x.setString(1, dni);
         x.registerOutParameter(2, OracleTypes.CURSOR);
         x.execute();
+        
          ResultSet datos = ((OracleCallableStatement)x).getCursor(2);
+        
          
         
         //como estamos buscando por la clave no hace falta hacer una repetitiva para scar datos porque solo devuelve una fila

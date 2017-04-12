@@ -27,6 +27,8 @@ public class Trabajador_ventana extends javax.swing.JFrame {
     public Trabajador_ventana() {
         initComponents();
         setLocationRelativeTo(null);
+         cbcentro.setSelectedIndex(-1);
+        cbtipo.setSelectedIndex(-1);
     }
     private char opt;
 
@@ -79,7 +81,7 @@ public class Trabajador_ventana extends javax.swing.JFrame {
         rbalta = new javax.swing.JRadioButton();
         rbbaja = new javax.swing.JRadioButton();
         baceptar = new javax.swing.JButton();
-        bbaja = new javax.swing.JButton();
+        bcancelar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -306,8 +308,7 @@ public class Trabajador_ventana extends javax.swing.JFrame {
 
     tfsalario.setEnabled(false);
 
-    cbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administración", "Logística", " " }));
-    cbtipo.setSelectedIndex(-1);
+    cbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administración", "Logística" }));
     cbtipo.setEnabled(false);
 
     cbcentro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "001", "002", "003" }));
@@ -452,11 +453,11 @@ public class Trabajador_ventana extends javax.swing.JFrame {
         }
     });
 
-    bbaja.setText("Baja");
-    bbaja.setEnabled(false);
-    bbaja.addActionListener(new java.awt.event.ActionListener() {
+    bcancelar.setText("Cancelar");
+    bcancelar.setEnabled(false);
+    bcancelar.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            bbajaActionPerformed(evt);
+            bcancelarActionPerformed(evt);
         }
     });
 
@@ -474,7 +475,7 @@ public class Trabajador_ventana extends javax.swing.JFrame {
                             .addGap(8, 8, 8)
                             .addComponent(baceptar)
                             .addGap(18, 18, 18)
-                            .addComponent(bbaja)))
+                            .addComponent(bcancelar)))
                     .addGap(55, 55, 55)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -506,7 +507,7 @@ public class Trabajador_ventana extends javax.swing.JFrame {
                             .addGap(45, 45, 45)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(baceptar)
-                                .addComponent(bbaja))
+                                .addComponent(bcancelar))
                             .addGap(60, 60, 60))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -520,6 +521,20 @@ public class Trabajador_ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbaltaActionPerformed
+         
+        tfnombre.setText("");
+       tfnombre.setText("");
+       tfapellidoUno.setText("");
+        tfapelliDos.setText("");       
+        ftfdni.setText("");
+        tfcalle.setText("");
+        tfmano.setText("");
+        tfpiso.setText("");
+        tfportal.setText("");
+        tfsalario.setText("");
+        cbcentro.setSelectedIndex(-1);
+        cbtipo.setSelectedIndex(-1);
+        
         cbcentro.setEnabled(true);
         cbtipo.setEnabled(true);
         dcfechaNac.setEnabled(true);
@@ -535,7 +550,7 @@ public class Trabajador_ventana extends javax.swing.JFrame {
         ftftelpersonal.setEnabled(true);
         ftfdni.setEnabled(true);
         baceptar.setEnabled(true);
-        
+        bcancelar.setEnabled(true);
        
 
         opt = 'a';
@@ -558,7 +573,7 @@ public class Trabajador_ventana extends javax.swing.JFrame {
         ftftelpersonal.setEnabled(false);
         ftfdni.setEnabled(true);
         baceptar.setEnabled(true);
-        bbaja.setEnabled(true);
+        bcancelar.setEnabled(true);
 
         opt = 'm';
     }//GEN-LAST:event_rbmodificarActionPerformed
@@ -620,6 +635,7 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
        if (tfsalario.getText().isEmpty()){
                 salario=null;
             }
+       
       
         
    
@@ -662,7 +678,7 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
         }
     }//GEN-LAST:event_baceptarActionPerformed
 
-    private void bbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbajaActionPerformed
+    private void bcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcancelarActionPerformed
        tfnombre.setEnabled(false);
        tfnombre.setEnabled(false);
        tfapellidoUno.setEnabled(false);
@@ -673,9 +689,26 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
         tfmano.setEnabled(false);
         tfpiso.setEnabled(false);
         tfportal.setEnabled(false);
+        tfsalario.setEnabled(false);
         
+        
+        tfnombre.setText("");
+       tfnombre.setText("");
+       tfapellidoUno.setText("");
+        tfapelliDos.setText("");
+       
+        ftfdni.setText("");
+        tfcalle.setText("");
+        tfmano.setText("");
+        tfpiso.setText("");
+        tfportal.setText("");
+        tfsalario.setText("");
+        
+        rbalta.setSelected(false);
+        rbbaja.setSelected(false);
+        rbmodificar.setSelected(false);
 
-    }//GEN-LAST:event_bbajaActionPerformed
+    }//GEN-LAST:event_bcancelarActionPerformed
 
     private void ftfdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfdniActionPerformed
         if (rbmodificar.isSelected()){
@@ -695,20 +728,20 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
         tfpiso.setText(t.getPiso());
         tfmano.setText(t.getMano());
         ftftelpersonal.setText(t.getTelefonoPersonal());
-        ftftelempresa.setText(t.getTelefonoEmpresa());    
+        ftftelempresa.setText(t.getTelefonoEmpresa()); 
+        tfsalario.setText(String.valueOf(t.getSalario()));
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        String tt=t.getTipoTrabajador();
+        if (tt.equalsIgnoreCase("Administracion")){
+            cbtipo.setSelectedIndex(1);
+            
+        }else{if(tt.equalsIgnoreCase("Logistica")){
+        cbtipo.setSelectedIndex(2);
+        }
+            
+        }
+               
+              
         cbcentro.setEnabled(true);
         cbtipo.setEnabled(true);
         dcfechaNac.setEnabled(true);
@@ -722,15 +755,40 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
         tfsalario.setEnabled(true);
         ftftelempresa.setEnabled(true);
         ftftelpersonal.setEnabled(true);
-       bbaja.setEnabled(false);
+       bcancelar.setEnabled(false);
         baceptar.setEnabled(true);
          }catch(Exception e){
             javax.swing.JOptionPane.showMessageDialog(null,"error al recoger los datos"+ e.getClass()+ e.getMessage());
         }}
-        else{
-            tfnombre.requestFocus();
-        }
         
+        else{
+            if(rbbaja.isSelected()){
+                 String dni=ftfdni.getText();
+      Trabajador t=  fase2.Fase2.consultarTrabajador(dni);
+        try{
+       
+       
+       ftfdni.setEnabled(false);
+        
+       
+        tfnombre.setText(t.getNombre());
+        tfapellidoUno.setText(t.getApellidoUno());
+        tfapelliDos.setText(t.getApellidoDos());
+        tfcalle.setText(t.getCalle());
+        tfportal.setText(t.getPortal());
+        tfpiso.setText(t.getPiso());
+        tfmano.setText(t.getMano());
+        ftftelpersonal.setText(t.getTelefonoPersonal());
+        ftftelempresa.setText(t.getTelefonoEmpresa());   
+        
+              }catch(Exception e){
+            javax.swing.JOptionPane.showMessageDialog(null,"error al recoger los datos"+ e.getClass()+ e.getMessage());
+        }
+             
+            }
+            else{tfnombre.requestFocus();
+        }
+        }    
     }//GEN-LAST:event_ftfdniActionPerformed
 
     private void rbbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbbajaActionPerformed
@@ -749,7 +807,7 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
         ftftelpersonal.setEnabled(false);
         ftfdni.setEnabled(true);
         baceptar.setEnabled(true);
-        bbaja.setEnabled(true);
+        bcancelar.setEnabled(true);
 
         opt = 'b';
     }//GEN-LAST:event_rbbajaActionPerformed
@@ -791,7 +849,7 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton baceptar;
-    private javax.swing.JButton bbaja;
+    private javax.swing.JButton bcancelar;
     private javax.swing.ButtonGroup bgaltabaja;
     private javax.swing.JComboBox<String> cbcentro;
     private javax.swing.JComboBox<String> cbtipo;
