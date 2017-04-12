@@ -77,6 +77,7 @@ public class Trabajador_ventana extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         rbmodificar = new javax.swing.JRadioButton();
         rbalta = new javax.swing.JRadioButton();
+        rbbaja = new javax.swing.JRadioButton();
         baceptar = new javax.swing.JButton();
         bbaja = new javax.swing.JButton();
 
@@ -411,6 +412,14 @@ public class Trabajador_ventana extends javax.swing.JFrame {
         }
     });
 
+    bgaltabaja.add(rbbaja);
+    rbbaja.setText("baja");
+    rbbaja.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            rbbajaActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
     jPanel4Layout.setHorizontalGroup(
@@ -420,6 +429,8 @@ public class Trabajador_ventana extends javax.swing.JFrame {
             .addComponent(rbalta)
             .addGap(18, 18, 18)
             .addComponent(rbmodificar)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(rbbaja, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel4Layout.setVerticalGroup(
@@ -428,7 +439,8 @@ public class Trabajador_ventana extends javax.swing.JFrame {
             .addContainerGap(11, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(rbalta, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(rbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(rbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rbbaja))
             .addContainerGap())
     );
 
@@ -608,6 +620,7 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
        if (tfsalario.getText().isEmpty()){
                 salario=null;
             }
+      
         
    
        
@@ -617,23 +630,33 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
         String tipo = cbtipo.getSelectedItem().toString();
        dcfechaNac.toString();
        
-      
-       
-
-        if (opt == 'a') {
-            fase2.Fase2.generarTrabajador(
+      switch (opt){
+          case'a':
+              fase2.Fase2.generarTrabajador(
                     dni, nombre, apellidoUno, apellidoDos,
                     calle, portal, piso, mano,
                      telpersonal, telempresa,
                       salario, sqlFechaNac,
                     tipo,centro);
-        } else if (opt == 'm') {
-            fase2.Fase2.actualizarTrabajador(dni, nombre, apellidoUno, apellidoDos,
+              break;
+          case 'm': 
+              fase2.Fase2.actualizarTrabajador(dni, nombre, apellidoUno, apellidoDos,
                     calle, portal, piso, mano,
                      telpersonal, telempresa,
                       salario, sqlFechaNac,
-                    tipo,centro);
+                    tipo,centro); 
+              break;
+        case'b':
+               try {          
+            fase2.Fase2.borrarTrabajador(dni);
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "error en la baja: " + e.getMessage());
         }
+               break;
+      }
+       
+
+       
         }catch(Exception e){
             javax.swing.JOptionPane.showMessageDialog(null,"error en la recogida de datos: "+e.getMessage() + e.getClass());
         }
@@ -705,6 +728,27 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
         
     }//GEN-LAST:event_ftfdniActionPerformed
 
+    private void rbbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbbajaActionPerformed
+        cbcentro.setEnabled(false);
+        cbtipo.setEnabled(false);
+        dcfechaNac.setEnabled(false);
+        tfapelliDos.setEnabled(false);
+        tfapellidoUno.setEnabled(false);
+        tfcalle.setEnabled(false);
+        tfmano.setEnabled(false);
+        tfnombre.setEnabled(false);
+        tfpiso.setEnabled(false);
+        tfportal.setEnabled(false);
+        tfsalario.setEnabled(false);
+        ftftelempresa.setEnabled(false);
+        ftftelpersonal.setEnabled(false);
+        ftfdni.setEnabled(true);
+        baceptar.setEnabled(true);
+        bbaja.setEnabled(true);
+
+        opt = 'b';
+    }//GEN-LAST:event_rbbajaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -772,6 +816,7 @@ java.sql.Date sqlFechaNac = new java.sql.Date(date1.getTime());
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JRadioButton rbalta;
+    private javax.swing.JRadioButton rbbaja;
     private javax.swing.JRadioButton rbmodificar;
     private javax.swing.JTextField tfapelliDos;
     private javax.swing.JTextField tfapellidoUno;
