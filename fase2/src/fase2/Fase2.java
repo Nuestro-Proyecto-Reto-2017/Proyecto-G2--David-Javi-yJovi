@@ -8,6 +8,7 @@ package fase2;
 import java.sql.*;
 import uml.Centro;
 import uml.Trabajador;
+import uml.Vehiculo;
 import vistas.*;
 import umlBD.*;
 
@@ -23,9 +24,9 @@ public class Fase2 {
     public static void main(String[] args) {
     
      
-     centros();
+     //centros();
      //trabajadores();
-     //vehiculos();
+     vehiculos();
         
       //tengo que hacer todos los metodos (estan puestos con void)
         /*        y me queda fijar relaciones entre clases
@@ -203,7 +204,44 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
             }
              
          }
+         public static void generarVehiculo(String matricula, String marca, String modelo){
+         
+             try{
+             Vehiculo v =new Vehiculo();
+             v.setMatricula(matricula);
+             v.setMarca(marca);
+             v.setModelo(modelo);
              
+             AdministracionBD.anadirVehiculo(v);
+             
+             }catch(Exception e){
+                 javax.swing.JOptionPane.showMessageDialog(null, "Error al generar vehiculo"+e.getMessage()+e.getClass());
+             }
+         }
+
+    public static void borrarVehiculo(String matricula) {
+        try{
+            Vehiculo v2 =new Vehiculo();
+            v2.setMatricula(matricula);
+            
+            AdministracionBD.borrarVehiculo(matricula);
+        }catch(Exception e){
+                javax.swing.JOptionPane.showMessageDialog(null,"error al borrar vehiculo "+ e.getMessage()+e.getClass());
+            
+            }
+        
+    }
+    public static void consultarVehiculos(){
+        try{
+        
+    ResultSet vehiculos=AdministracionBD.consultarVehiculos();
+    
+    
+    }catch(Exception e){
+        javax.swing.JOptionPane.showMessageDialog(null,"error en la descompresion de datos "+ e.getClass()+e.getMessage());
+    
+}      
+    }
          }
 
     

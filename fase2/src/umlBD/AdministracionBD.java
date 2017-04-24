@@ -38,7 +38,7 @@ public class AdministracionBD {
             
 
             int x=actualizarCentro.executeUpdate();
-            javax.swing.JOptionPane.showMessageDialog(null,"se han actualizador " +x+"filas");
+            javax.swing.JOptionPane.showMessageDialog(null,"se han actualizado " +x+"filas");
             
             conexionBD.dc();
         } catch (Exception e) {
@@ -48,23 +48,51 @@ public class AdministracionBD {
     }
   Connection con=conexionBD.conectar();
 conexionBD c=new conexionBD();
-    public  void anadirVehiculo(Vehiculo v) throws Exception {
+    public  static void anadirVehiculo(Vehiculo v) throws Exception {
       
         
-        PreparedStatement insertVehiculo = c.conectar().prepareStatement("insert into vehiculo values (?,?,?)");
+        PreparedStatement insertVehiculo = conexionBD.conectar().prepareStatement("insert into vehiculo values (?,?,?)");
         insertVehiculo.setString(1, v.getMatricula());
         insertVehiculo.setString(2, v.getMarca());
         insertVehiculo.setString(3, v.getModelo());
         int fila=insertVehiculo.executeUpdate();
-        con.close();
+        javax.swing.JOptionPane.showMessageDialog(null,"se ha(n) insertado "+ fila+" fila(s)");
+        conexionBD.dc();
     }
 
     public static  void borrarVehiculo(String matricula) throws Exception {
         
-      /*  PreparedStatement insertVehiculo = c.conectar().prepareStatement("delete from vehiculo where matricula=?");
+        PreparedStatement insertVehiculo = conexionBD.conectar().prepareStatement("delete from vehiculo where matricula=?");
         insertVehiculo.setString(1, matricula);
-        insertVehiculo.executeUpdate();
-        c.dc();*/
+         int fila =insertVehiculo.executeUpdate();
+          javax.swing.JOptionPane.showMessageDialog(null,"se ha(n) borrado "+ fila+" fila(s)");
+        conexionBD.dc();
+    }
+    
+     public  static void consultarVehiculos() throws Exception {
+      try{
+        
+        PreparedStatement selectVehiculos = conexionBD.conectar().prepareStatement("select * from vehiculo");
+        
+        ResultSet vehiculos=selectVehiculos.executeQuery();
+        
+        String lista="";
+    
+    while(vehiculos.next()){
+      lista+= "\n"+ vehiculos.getString(1)+" "+vehiculos.getString(2)+" "+vehiculos.getString(3);
+      
+    }
+   
+        javax.swing.JOptionPane.showMessageDialog(null, lista);
+        
+        conexionBD.dc();
+        
+      }catch(Exception e){
+          javax.swing.JOptionPane.showMessageDialog(null,"error al recoger vehiculos "+ e.getClass()+e.getClass());
+          
+      }
+        
+        
     }
 
     public void anadirUsuario() {

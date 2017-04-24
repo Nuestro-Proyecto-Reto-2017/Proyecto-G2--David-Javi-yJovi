@@ -54,8 +54,12 @@
                           <Component id="tfmarca" min="-2" pref="121" max="-2" attributes="0"/>
                           <Component id="tfmodelo" min="-2" pref="121" max="-2" attributes="0"/>
                           <Component id="tfmatricula" alignment="1" min="-2" pref="121" max="-2" attributes="0"/>
-                          <Component id="baceptar" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="bcancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="baceptar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
@@ -94,7 +98,10 @@
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="baceptar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="baceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bcancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -143,8 +150,10 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/img/Vehiculo.jpg"/>
         </Property>
-        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfmodelo">
       <Properties>
@@ -178,6 +187,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="baceptarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bcancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bcancelarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

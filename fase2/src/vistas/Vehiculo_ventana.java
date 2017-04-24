@@ -13,7 +13,7 @@ import umlBD.AdministracionBD;
  * @author 1GLM07
  */
 public class Vehiculo_ventana extends javax.swing.JFrame {
- private boolean nuevo;
+ private char opt;
     /**
      * Creates new form Vehiculo
      */
@@ -42,6 +42,7 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
         tfmarca = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         baceptar = new javax.swing.JButton();
+        bcancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +72,11 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Vehiculo.jpg"))); // NOI18N
-        jButton1.setFocusable(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tfmodelo.setEnabled(false);
         tfmodelo.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +100,13 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
         baceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 baceptarActionPerformed(evt);
+            }
+        });
+
+        bcancelar.setText("Cancelar");
+        bcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcancelarActionPerformed(evt);
             }
         });
 
@@ -123,8 +135,11 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tfmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(baceptar))))
+                            .addComponent(tfmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bcancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(baceptar)))
                 .addGap(44, 44, 44)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -154,7 +169,9 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
                             .addComponent(tfmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addComponent(baceptar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(baceptar)
+                            .addComponent(bcancelar))
                         .addGap(9, 9, 9))))
         );
 
@@ -174,14 +191,14 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_tfmarcaActionPerformed
 
     private void rbaltavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbaltavActionPerformed
-     nuevo=true;
+     opt='c';
         tfmatricula.setEnabled(true);
         tfmarca.setEnabled(true);
         tfmodelo.setEnabled(true);
     }//GEN-LAST:event_rbaltavActionPerformed
 
     private void rbbajavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbbajavActionPerformed
-    nuevo=false;
+    opt='d';
         tfmatricula.setEnabled(true);
         tfmarca.setEnabled(false);
         tfmodelo.setEnabled(false);
@@ -189,22 +206,39 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
 
     private void baceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baceptarActionPerformed
         try{
-             AdministracionBD a =new AdministracionBD();
+             
             String matricula= tfmatricula.getText();
             String marca= tfmarca.getText();
              String modelo= tfmodelo.getText();
-        if(nuevo==true){ 
-            Vehiculo v=new Vehiculo (matricula, marca, modelo);
-           
-            a.anadirVehiculo(v);
-        }else{ a.borrarVehiculo( matricula);                  
-                    }
-            
-        
+             
+           switch(opt){
+              case'c': fase2.Fase2.generarVehiculo(matricula,marca,modelo);
+                break;
+              case'd':  fase2.Fase2.borrarVehiculo(matricula);
+           }
+              
         }catch(Exception e){
                javax.swing.JOptionPane.showMessageDialog(null,"error al aceptar : "+e.getMessage() +e.getClass());
                 }
     }//GEN-LAST:event_baceptarActionPerformed
+
+    private void bcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcancelarActionPerformed
+        tfmatricula.setText("");
+        tfmarca.setText("");
+        tfmodelo.setText("");
+        
+        rbaltav.setSelected(false);
+        rbbajav.setSelected(false);
+        
+    }//GEN-LAST:event_bcancelarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+        fase2.Fase2.consultarVehiculos();
+        }catch(Exception e){
+            javax.swing.JOptionPane.showMessageDialog(null, e.getMessage()+e.getClass());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,6 +278,7 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton baceptar;
+    private javax.swing.JButton bcancelar;
     private javax.swing.ButtonGroup bgaltabaja;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
