@@ -51,13 +51,15 @@ public class G2vJovi {
     public static void disposeBuscarTrabPk(String tipoVentana,ArrayList pTrabajador){
         switch (tipoVentana){
             case "altat":{
-                vNuevoTrabajador =new NuevoTrabajador(new javax.swing.JFrame(), true);
+                listaC =bdCentro.consultaCentro();
+                vNuevoTrabajador =new NuevoTrabajador(new javax.swing.JFrame(), true,listaC);
                 vNuevoTrabajador.setVisible(true);
                 vBuscarTrabPk.setVisible(false);
                 break;
             }
             case "modt":{
-                vModificarTrabajador =new ModificarTrabajador(new javax.swing.JFrame(), true,pTrabajador);
+                listaC =bdCentro.consultaCentro();
+                vModificarTrabajador =new ModificarTrabajador(new javax.swing.JFrame(), true,pTrabajador,listaC);
                 vModificarTrabajador.setVisible(true);
                 vBuscarTrabPk.dispose();
                 break;
@@ -210,8 +212,8 @@ public class G2vJovi {
     public void ProcEliminarCentro(String vnombreC){
         bdCentro.eliminarCentro(vnombreC);
     }
-    public void procUpdateTrabajador(String vdni,Trabajador t){
-        bdTrabajador.updateTrabajador(vdni,t);
+    public void procUpdateTrabajador(String vdni,Trabajador t,String nombreCentro){
+        bdTrabajador.updateTrabajador(vdni,t,nombreCentro);
     }
     public void procUpdateCentro(String vnombreC,Centro c){
         bdCentro.updateCentro(vnombreC,c);

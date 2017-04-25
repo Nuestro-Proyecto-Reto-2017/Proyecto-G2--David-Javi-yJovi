@@ -249,12 +249,12 @@ public class TrabajadorBD extends GenericoBD {
         }
         cerrarConexion(con);
     }
-    public void updateTrabajador (String vdni,Trabajador t){
+    public void updateTrabajador (String vdni,Trabajador t,String nombreCentro){
         GenericoBD generico= new GenericoBD();
         String sql = "";
         try {
             //Obtenemos los códigos y nombres de todos los departamentos
-            sql = "update trabajador set nombre = ?,apellidouno=?,apellidodos=?,calle=?,portal=?,piso=?,mano=?,telefonopersonal=?,telefonoempresa=?,salario=?,tipotrabajador=? where upper(dni)=?";
+            sql = "update trabajador set nombre = ?,apellidouno=?,apellidodos=?,calle=?,portal=?,piso=?,mano=?,telefonopersonal=?,telefonoempresa=?,salario=?,tipotrabajador=?, centro_idcentro=(select idcentro from centro where upper(nombre) = ?)where upper(dni)=?";
             con=generico.abrirConexion(con);
             PreparedStatement llamada = con.prepareStatement(sql);
 
@@ -271,7 +271,8 @@ public class TrabajadorBD extends GenericoBD {
                 llamada.setString(9, t.getTelefonoEmpresa());
                 llamada.setFloat(10, t.getSalario());
                 llamada.setString(11, t.getTipoTrabajador());
-                llamada.setString(12, vdni);
+                llamada.setString(12, nombreCentro.toUpperCase());
+                llamada.setString(13, vdni);
                 
                 llamada.executeUpdate(); // ejecutar el procedimiento
 

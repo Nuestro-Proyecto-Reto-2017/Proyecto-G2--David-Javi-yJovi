@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class ModificarTrabajador extends javax.swing.JDialog {
     private ArrayList <Trabajador> trabajadorEncontrado;
+    private ArrayList <Centro> centrosEncontrados;
     private G2vJovi main = new G2vJovi();
     private String vdni;
     /**
@@ -26,11 +27,15 @@ public class ModificarTrabajador extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
-    public ModificarTrabajador(java.awt.Frame parent, boolean modal,ArrayList trabajadorEncontrado) {
+    public ModificarTrabajador(java.awt.Frame parent, boolean modal,ArrayList trabajadorEncontrado,ArrayList listaC) {
         super(parent, modal);
         initComponents();
         this.trabajadorEncontrado=trabajadorEncontrado;
+        this.centrosEncontrados=listaC;
         setLocationRelativeTo(null);
+        for(int x=0;x<centrosEncontrados.size();x++){
+            cbCentroNombre.insertItemAt(centrosEncontrados.get(x).getNombre(), x);
+        }
         rellenarVentana();
         vdni=tfDni.getText().toUpperCase();
     }
@@ -110,7 +115,7 @@ public class ModificarTrabajador extends javax.swing.JDialog {
         dcFechaNac = new datechooser.beans.DateChooserCombo();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        tfIdCentro = new javax.swing.JTextField();
+        cbCentroNombre = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -291,8 +296,6 @@ public class ModificarTrabajador extends javax.swing.JDialog {
         jLabel29.setForeground(new java.awt.Color(255, 51, 51));
         jLabel29.setText("   *");
 
-        tfIdCentro.setEnabled(false);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -342,7 +345,7 @@ public class ModificarTrabajador extends javax.swing.JDialog {
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(jLabel28)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(tfIdCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(cbCentroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -421,7 +424,7 @@ public class ModificarTrabajador extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel28)
                         .addComponent(jLabel29)
-                        .addComponent(tfIdCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbCentroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
                         .addComponent(tfTelefonoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -491,7 +494,7 @@ public class ModificarTrabajador extends javax.swing.JDialog {
             tAdmin.setTelefonoEmpresa(tfTelefonoEmpresa.getText().toUpperCase());
             tAdmin.setSalario(Float.valueOf(tfSalario.getText()));
             tAdmin.setTipoTrabajador("Administracion");
-            main.procUpdateTrabajador(vdni,tAdmin);
+            main.procUpdateTrabajador(vdni,tAdmin,cbCentroNombre.getSelectedItem().toString());
             javax.swing.JOptionPane.showMessageDialog(null,"Tabla actualizada " );
         }
         else{
@@ -509,7 +512,7 @@ public class ModificarTrabajador extends javax.swing.JDialog {
             tLogis.setTelefonoEmpresa(tfTelefonoEmpresa.getText().toUpperCase());
             tLogis.setSalario(Float.valueOf(tfSalario.getText()));
             tLogis.setTipoTrabajador("Logistica");
-            main.procUpdateTrabajador(vdni,tLogis);
+            main.procUpdateTrabajador(vdni,tLogis,cbCentroNombre.getSelectedItem().toString());
             javax.swing.JOptionPane.showMessageDialog(null,"Tabla actualizada " );
         }
     }//GEN-LAST:event_bCrearActionPerformed
@@ -563,6 +566,7 @@ public class ModificarTrabajador extends javax.swing.JDialog {
     private javax.swing.JButton bCrear;
     private javax.swing.JButton bSalir;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbCentroNombre;
     private datechooser.beans.DateChooserCombo dcFechaNac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -600,7 +604,6 @@ public class ModificarTrabajador extends javax.swing.JDialog {
     private javax.swing.JTextField tfApellidoUno;
     private javax.swing.JTextField tfCalle;
     private javax.swing.JTextField tfDni;
-    private javax.swing.JTextField tfIdCentro;
     private javax.swing.JTextField tfMano;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfPiso;

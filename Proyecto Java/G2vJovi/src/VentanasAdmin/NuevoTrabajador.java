@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author 1gprog02
  */
 public class NuevoTrabajador extends javax.swing.JDialog {
-    private ArrayList <Trabajador> trabajadorEncontrado;
+    private ArrayList <Centro> centrosEncontrados;
     private G2vJovi main = new G2vJovi();
     /**
      * Creates new form NuevoCentro
@@ -24,11 +24,14 @@ public class NuevoTrabajador extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
-    public NuevoTrabajador(java.awt.Frame parent, boolean modal,ArrayList trabajadorEncontrado) {
+    public NuevoTrabajador(java.awt.Frame parent, boolean modal,ArrayList listaC) {
         super(parent, modal);
         initComponents();
-        this.trabajadorEncontrado=trabajadorEncontrado;
+        this.centrosEncontrados=listaC;
         setLocationRelativeTo(null);
+        for(int x=0;x<centrosEncontrados.size();x++){
+            cbCentroNombre.insertItemAt(centrosEncontrados.get(x).getNombre(), x);
+        }
     }
 
     /**
@@ -87,7 +90,7 @@ public class NuevoTrabajador extends javax.swing.JDialog {
         dcFechaNac = new datechooser.beans.DateChooserCombo();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        tfIdCentro = new javax.swing.JTextField();
+        cbCentroNombre = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -266,7 +269,8 @@ public class NuevoTrabajador extends javax.swing.JDialog {
         jLabel29.setForeground(new java.awt.Color(255, 51, 51));
         jLabel29.setText("   *");
 
-        tfIdCentro.setEnabled(false);
+        cbCentroNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige un centro" }));
+        cbCentroNombre.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -344,7 +348,7 @@ public class NuevoTrabajador extends javax.swing.JDialog {
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(jLabel28)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(tfIdCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(cbCentroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -396,7 +400,7 @@ public class NuevoTrabajador extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel28)
                         .addComponent(jLabel29)
-                        .addComponent(tfIdCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbCentroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
                         .addComponent(tfTelefonoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -538,6 +542,7 @@ public class NuevoTrabajador extends javax.swing.JDialog {
     private javax.swing.JButton bCrear;
     private javax.swing.JButton bSalir;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbCentroNombre;
     private datechooser.beans.DateChooserCombo dcFechaNac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -575,7 +580,6 @@ public class NuevoTrabajador extends javax.swing.JDialog {
     private javax.swing.JTextField tfApellidoUno;
     private javax.swing.JTextField tfCalle;
     private javax.swing.JTextField tfDni;
-    private javax.swing.JTextField tfIdCentro;
     private javax.swing.JTextField tfMano;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfPiso;
