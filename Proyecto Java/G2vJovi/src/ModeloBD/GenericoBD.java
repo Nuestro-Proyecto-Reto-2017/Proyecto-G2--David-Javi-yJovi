@@ -19,7 +19,7 @@ public class GenericoBD {
         
     }
     public Connection abrirConexion(Connection conexion){
-        
+
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conexion = DriverManager.getConnection("jdbc:oracle:thin:@10.10.10.9:1521:db12102","system", "oracle");  

@@ -440,7 +440,7 @@ public class BuscarTrabajador extends javax.swing.JDialog {
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
         ArrayList <Trabajador> consulta;
         String cadenaSalida="";
-        consulta=main.ejecutarconsultaNombreC(tfNombre.getText());
+        consulta=main.ejecutarconsultaNombreC(tfNombre.getText().toUpperCase());
         for(int x=0;x<consulta.size();x++){
             cadenaSalida+="DNI: "+consulta.get(x).getDni()+"\nNombre: "+consulta.get(x).getNombre()+"\nApellidos: "+consulta.get(x).getApellidoUno()+" "+consulta.get(x).getApellidoDos()+"\nDirección (Calle,Portal,Piso,Mano): "+consulta.get(x).getCalle()+", "+consulta.get(x).getPostal()+", "+consulta.get(x).getPiso()+", "+consulta.get(x).getMano()+"\nTelefono Personal: "+consulta.get(x).getTelefonoPersonal()+"\nTelefono Empresa: "+consulta.get(x).getTelefonoEmpresa()+"\nSalario: "+consulta.get(x).getSalario()+"\nFecha Nacimiento: "+consulta.get(x).getFechaNac()+"\nTipo: "+consulta.get(x).getDni()+"\n---------------------------\n";
         }
