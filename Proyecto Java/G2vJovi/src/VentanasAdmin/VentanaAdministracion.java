@@ -146,9 +146,9 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
+                .addGap(101, 101, 101)
                 .addComponent(jLabel1)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         pack();
@@ -158,25 +158,21 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         G2vJovi.abrirVentanaCrearCentro();
     }//GEN-LAST:event_mNuevoCentroActionPerformed
 
-    private void mNuevoTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mNuevoTrabajadorActionPerformed
-        G2vJovi.abrirVentanaCrearTrabajador();
-    }//GEN-LAST:event_mNuevoTrabajadorActionPerformed
-
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         G2vJovi.cerrarVentanaAdministracion();
     }//GEN-LAST:event_formWindowClosed
+
+    private void mBuscarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mBuscarCentroActionPerformed
+        G2vJovi.abrirVentanaBuscarCentro();
+    }//GEN-LAST:event_mBuscarCentroActionPerformed
 
     private void mModificarTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mModificarTrabajadorActionPerformed
         G2vJovi.abrirVentanaModificarTrabajador();
     }//GEN-LAST:event_mModificarTrabajadorActionPerformed
 
-    private void mModificarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mModificarCentroActionPerformed
-        G2vJovi.abrirVentanaModificarCentro();
-    }//GEN-LAST:event_mModificarCentroActionPerformed
-
-    private void mBorrarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mBorrarCentroActionPerformed
-        G2vJovi.abrirVentanaBorrarCentro();
-    }//GEN-LAST:event_mBorrarCentroActionPerformed
+    private void mNuevoTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mNuevoTrabajadorActionPerformed
+        G2vJovi.abrirVentanaCrearTrabajador();
+    }//GEN-LAST:event_mNuevoTrabajadorActionPerformed
 
     private void mBorrarTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mBorrarTrabajadorActionPerformed
         G2vJovi.abrirVentanaBorrarTrabajador();
@@ -186,9 +182,13 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         G2vJovi.abrirVentanaBuscarTrabajador();
     }//GEN-LAST:event_mBuscarTrabajadorActionPerformed
 
-    private void mBuscarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mBuscarCentroActionPerformed
-        G2vJovi.abrirVentanaBuscarCentro();
-    }//GEN-LAST:event_mBuscarCentroActionPerformed
+    private void mModificarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mModificarCentroActionPerformed
+        G2vJovi.abrirVentanaModificarCentro();
+    }//GEN-LAST:event_mModificarCentroActionPerformed
+
+    private void mBorrarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mBorrarCentroActionPerformed
+        G2vJovi.abrirVentanaBorrarCentro();
+    }//GEN-LAST:event_mBorrarCentroActionPerformed
 
     /**
      * @param args the command line arguments
