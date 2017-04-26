@@ -9,6 +9,7 @@ import datechooser.beans.DateChooserPanel;
 import java.sql.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import uml.Trabajador;
 //import java.util.Calendar;
 //import java.util.Date;
@@ -27,8 +28,8 @@ public class Trabajador_ventana extends javax.swing.JFrame {
     public Trabajador_ventana() {
         initComponents();
         setLocationRelativeTo(null);
-         cbcentro.setSelectedIndex(-1);
-        cbtipo.setSelectedIndex(-1);
+     
+          
     }
     private char opt;
 

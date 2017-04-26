@@ -26,8 +26,8 @@ public class Fase2 {
     
      
      //centros();
-    trabajadores();
-    // vehiculos();
+    //trabajadores();
+    vehiculos();
         
       
     }
@@ -236,17 +236,34 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
             }
         
     }
-    public static void consultarVehiculos(){
+    public static String consultarVehiculos(){
         try{
         
-   VehiculoBD.consultarVehiculos();
+ String vehiculos= VehiculoBD.consultarVehiculos();
     
-    
+    return vehiculos;
     }catch(Exception e){
         javax.swing.JOptionPane.showMessageDialog(null,"error en la descompresion de datos "+ e.getClass()+e.getMessage());
-    
+    return null;
 }      
     }
+    public static void actualizarVehiculo(String matricula,String marca, String modelo,String matriculaID){
+        Vehiculo v1=new Vehiculo();
+        
+        v1.setMatricula(matricula);
+        v1.setMarca(marca);
+        v1.setModelo(modelo);
+        
+        VehiculoBD.actualizarVehiculo(v1,matriculaID);
+        
+    }
+     public static Vehiculo consultarVehiculo(String matricula)throws Exception{
+        Vehiculo v =new Vehiculo();
+        
+        v= VehiculoBD.buscarVehiculo(matricula);
+         
+        return v;
+     }
     
          }
 
