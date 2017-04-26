@@ -209,7 +209,15 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
             }
              
          }
-         public static void generarVehiculo(String matricula, String marca, String modelo){
+         
+         
+         
+         
+         
+         
+         
+         
+         public static void generarVehiculo(String matricula, String marca, String modelo) throws Exception{
          
              try{
              Vehiculo v =new Vehiculo();
@@ -219,7 +227,8 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
              
              VehiculoBD.anadirVehiculo(v);
              
-             }catch(Exception e){
+             }
+             catch(Exception e){
                  javax.swing.JOptionPane.showMessageDialog(null, "Error al generar vehiculo"+e.getMessage()+e.getClass());
              }
          }

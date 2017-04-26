@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import excepciones.sinDatos;
 import uml.Vehiculo;
 import umlBD.AdministracionBD;
 import umlBD.VehiculoBD;
@@ -246,12 +247,22 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
             String marca= tfmarca.getText();
              String modelo= tfmodelo.getText();
              
+          
            switch(opt){
-              case'c': fase2.Fase2.generarVehiculo(matricula,marca,modelo);
+              case'c':   if(matricula.isEmpty()||marca.isEmpty()||modelo.isEmpty())
+              {
+                 javax.swing.JOptionPane.showMessageDialog(null,"todos los campos son obligatorios");
+              }else{            
+                  fase2.Fase2.generarVehiculo(matricula,marca,modelo);}                       
                 break;
-              case'd':  fase2.Fase2.borrarVehiculo(matricula);
+              case'd':fase2.Fase2.borrarVehiculo(matricula);
                 break;
-              case 'u': fase2.Fase2.actualizarVehiculo(matricula, marca, modelo,matriculaID);
+              case 'u':  if(matricula.isEmpty()||marca.isEmpty()||modelo.isEmpty())
+              {
+                 javax.swing.JOptionPane.showMessageDialog(null,"todos los campos son obligatorios");
+              }else{ 
+                  fase2.Fase2.actualizarVehiculo(matricula, marca, modelo,matriculaID);
+              }
                   break;
               
 
