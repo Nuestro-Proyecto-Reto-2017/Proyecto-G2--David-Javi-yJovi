@@ -191,7 +191,8 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
 
     private void tfmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfmatriculaActionPerformed
       try{
-          if(tfmatricula.getText().isEmpty()){ javax.swing.JOptionPane.showMessageDialog(null, "no se pueden realizar operaciones si el campo de la matricula esta vacío");}else{
+          if(tfmatricula.getText().isEmpty()){ javax.swing.JOptionPane.showMessageDialog(null, "no se pueden realizar operaciones si el campo de la matricula esta vacío");}
+          else{
         if(opt=='u'){
             Vehiculo v =new Vehiculo();
           v= fase2.Fase2.consultarVehiculo(tfmatricula.getText());
