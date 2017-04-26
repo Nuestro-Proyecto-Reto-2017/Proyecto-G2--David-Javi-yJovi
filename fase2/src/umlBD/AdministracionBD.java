@@ -17,83 +17,7 @@ import umlBD.*;
  *
  * @author 1GLM07
  */
-public class AdministracionBD {
-
-    public static void actualizarCentro(Centro c) {
-        
-        try {
-             conexionBD.conectar();
-            
-             PreparedStatement actualizarCentro = conexionBD.conectar().prepareStatement("update centro set nombre=?,calle=?,numero=?,codigopostal=?,ciudad=?,provincia=?,telefono=? where idcentro=?");
-            actualizarCentro.setString(8, c.getIdCentro());
-            actualizarCentro.setString(1, c.getNombre());
-            actualizarCentro.setString(2, c.getCalle());
-            actualizarCentro.setString(3, c.getNumero());
-            
-            actualizarCentro.setString(4, c.getCodigoPostal());
-            actualizarCentro.setString(5, c.getCiudad());
-            actualizarCentro.setString(6, c.getProvincia());
-            actualizarCentro.setString(7, c.getTelefono());
-            
-            
-
-            int x=actualizarCentro.executeUpdate();
-            javax.swing.JOptionPane.showMessageDialog(null,"se han actualizado " +x+"filas");
-            
-            conexionBD.dc();
-        } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null, "error en el alta: " + e.getMessage());
-        }
-       
-    }
-  Connection con=conexionBD.conectar();
-conexionBD c=new conexionBD();
-    public  static void anadirVehiculo(Vehiculo v) throws Exception {
-      
-        
-        PreparedStatement insertVehiculo = conexionBD.conectar().prepareStatement("insert into vehiculo values (?,?,?)");
-        insertVehiculo.setString(1, v.getMatricula());
-        insertVehiculo.setString(2, v.getMarca());
-        insertVehiculo.setString(3, v.getModelo());
-        int fila=insertVehiculo.executeUpdate();
-        javax.swing.JOptionPane.showMessageDialog(null,"se ha(n) insertado "+ fila+" fila(s)");
-        conexionBD.dc();
-    }
-
-    public static  void borrarVehiculo(String matricula) throws Exception {
-        
-        PreparedStatement insertVehiculo = conexionBD.conectar().prepareStatement("delete from vehiculo where matricula=?");
-        insertVehiculo.setString(1, matricula);
-         int fila =insertVehiculo.executeUpdate();
-          javax.swing.JOptionPane.showMessageDialog(null,"se ha(n) borrado "+ fila+" fila(s)");
-        conexionBD.dc();
-    }
-    
-     public  static void consultarVehiculos() throws Exception {
-      try{
-        
-        PreparedStatement selectVehiculos = conexionBD.conectar().prepareStatement("select * from vehiculo");
-        
-        ResultSet vehiculos=selectVehiculos.executeQuery();
-        
-        String lista="";
-    
-    while(vehiculos.next()){
-      lista+= "\n"+ vehiculos.getString(1)+" "+vehiculos.getString(2)+" "+vehiculos.getString(3);
-      
-    }
-   
-        javax.swing.JOptionPane.showMessageDialog(null, lista);
-        
-        conexionBD.dc();
-        
-      }catch(Exception e){
-          javax.swing.JOptionPane.showMessageDialog(null,"error al recoger vehiculos "+ e.getClass()+e.getClass());
-          
-      }
-        
-        
-    }
+public class AdministracionBD { 
 
     public void anadirUsuario() {
 
@@ -110,41 +34,6 @@ conexionBD c=new conexionBD();
     public  void revisarParte() {
 
     }
-
-    public static void anadirCentro(Centro c) {
-        try{
-        conexionBD.conectar();
-        PreparedStatement insertCentro = conexionBD.conectar().prepareStatement("insert into centro values(?,?,?,?,?,?,?,?)");
-        insertCentro.setString(1, c.getIdCentro());
-        insertCentro.setString(2, c.getNombre());
-        insertCentro.setString(3, c.getCalle());
-        insertCentro.setString(4, c.getNumero());
-        insertCentro.setString(5, c.getCodigoPostal());
-        insertCentro.setString(6, c.getCiudad());
-        insertCentro.setString(7, c.getProvincia());
-        insertCentro.setString(8, c.getTelefono());
-       int filas= insertCentro.executeUpdate();
-        conexionBD.dc();
-        javax.swing.JOptionPane.showMessageDialog(null, "se han insertado "+ filas+" filas");
-        }catch(Exception e){
-            javax.swing.JOptionPane.showMessageDialog(null,"error al insertar centro: "+ e.getClass()+e.getMessage());
-        }
-    }
-
-    public static void borrarCentro(Centro c1){
-      try{ 
-          //conexionBD.conectar();
-        PreparedStatement deleteCentro = conexionBD.conectar().prepareStatement("delete from centro where idcentro=?");
-        deleteCentro.setString(1, c1.getIdCentro());
-        int x =deleteCentro.executeUpdate();
-        javax.swing.JOptionPane.showMessageDialog(null, "se han borrado "+x+" filas");
-        conexionBD.dc();}
-      catch(Exception e){
-          javax.swing.JOptionPane.showMessageDialog(null, "error al borrar "+e.getMessage()+e.getClass());
-      }
-
-    }
-
     public  void visualizarParte() {
 
     }
@@ -235,24 +124,8 @@ conexionBD c=new conexionBD();
         }
         
 
-    }
-    
-     public static ResultSet cogerDatosCentro(String idCentro)throws Exception{
-        CallableStatement x=conexionBD.conectar().prepareCall("{call gest_centro.visualizar_datos_centro_id(?, ?)}");
-        x.setString(1, idCentro);
-        x.registerOutParameter(2, OracleTypes.CURSOR);
-        x.execute();
-         ResultSet datos = ((OracleCallableStatement)x).getCursor(2);
-         
-        
-        //como estamos buscando por la clave no hace falta hacer una repetitiva para scar datos porque solo devuelve una fila
-        
-       
-        
-         
-       
-      return datos;
-   }
+    }   
+     
     
    public static ResultSet cogerDatosTrabajador(String dni)throws Exception{
         CallableStatement x=conexionBD.conectar().prepareCall("{call select_trabajadores_dni(?, ?)}");

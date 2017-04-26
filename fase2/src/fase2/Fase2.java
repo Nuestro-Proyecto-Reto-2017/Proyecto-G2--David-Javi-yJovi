@@ -6,6 +6,7 @@
 package fase2;
 
 import java.sql.*;
+import java.util.ArrayList;
 import uml.Centro;
 import uml.Trabajador;
 import uml.Vehiculo;
@@ -25,13 +26,10 @@ public class Fase2 {
     
      
      //centros();
-     //trabajadores();
-     vehiculos();
+    trabajadores();
+    // vehiculos();
         
-      //tengo que hacer todos los metodos (estan puestos con void)
-        /*        y me queda fijar relaciones entre clases
-                        hacer conexion y mirar url en el drive 
-cambiar java.util.Date a java.sql.Date*/
+      
     }
     public static void centros(){
          Centros_ventana centro= new Centros_ventana();
@@ -62,14 +60,14 @@ public static void generarCentro(String idCentro,String nombre, String calle,Str
          c.setTelefono(telefono);      
          c.setNumero(numero);
          
-         AdministracionBD.anadirCentro(c);
+         CentroBD.anadirCentro(c);
             
         
     }
 public static void borrarCentro(String id){
     Centro c1 =new Centro();
     c1.setIdCentro(id);
-    AdministracionBD.borrarCentro(c1);
+    CentroBD.borrarCentro(c1);
 }
 public static void actualizarCentro(String idCentro,String nombre, String calle,String numero,String codigoPostal, String ciudad,String provincia,String telefono){
     Centro c =new Centro();
@@ -83,7 +81,7 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
     c.setTelefono(telefono);
     
     
-    umlBD.AdministracionBD.actualizarCentro(c);
+    CentroBD.actualizarCentro(c);
     
     
 }
@@ -92,7 +90,7 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
         try{
             
         
-      ResultSet x=  AdministracionBD.cogerDatosCentro(idCentro);
+      ResultSet x=  CentroBD.cogerDatosCentro(idCentro);
      
      Centro c =new Centro();
      while(x.next()){
@@ -118,6 +116,13 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
         }
     }
 
+ 
+    public static ArrayList rellenarCentros() throws Exception{
+        ArrayList idcentros  =  CentroBD.consultarCentros();
+        
+        
+      return idcentros;  
+    }
     public static void actualizarTrabajador(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String portal, String piso, String mano, String telpersonal, String telempresa, Float salario, Date sqlFechaNac, String tipo, String centro) {
        
           Trabajador t1 =new Trabajador();
@@ -212,7 +217,7 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
              v.setMarca(marca);
              v.setModelo(modelo);
              
-             AdministracionBD.anadirVehiculo(v);
+             VehiculoBD.anadirVehiculo(v);
              
              }catch(Exception e){
                  javax.swing.JOptionPane.showMessageDialog(null, "Error al generar vehiculo"+e.getMessage()+e.getClass());
@@ -224,7 +229,7 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
             Vehiculo v2 =new Vehiculo();
             v2.setMatricula(matricula);
             
-            AdministracionBD.borrarVehiculo(matricula);
+            VehiculoBD.borrarVehiculo(matricula);
         }catch(Exception e){
                 javax.swing.JOptionPane.showMessageDialog(null,"error al borrar vehiculo "+ e.getMessage()+e.getClass());
             
@@ -234,7 +239,7 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
     public static void consultarVehiculos(){
         try{
         
-    ResultSet vehiculos=AdministracionBD.consultarVehiculos();
+   VehiculoBD.consultarVehiculos();
     
     
     }catch(Exception e){
@@ -242,6 +247,7 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
     
 }      
     }
+    
          }
 
     
