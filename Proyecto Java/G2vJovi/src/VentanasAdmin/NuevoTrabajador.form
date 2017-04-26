@@ -109,7 +109,6 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="tfTelefonoEmpresa" min="-2" pref="90" max="-2" attributes="0"/>
                                               <Component id="tfSalario" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                                              <Component id="dcFechaNac" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="tfTelefonoPersonal" min="-2" pref="90" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -119,6 +118,7 @@
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="cbCentroNombre" min="-2" pref="139" max="-2" attributes="0"/>
                                               </Group>
+                                              <Component id="jDateChooser1" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
@@ -159,7 +159,7 @@
               <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfDni" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -205,12 +205,12 @@
                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                   <Component id="tfSalario" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                  <Component id="dcFechaNac" min="-2" max="-2" attributes="0"/>
+                  <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rbLogis" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rbAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -573,11 +573,6 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="datechooser.beans.DateChooserCombo" name="dcFechaNac">
-      <Properties>
-        <Property name="dch_enabled" type="boolean" value="false"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel28">
       <Properties>
         <Property name="text" type="java.lang.String" value="Centro:"/>
@@ -606,6 +601,8 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
     </Component>
   </SubComponents>
 </Form>
