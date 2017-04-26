@@ -361,14 +361,7 @@ public class NuevoCentro extends javax.swing.JDialog {
 
     private void bCrearCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearCentroActionPerformed
         Centro cCentro;
-            cCentro=G2vJovi.centroC();
-            cCentro.setNombre(tfNombre.getText().toUpperCase());
-            cCentro.setCalle(tfCalle.getText().toUpperCase());
-            cCentro.setNumero(tfNumero.getText().toUpperCase());
-            cCentro.setCodigoPostal(tfCodigoPostal.getText().toUpperCase());
-            cCentro.setCiudad(tfCiudad.getText().toUpperCase());
-            cCentro.setProvincia(tfProvincia.getText().toUpperCase());
-            cCentro.setTelefono(tfTelefono.getText().toUpperCase());
+            cCentro=G2vJovi.centroC(tfNombre.getText().toUpperCase(),tfCalle.getText().toUpperCase(),tfNumero.getText().toUpperCase(),tfCodigoPostal.getText().toUpperCase(),tfCiudad.getText().toUpperCase(),tfProvincia.getText().toUpperCase(),tfTelefono.getText().toUpperCase());
             main.procInsertCentro(cCentro);
             javax.swing.JOptionPane.showMessageDialog(null,"Tabla actualizada " );
     }//GEN-LAST:event_bCrearCentroActionPerformed

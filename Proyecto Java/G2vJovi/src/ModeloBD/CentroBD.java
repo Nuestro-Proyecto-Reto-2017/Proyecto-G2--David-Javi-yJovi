@@ -67,18 +67,11 @@ public class CentroBD {
 }  
     public Centro consultaCentroNombre (String vnombreC){
         GenericoBD generico= new GenericoBD();
-        String sql = "";
-        Centro  cCentro = new Centro();
-        String nombre="NOMBRE";
-        String calle="CALLE";
-        String numero="NUMERO";
-        String codigopostal="CODIGOPOSTAL";
-        String ciudad="CIUDAD";
-        String provincia="PROVINCIA";
-        String telefono="TELEFONO";
+        String sql;
+        Centro cCentro =new Centro();
         try {
             //Obtenemos los códigos y nombres de todos los departamentos
-            sql = "{ call gest_centro.visualizar_lista_centro_nombre(?,?,?,?,?,?,?,?) } ";
+            sql = "{ call gest_centro.visualizar_datos_centro_nombre(?,?,?,?,?,?,?,?) } ";
             con=generico.abrirConexion(con);
             
             CallableStatement llamada = con.prepareCall(sql);
@@ -95,17 +88,14 @@ public class CentroBD {
                 llamada.registerOutParameter(8, Types.VARCHAR);
                 
                  
-                llamada.execute(); // ejecutar el procedimiento
-                ResultSet rs = null;
-                rs = llamada.getResultSet();
+                llamada.executeQuery(); // ejecutar el procedimiento
+                ResultSet rs = llamada.getResultSet();
                 
-                while (rs.next()){
-                    cCentro=G2vJovi.centroC(llamada.getString(1),llamada.getString(2),llamada.getString(3),llamada.getString(4),llamada.getString(5),llamada.getString(6),llamada.getString(7));
+                
+                if (rs.next()){
+                    cCentro=G2vJovi.centroC(rs.getString("NOMBRE"),rs.getString("CALLE"),rs.getString("NUMERO"),rs.getString("CODIGOPOSTAL"),rs.getString("CIUDAD"),rs.getString("PROVINCIA"),rs.getString("TELEFONO"));
                     cCentro.setEncontrado(true);
                 }
-                
-                    System.out.println("No hay nada");
-                
                 
                 //cadena = llamada.getString(2);// recupero la cadena
             
@@ -116,7 +106,7 @@ public class CentroBD {
             System.out.println(e);
 
         }
-        
+
         return cCentro;
 }  
     public void eliminarCentro (String vnombreC){
@@ -226,11 +216,10 @@ public class CentroBD {
             llamada.registerOutParameter(2, OracleTypes.CURSOR); // Cadena devuelta
                 
                 
-                
+
                 llamada.execute(); // ejecutar el procedimiento
                 ResultSet rs = null;
                 rs = (ResultSet) llamada.getObject(2);
-
                 
                 if(rs.next()){
                     do{

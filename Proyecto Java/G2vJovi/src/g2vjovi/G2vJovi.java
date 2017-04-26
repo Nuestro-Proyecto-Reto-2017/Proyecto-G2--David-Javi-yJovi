@@ -146,7 +146,6 @@ public class G2vJovi {
             }
         }
     }
-    
     public static void cerrarAltaBajaModificacionTrabajador(String tipoVentana){
         switch (tipoVentana){
             case "altat":{
@@ -198,10 +197,10 @@ public class G2vJovi {
     public static void cerrarVentanaBuscarCentro(){
         vBuscarCentro.dispose();
     }
-    public String ejecutarconsultas(String vdni){
+   /* public String ejecutarconsultas(String vdni){
         String cadena =bdTrabajador.consultas(vdni);
         return cadena;
-    }
+    }*/
     public ArrayList ejecutarconsultaNombreC(String vnombre){
         listaT =bdTrabajador.consultaNombre(vnombre);
         return listaT;
@@ -236,8 +235,8 @@ public class G2vJovi {
         listaC =bdCentro.consultaCentro();
         return listaC;
     }
-    public Centro procConsultaCentroNombre(){
-        cCentro =bdCentro.consultaCentroNombre();
+    public Centro procConsultaCentroNombre(String vnombreC){
+        cCentro =bdCentro.consultaCentroNombre(vnombreC);
         return cCentro;
     }
 }

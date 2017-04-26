@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class BuscarCentro extends javax.swing.JDialog {
     private G2vJovi main = new G2vJovi();
+    private Centro cCentro;
     /**
      * Creates new form BuscarCentro
      */
@@ -150,24 +151,22 @@ public class BuscarCentro extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(null, cadenaSalida);
         }
         if (cbBuscarNombre.isSelected()){
-            
-        }
-        if(cbBuscarId.isSelected()){
-            
+            String cadenaSalida="";
+            cCentro=main.procConsultaCentroNombre(tfNombre.getText().toUpperCase());
+            cadenaSalida+="Nombre: "+cCentro.getNombre()+"\nDirección (calle,numero,codigo postal, ciudad, provincia) : "+cCentro.getCalle()+", "+cCentro.getNumero()+", "+cCentro.getCodigoPostal()+", "+cCentro.getCiudad()+", "+cCentro.getProvincia()+"\nTelefono: "+cCentro.getTelefono()+"\n---------------------------\n";
+            javax.swing.JOptionPane.showMessageDialog(null, cadenaSalida);
         }
     }//GEN-LAST:event_bBuscarActionPerformed
 
     private void cbBuscarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBuscarTodoActionPerformed
         if (cbBuscarTodo.isSelected()){
             tfNombre.setEnabled(false);
-            tfIDCentro.setEnabled(false);
         }
     }//GEN-LAST:event_cbBuscarTodoActionPerformed
 
     private void cbBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBuscarNombreActionPerformed
         if (cbBuscarNombre.isSelected()){
             tfNombre.setEnabled(true);
-            tfIDCentro.setEnabled(false);
         }
     }//GEN-LAST:event_cbBuscarNombreActionPerformed
 

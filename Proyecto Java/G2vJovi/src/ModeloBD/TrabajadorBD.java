@@ -29,6 +29,7 @@ public class TrabajadorBD extends GenericoBD {
     public static void main(String[] args) {
 
     }//de main
+    /*Esto sera para buscar por DNI, esta sin acabar
     public String consultas (String vdni){
         GenericoBD generico= new GenericoBD();
         String sql = "";
@@ -48,14 +49,12 @@ public class TrabajadorBD extends GenericoBD {
                 
                 llamada.execute(); // ejecutar el procedimiento
                 final ResultSet rs = llamada.getResultSet();
-                /*if(rs.next()){
+                if(rs.next()){
                     while(rs.next()){
                         cadena += llamada.getString(2)+"\n";
                     }
                 }
-                else{*/
-                    cadena = llamada.getString(2);
-                //}
+                
                 
                 //cadena = llamada.getString(2);// recupero la cadena
             
@@ -63,11 +62,10 @@ public class TrabajadorBD extends GenericoBD {
         } 
         catch (Exception e) {
             System.out.println(e);
-
         }
         cerrarConexion(con);
         return cadena;
-    }
+    }*/
 
     public ArrayList consultaPk (String vdni){
         GenericoBD generico= new GenericoBD();
