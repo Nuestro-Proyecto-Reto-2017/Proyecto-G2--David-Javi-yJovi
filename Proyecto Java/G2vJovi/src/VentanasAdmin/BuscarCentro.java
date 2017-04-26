@@ -31,24 +31,21 @@ public class BuscarCentro extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
-        tfIDCentro = new javax.swing.JTextField();
         bBuscar = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cbBuscarNombre = new javax.swing.JCheckBox();
+        cbBuscarTodo = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nombre:");
 
-        jLabel2.setText("ID Centro:");
-
         tfNombre.setEnabled(false);
-
-        tfIDCentro.setEnabled(false);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +65,23 @@ public class BuscarCentro extends javax.swing.JDialog {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Centros.png"))); // NOI18N
 
+        buttonGroup1.add(cbBuscarNombre);
+        cbBuscarNombre.setText("Buscar por nombre");
+        cbBuscarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbBuscarNombreActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(cbBuscarTodo);
+        cbBuscarTodo.setSelected(true);
+        cbBuscarTodo.setText("Buscar todos los centros");
+        cbBuscarTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbBuscarTodoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,20 +95,19 @@ public class BuscarCentro extends javax.swing.JDialog {
                         .addGap(26, 26, 26)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(bBuscar)
                                 .addGap(30, 30, 30)
                                 .addComponent(bSalir))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfIDCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cbBuscarNombre)
+                                .addComponent(cbBuscarTodo)))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -104,19 +117,19 @@ public class BuscarCentro extends javax.swing.JDialog {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
+                .addComponent(cbBuscarNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbBuscarTodo)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tfIDCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bBuscar)
                     .addComponent(bSalir))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,14 +140,36 @@ public class BuscarCentro extends javax.swing.JDialog {
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        ArrayList <Centro> listaCentro=new ArrayList();
-        String cadenaSalida="";
-        listaCentro=main.procConsultaCentro();
-        for(int x=0;x<listaCentro.size();x++){
-            cadenaSalida+="Nombre: "+listaCentro.get(x).getNombre()+"\nDirección (calle,numero,codigo postal, ciudad, provincia) : "+listaCentro.get(x).getCalle()+", "+listaCentro.get(x).getNumero()+", "+listaCentro.get(x).getCodigoPostal()+", "+listaCentro.get(x).getCiudad()+", "+listaCentro.get(x).getProvincia()+"\nTelefono: "+listaCentro.get(x).getTelefono()+"\n---------------------------\n";
+        if (cbBuscarTodo.isSelected()){
+            ArrayList <Centro> listaCentro=new ArrayList();
+            String cadenaSalida="";
+            listaCentro=main.procConsultaCentro();
+            for(int x=0;x<listaCentro.size();x++){
+                cadenaSalida+="Nombre: "+listaCentro.get(x).getNombre()+"\nDirección (calle,numero,codigo postal, ciudad, provincia) : "+listaCentro.get(x).getCalle()+", "+listaCentro.get(x).getNumero()+", "+listaCentro.get(x).getCodigoPostal()+", "+listaCentro.get(x).getCiudad()+", "+listaCentro.get(x).getProvincia()+"\nTelefono: "+listaCentro.get(x).getTelefono()+"\n---------------------------\n";
+            }
+            javax.swing.JOptionPane.showMessageDialog(null, cadenaSalida);
         }
-        javax.swing.JOptionPane.showMessageDialog(null, cadenaSalida);
+        if (cbBuscarNombre.isSelected()){
+            
+        }
+        if(cbBuscarId.isSelected()){
+            
+        }
     }//GEN-LAST:event_bBuscarActionPerformed
+
+    private void cbBuscarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBuscarTodoActionPerformed
+        if (cbBuscarTodo.isSelected()){
+            tfNombre.setEnabled(false);
+            tfIDCentro.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbBuscarTodoActionPerformed
+
+    private void cbBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBuscarNombreActionPerformed
+        if (cbBuscarNombre.isSelected()){
+            tfNombre.setEnabled(true);
+            tfIDCentro.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbBuscarNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,11 +216,12 @@ public class BuscarCentro extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bBuscar;
     private javax.swing.JButton bSalir;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox cbBuscarNombre;
+    private javax.swing.JCheckBox cbBuscarTodo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField tfIDCentro;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

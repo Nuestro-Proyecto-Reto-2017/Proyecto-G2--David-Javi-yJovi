@@ -11,6 +11,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.ArrayList;
 import oracle.jdbc.OracleTypes;
 
@@ -42,16 +43,10 @@ public class CentroBD {
                 
                 if(rs.next()){
                     do{
-                            Centro cCentro=G2vJovi.centroC();
-                            cCentro.setNombre(rs.getString("NOMBRE"));
-                            cCentro.setCalle(rs.getString("CALLE"));
-                            cCentro.setNumero(rs.getString("NUMERO"));
-                            cCentro.setCodigoPostal(rs.getString("CODIGOPOSTAL"));
-                            cCentro.setCiudad(rs.getString("CIUDAD"));
-                            cCentro.setProvincia(rs.getString("PROVINCIA"));
-                            cCentro.setTelefono(rs.getString("TELEFONO"));
-                            cCentro.setEncontrado(true);
-                            listaCentros.add(cCentro);
+                        Centro cCentro; 
+                        cCentro=G2vJovi.centroC(rs.getString("NOMBRE"),rs.getString("CALLE"),rs.getString("NUMERO"),rs.getString("CODIGOPOSTAL"),rs.getString("CIUDAD"),rs.getString("PROVINCIA"),rs.getString("TELEFONO"));
+                        cCentro.setEncontrado(true);
+                        listaCentros.add(cCentro);
                     }while(rs.next());
                 }
                 else{
@@ -69,6 +64,60 @@ public class CentroBD {
         }
         
         return listaCentros;
+}  
+    public Centro consultaCentroNombre (String vnombreC){
+        GenericoBD generico= new GenericoBD();
+        String sql = "";
+        Centro  cCentro = new Centro();
+        String nombre="NOMBRE";
+        String calle="CALLE";
+        String numero="NUMERO";
+        String codigopostal="CODIGOPOSTAL";
+        String ciudad="CIUDAD";
+        String provincia="PROVINCIA";
+        String telefono="TELEFONO";
+        try {
+            //Obtenemos los códigos y nombres de todos los departamentos
+            sql = "{ call gest_centro.visualizar_lista_centro_nombre(?,?,?,?,?,?,?,?) } ";
+            con=generico.abrirConexion(con);
+            
+            CallableStatement llamada = con.prepareCall(sql);
+            
+                // Preparamos la llamada
+                
+                llamada.setString(1, vnombreC);
+                llamada.registerOutParameter(2, Types.VARCHAR);
+                llamada.registerOutParameter(3, Types.VARCHAR);
+                llamada.registerOutParameter(4, Types.VARCHAR);
+                llamada.registerOutParameter(5, Types.VARCHAR);
+                llamada.registerOutParameter(6, Types.VARCHAR);
+                llamada.registerOutParameter(7, Types.VARCHAR);
+                llamada.registerOutParameter(8, Types.VARCHAR);
+                
+                 
+                llamada.execute(); // ejecutar el procedimiento
+                ResultSet rs = null;
+                rs = llamada.getResultSet();
+                
+                while (rs.next()){
+                    cCentro=G2vJovi.centroC(llamada.getString(1),llamada.getString(2),llamada.getString(3),llamada.getString(4),llamada.getString(5),llamada.getString(6),llamada.getString(7));
+                    cCentro.setEncontrado(true);
+                }
+                
+                    System.out.println("No hay nada");
+                
+                
+                //cadena = llamada.getString(2);// recupero la cadena
+            
+            llamada.close(); 
+            con.close();
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+
+        }
+        
+        return cCentro;
 }  
     public void eliminarCentro (String vnombreC){
        GenericoBD generico= new GenericoBD();
@@ -185,14 +234,7 @@ public class CentroBD {
                 
                 if(rs.next()){
                     do{
-                            Centro cCentro=G2vJovi.centroC();
-                            cCentro.setNombre(rs.getString("NOMBRE"));
-                            cCentro.setCalle(rs.getString("CALLE"));
-                            cCentro.setNumero(rs.getString("NUMERO"));
-                            cCentro.setCodigoPostal(rs.getString("CODIGOPOSTAL"));
-                            cCentro.setCiudad(rs.getString("CIUDAD"));
-                            cCentro.setProvincia(rs.getString("PROVINCIA"));
-                            cCentro.setTelefono(rs.getString("TELEFONO"));
+                            Centro cCentro=G2vJovi.centroC(rs.getString("NOMBRE"),rs.getString("CALLE"),rs.getString("NUMERO"),rs.getString("CODIGOPOSTAL"),rs.getString("CIUDAD"),rs.getString("PROVINCIA"),rs.getString("TELEFONO"));
                             cCentro.setEncontrado(true);
                             listaCentros.add(cCentro);
                     }while(rs.next());

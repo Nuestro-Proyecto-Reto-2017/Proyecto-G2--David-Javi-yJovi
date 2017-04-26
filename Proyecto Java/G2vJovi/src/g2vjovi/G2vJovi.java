@@ -21,6 +21,7 @@ public class G2vJovi {
      */
     private static Administracion tAdministracion;
     private static Logistica tLogistica;
+    private static Trabajador tTrab;
     private static Centro cCentro;
     private static ArrayList <Trabajador> listaT;
     private static ArrayList <Centro> listaC;
@@ -164,8 +165,15 @@ public class G2vJovi {
             }
         }
     }
-    public static Centro centroC(){
+    public static Centro centroC(String nom,String calle, String numero, String cpostal,String ciudad, String prov,String telefono){
         cCentro = new Centro();
+        cCentro.setNombre(nom);
+        cCentro.setCalle(calle);
+        cCentro.setNumero(numero);
+        cCentro.setCodigoPostal(cpostal);
+        cCentro.setCiudad(ciudad);
+        cCentro.setProvincia(prov);
+        cCentro.setTelefono(telefono);
         return cCentro;
     }
     public static Administracion trabajadorAdministracion(){
@@ -227,5 +235,9 @@ public class G2vJovi {
     public ArrayList procConsultaCentro(){
         listaC =bdCentro.consultaCentro();
         return listaC;
+    }
+    public Centro procConsultaCentroNombre(){
+        cCentro =bdCentro.consultaCentroNombre();
+        return cCentro;
     }
 }
