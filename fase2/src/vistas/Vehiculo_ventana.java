@@ -9,6 +9,7 @@ import excepciones.sinDatos;
 import uml.Vehiculo;
 import umlBD.AdministracionBD;
 import umlBD.VehiculoBD;
+import java.sql.*;
 
 /**
  *
@@ -257,7 +258,7 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
                 break;
               case'd':fase2.Fase2.borrarVehiculo(matricula);
                 break;
-              case 'u':  if(matricula.isEmpty()||marca.isEmpty()||modelo.isEmpty())
+              case'u':  if(matricula.isEmpty()||marca.isEmpty()||modelo.isEmpty())
               {
                  javax.swing.JOptionPane.showMessageDialog(null,"todos los campos son obligatorios");
               }else{ 
@@ -268,8 +269,10 @@ public class Vehiculo_ventana extends javax.swing.JFrame {
 
            }
               
-        }catch(Exception e){
-               javax.swing.JOptionPane.showMessageDialog(null,"error al aceptar : "+e.getMessage() +e.getClass());
+        }catch(java.sql.SQLIntegrityConstraintViolationException  a){
+        javax.swing.JOptionPane.showMessageDialog(null, "violacion de integridad de las tablas puede que el vehiculo ya exista ");}
+        catch(Exception e){
+               javax.swing.JOptionPane.showMessageDialog(null,"error al realizar la operacion: "+e.getMessage() +e.getClass());
                 }
     }//GEN-LAST:event_baceptarActionPerformed
 

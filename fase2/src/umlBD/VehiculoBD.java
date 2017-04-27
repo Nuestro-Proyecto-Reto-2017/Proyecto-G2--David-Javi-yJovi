@@ -40,7 +40,7 @@ public class VehiculoBD {
     }
     
      public  static String consultarVehiculos() throws Exception {
-      try{
+      
         
         PreparedStatement selectVehiculos = conexionBD.conectar().prepareStatement("select * from vehiculo");
         
@@ -58,10 +58,7 @@ public class VehiculoBD {
         
         conexionBD.dc();
         return lista;
-      }catch(Exception e){
-          javax.swing.JOptionPane.showMessageDialog(null,"error al recoger vehiculos "+ e.getClass()+e.getClass());
-         return null; 
-      }
+     
         
         
     }
@@ -86,9 +83,9 @@ public class VehiculoBD {
              
      }
      
-     public static void actualizarVehiculo(Vehiculo v,String matriculaID) {
+     public static void actualizarVehiculo(Vehiculo v,String matriculaID) throws Exception{
         
-        try {
+       
              conexionBD.conectar();
             
              PreparedStatement actualizarVehiculo = conexionBD.conectar().prepareStatement("update vehiculo set matricula=?,marca=?,modelo=? where matricula=?");
@@ -106,9 +103,7 @@ public class VehiculoBD {
             javax.swing.JOptionPane.showMessageDialog(null,"se han actualizado " +x+"filas");
             
             conexionBD.dc();
-        } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null, "error en la actualizacion: " + e.getMessage());
-        }
+        
     
 }
 }

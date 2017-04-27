@@ -26,8 +26,8 @@ public class Fase2 {
     
      
      //centros();
-    //trabajadores();
-    vehiculos();
+    trabajadores();
+   //vehiculos();
         
       
     }
@@ -86,8 +86,8 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
     
 }
 
- public static Centro consultarCentro(String idCentro){
-        try{
+ public static Centro consultarCentro(String idCentro)throws Exception{
+     
             
         
       ResultSet x=  CentroBD.cogerDatosCentro(idCentro);
@@ -110,10 +110,7 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
                     
       
         return c;
-        }catch(Exception e){
-            javax.swing.JOptionPane.showMessageDialog(null,"error en la busqueda de datos:"+ e.getMessage()+e.getClass());
-            return null;
-        }
+      
     }
 
  
@@ -143,8 +140,8 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
          
          AdministracionBD.actualizarTrabajador(t1);
     }
-    public static Trabajador consultarTrabajador(String dni){
-        try{
+    public static Trabajador consultarTrabajador(String dni)throws Exception{
+     
             
         
       ResultSet x=  AdministracionBD.cogerDatosTrabajador(dni);
@@ -170,10 +167,7 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
                     
       
         return t;
-        }catch(Exception e){
-            javax.swing.JOptionPane.showMessageDialog(null,"error en la busqueda de datos:"+ e.getMessage()+e.getClass());
-            return null;
-        }
+      
     }
     
     
@@ -198,15 +192,12 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
          AdministracionBD.anadirTrabajador(t);
  }
         
-         public static void borrarTrabajador(String dni){
-            try{
+         public static void borrarTrabajador(String dni)throws Exception{
+       
              Trabajador t2= new Trabajador();
              t2.setDni(dni);
              AdministracionBD.borrarTrabajador(dni);
-            }catch(Exception e){
-                javax.swing.JOptionPane.showMessageDialog(null,"error al borrar al trabajador "+ e.getMessage()+e.getClass());
-            
-            }
+           
              
          }
          
@@ -219,7 +210,7 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
          
          public static void generarVehiculo(String matricula, String marca, String modelo) throws Exception{
          
-             try{
+           
              Vehiculo v =new Vehiculo();
              v.setMatricula(matricula);
              v.setMarca(marca);
@@ -227,36 +218,26 @@ public static void actualizarCentro(String idCentro,String nombre, String calle,
              
              VehiculoBD.anadirVehiculo(v);
              
-             }
-             catch(Exception e){
-                 javax.swing.JOptionPane.showMessageDialog(null, "Error al generar vehiculo"+e.getMessage()+e.getClass());
-             }
+           
          }
 
-    public static void borrarVehiculo(String matricula) {
-        try{
+    public static void borrarVehiculo(String matricula)throws Exception {
+     
             Vehiculo v2 =new Vehiculo();
             v2.setMatricula(matricula);
             
             VehiculoBD.borrarVehiculo(matricula);
-        }catch(Exception e){
-                javax.swing.JOptionPane.showMessageDialog(null,"error al borrar vehiculo "+ e.getMessage()+e.getClass());
-            
-            }
+        
         
     }
-    public static String consultarVehiculos(){
-        try{
+    public static String consultarVehiculos()throws Exception{
+        
         
  String vehiculos= VehiculoBD.consultarVehiculos();
     
     return vehiculos;
-    }catch(Exception e){
-        javax.swing.JOptionPane.showMessageDialog(null,"error en la descompresion de datos "+ e.getClass()+e.getMessage());
-    return null;
-}      
-    }
-    public static void actualizarVehiculo(String matricula,String marca, String modelo,String matriculaID){
+       }
+    public static void actualizarVehiculo(String matricula,String marca, String modelo,String matriculaID)throws Exception{
         Vehiculo v1=new Vehiculo();
         
         v1.setMatricula(matricula);
