@@ -51,14 +51,11 @@
 <ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="56FD7B8E-730D-ADE1-012C-5B0F157EB1DF" referredColumn="D688C099-33DB-BD31-1048-7E416E0F9283"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -81,17 +78,6 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>2DD31F08-BEF4-EC20-F8CD-74FD228076D5</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="A3D30F80-9FC8-46C7-CFF5-CD4CAC2857C1"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="07617D24-3481-A0B7-3E16-0C3F862C8061" name="Vehiculo_Parte_FK">
-<createdBy>Jovi</createdBy>
-<createdTime>2017-04-01 07:53:15 UTC</createdTime>
-<generatorID>2DD31F08-BEF4-EC20-F8CD-74FD228076D5</generatorID>
-<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="A3D30F80-9FC8-46C7-CFF5-CD4CAC2857C1"/>
 </indexColumnUsage>

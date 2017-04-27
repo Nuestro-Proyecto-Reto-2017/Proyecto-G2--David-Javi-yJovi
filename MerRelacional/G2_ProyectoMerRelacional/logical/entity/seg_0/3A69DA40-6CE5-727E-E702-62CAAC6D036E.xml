@@ -195,9 +195,10 @@
 <referedAttribute>9030D400-FB62-8B91-3E33-56F64C71620E</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
 <dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="idUsuario" id="FE6E4770-E600-8865-EAAD-5DF73C68A0C8">
 <createdBy>Jovi</createdBy>
@@ -210,9 +211,10 @@
 <referedAttribute>F0C46332-CA58-A79D-A224-54DDC5B0AB17</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
 <dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -220,8 +222,9 @@
 <createdBy>Jovi</createdBy>
 <createdTime>2017-04-01 07:28:24 UTC</createdTime>
 <ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

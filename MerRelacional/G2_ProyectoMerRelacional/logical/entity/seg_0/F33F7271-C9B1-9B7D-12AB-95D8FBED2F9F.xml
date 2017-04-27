@@ -24,9 +24,9 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="horaSalida" id="2AC38863-D3CD-818F-EA05-334CC0D9C0FE">
 <createdBy>Jovi</createdBy>
@@ -76,9 +76,10 @@
 <referedAttribute>DA9E52CF-4D44-D247-81E6-03039187E395</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
 <dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -86,8 +87,9 @@
 <createdBy>Jovi</createdBy>
 <createdTime>2017-04-01 07:37:10 UTC</createdTime>
 <ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

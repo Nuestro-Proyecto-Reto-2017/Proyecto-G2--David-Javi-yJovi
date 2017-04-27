@@ -15,9 +15,9 @@
 <ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="usuario" id="DFB33C5E-3FCF-24FC-6775-13EE0485B0D4">
@@ -55,9 +55,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="F71BED0D-D96C-866B-4E27-FA906DCDFD7C" referredColumn="479DCE1A-EAF3-DF79-7B86-24AF2F7A09FF"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -80,17 +77,6 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>D44A99CD-6C7B-D9BA-BA26-A0438C014043</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="7D85DE97-4312-5683-1034-F8776C0B9079"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="31EECBA3-6D15-3329-E39B-C7110F703C86" name="Usuario_Trabajador_FK">
-<createdBy>Jovi</createdBy>
-<createdTime>2017-04-01 07:53:15 UTC</createdTime>
-<generatorID>D44A99CD-6C7B-D9BA-BA26-A0438C014043</generatorID>
-<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="7D85DE97-4312-5683-1034-F8776C0B9079"/>
 </indexColumnUsage>

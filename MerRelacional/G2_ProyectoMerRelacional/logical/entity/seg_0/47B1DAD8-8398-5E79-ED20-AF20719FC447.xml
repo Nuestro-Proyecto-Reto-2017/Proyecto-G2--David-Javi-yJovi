@@ -24,9 +24,9 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="usuario" id="26ED1DFC-04CF-C786-3AD5-1E0A2BAE45F0">
 <createdBy>Jovi</createdBy>
@@ -74,8 +74,9 @@
 <createdBy>Jovi</createdBy>
 <createdTime>2017-04-01 07:33:55 UTC</createdTime>
 <ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

@@ -24,9 +24,9 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="kmInicio" id="EECAB92D-2936-6C52-B6B0-8C5CCEACC130">
 <createdBy>Jovi</createdBy>
@@ -79,20 +79,6 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="dni1" id="C7C1FFAC-4038-D01A-3086-4377381AC424">
-<createdBy>Jovi</createdBy>
-<createdTime>2017-04-01 07:45:17 UTC</createdTime>
-<generatorID>C8371C56-91E8-F01C-46C1-F171E039C592</generatorID>
-<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
-<engineerTo>
-<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
-</engineerTo>
-<referedAttribute>45906423-9CE6-6512-A03E-D5B6BE72562A</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="matricula" id="2DCCB099-7AFD-DC6C-12F6-9D14029AC225">
 <createdBy>Jovi</createdBy>
 <createdTime>2017-04-01 07:45:43 UTC</createdTime>
@@ -106,7 +92,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>12</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>12,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="idAviso" id="1DA6CA37-227F-4FED-69C6-DED7E0F4211A">
 <createdBy>Jovi</createdBy>
@@ -119,9 +105,10 @@
 <referedAttribute>7E84BEB4-4FB9-E9B7-2423-49CE45F7F5EB</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
 <dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="idGasto" id="C8AF8010-8CC6-F8A1-C8B0-B2619D96A81B">
 <createdBy>Jovi</createdBy>
@@ -134,7 +121,8 @@
 <referedAttribute>2F5AE711-85CA-F919-17DF-E93E43F4ADE9</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -143,8 +131,9 @@
 <createdBy>Jovi</createdBy>
 <createdTime>2017-04-01 07:35:21 UTC</createdTime>
 <ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="true"/>
+<item key="A20AB5B8-E51D-AB4C-2875-A0AC73556005" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

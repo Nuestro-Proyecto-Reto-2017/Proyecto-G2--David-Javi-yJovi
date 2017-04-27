@@ -26,9 +26,7 @@ import java.util.ArrayList;
 public class TrabajadorBD extends GenericoBD {
     
     Connection con ;
-    public static void main(String[] args) {
-
-    }//de main
+    //de main
     /*Esto sera para buscar por DNI, esta sin acabar
     public String consultas (String vdni){
         GenericoBD generico= new GenericoBD();
