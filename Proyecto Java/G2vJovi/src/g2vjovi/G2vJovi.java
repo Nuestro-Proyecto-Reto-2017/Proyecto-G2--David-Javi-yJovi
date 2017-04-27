@@ -35,6 +35,7 @@ public class G2vJovi {
     private static BuscarTrabajador vBuscarTrabajador;
     private static TrabajadorBD bdTrabajador = new TrabajadorBD();
     private static CentroBD bdCentro = new CentroBD();
+    private static UsuarioBD bdusuario= new UsuarioBD();
     
     public static void main(String[] args) {
         abrirVentanaAdministracion();
@@ -228,4 +229,17 @@ public class G2vJovi {
         listaC =bdCentro.consultaCentro();
         return listaC;
     }
+    
+    
+    
+    
+    public void generarUsuario(String usuario, String contraseña){
+    Usuario u= new Usuario();
+    u.setUsuario(usuario);
+    u.setPassword(contraseña);
+    bdusuario.actualizarTrabajador(u,String dni)
+    
+    
+    }
+    
 }
