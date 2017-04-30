@@ -1,36 +1,48 @@
 
 package ModeloUML;
 
-import java.sql.Time;
+
+import java.time.LocalTime;
 
 
 public class Salida {
-    private Time horaSalida;
-    private Time horaLLegada;
+    
+    private String albaran;
+    private LocalTime horaSalida;
+    private LocalTime horaLLegada;
 
     public Salida() {
     }
 
-    public Salida(Time horaSalida, Time horaLLegada) {
-        this.horaSalida = horaSalida;
-        this.horaLLegada = horaLLegada;
+    public String getAlbaran() {
+        return albaran;
     }
 
-    public Time getHoraSalida() {
+    public void setAlbaran(String albaran) {
+        this.albaran = albaran;
+    }
+
+    public LocalTime getHoraSalida() {
         return horaSalida;
     }
 
-    public void setHoraSalida(Time horaSalida) {
+    public void setHoraSalida(LocalTime horaSalida) {
         this.horaSalida = horaSalida;
     }
 
-    public Time getHoraLLegada() {
+    public LocalTime getHoraLLegada() {
         return horaLLegada;
     }
 
-    public void setHoraLLegada(Time horaLLegada) {
+    public void setHoraLLegada(LocalTime horaLLegada) {
         this.horaLLegada = horaLLegada;
     }
-    
+
+    public Salida(String albaran, LocalTime horaSalida, LocalTime horaLLegada) {
+        this.albaran = albaran;
+        this.horaSalida = horaSalida;
+        this.horaLLegada = horaLLegada;
+    }
+
     
 }

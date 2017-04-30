@@ -5,10 +5,8 @@
  */
 package VentanasAdmin;
 
-/**
- *
- * @author 1glm01
- */
+import g2vjovi.G2vJovi;
+
 public class VentanaLogistica extends javax.swing.JFrame {
 
     /**
@@ -61,6 +59,11 @@ public class VentanaLogistica extends javax.swing.JFrame {
 
         mNuevoTrabajador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/newIcon.png"))); // NOI18N
         mNuevoTrabajador.setText("Nuevo Parte");
+        mNuevoTrabajador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mNuevoTrabajadorActionPerformed(evt);
+            }
+        });
         mAdministrarTrabajadores.add(mNuevoTrabajador);
 
         mModificarTrabajador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modifyIcon.png"))); // NOI18N
@@ -94,6 +97,13 @@ public class VentanaLogistica extends javax.swing.JFrame {
     private void mModificarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mModificarCentroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mModificarCentroActionPerformed
+
+    private void mNuevoTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mNuevoTrabajadorActionPerformed
+        // BOTON DEL MENU PARA ABRIR LA VANETANA DE LA CREACION DE LOS PARTES:
+        
+        G2vJovi.abrirVentanaCreacionPartes();
+        
+    }//GEN-LAST:event_mNuevoTrabajadorActionPerformed
 
     /**
      * @param args the command line arguments

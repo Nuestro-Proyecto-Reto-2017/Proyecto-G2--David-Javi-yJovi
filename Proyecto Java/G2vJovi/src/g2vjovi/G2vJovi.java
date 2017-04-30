@@ -1,30 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package g2vjovi;
 
 import ModeloBD.*;
 import ModeloUML.*;
 import VentanasAdmin.*;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-/**
- *
- * @author 1gprog02
- */
+
 public class G2vJovi {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     private static Administracion tAdministracion;
     private static Logistica tLogistica;
     private static Centro cCentro;
     private static ArrayList <Trabajador> listaT;
     private static ArrayList <Centro> listaC;
     private static VentanaAdministracion vAdministracion;
+    private static VentanaLogistica vLogistica;
     private static NuevoTrabajador vNuevoTrabajador;
     private static ModificarTrabajador vModificarTrabajador;
     private static NuevoCentro vNuevoCentro;
@@ -33,11 +27,15 @@ public class G2vJovi {
     private static BuscarCentroPK vBuscarCentroPk;
     private static BuscarCentro vBuscarCentro;
     private static BuscarTrabajador vBuscarTrabajador;
+    private static NuevoParte vNuevoParte;
     private static TrabajadorBD bdTrabajador = new TrabajadorBD();
     private static CentroBD bdCentro = new CentroBD();
+    private static ArrayList<Salida>listaDeSalidas;
     
     public static void main(String[] args) {
-        abrirVentanaAdministracion();
+        listaDeSalidas=new ArrayList();
+        //abrirVentanaAdministracion();
+        abrirVentanaLogistica();
     }
     public static void abrirVentanaAdministracion(){
         vAdministracion = new VentanaAdministracion();
@@ -70,7 +68,7 @@ public class G2vJovi {
             }
         }
     }  
-        public static void disposeBuscarCentroPk(String tipoVentana,ArrayList pCentro){
+    public static void disposeBuscarCentroPk(String tipoVentana,ArrayList pCentro){
         switch (tipoVentana){
             case "altac":{
                 vNuevoCentro=new NuevoCentro(new javax.swing.JFrame(), true);
@@ -126,7 +124,6 @@ public class G2vJovi {
     public static void cerrarVentanaModificarTrabajador(){
         vModificarTrabajador.dispose();
     }
-    
     public static void cerrarAltaBajaModificacionCentro(String tipoVentana){
         switch (tipoVentana){
             case "altac":{
@@ -145,7 +142,6 @@ public class G2vJovi {
             }
         }
     }
-    
     public static void cerrarAltaBajaModificacionTrabajador(String tipoVentana){
         switch (tipoVentana){
             case "altat":{
@@ -227,5 +223,61 @@ public class G2vJovi {
     public ArrayList procConsultaCentro(){
         listaC =bdCentro.consultaCentro();
         return listaC;
+    }
+    
+    public static void abrirVentanaLogistica(){
+        vLogistica=new VentanaLogistica ();
+        vLogistica.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        vLogistica.setVisible(true);
+    }
+    public static void abrirVentanaCreacionPartes(){
+        vNuevoParte=new NuevoParte(vLogistica, true);
+        vNuevoParte.setVisible(true);
+  
+    }
+    public static void cerrarVentanaCreacionPartes(){
+        
+        vNuevoParte.dispose();
+        
+        
+    }
+    public static void registrarSalidas(String alba, String hini, String hlleg){
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("H:mm");
+        
+        LocalTime hI=LocalTime.parse(hini, dtf);
+        LocalTime hLL=LocalTime.parse(hlleg, dtf);
+        
+        
+        Salida s =new Salida (alba,hI,hLL);
+        listaDeSalidas.add(s);
+        
+    }
+    public static String verListaDeSalidasRegistradas(){
+        
+        String listaSal="LISTA DE LAS SALIDAS REGISTRADAS EN EL PARTE"
+                       +"\n==================================================";
+        
+        int cont=1;
+        
+        for (int i=0;i<listaDeSalidas.size();i++){
+ 
+            listaSal+="\n"+cont+":  NºALBARAN:  "+listaDeSalidas.get(i).getAlbaran()+"  H. SALIDA:  "+listaDeSalidas.get(i).getHoraSalida()+"  H. LLEGADA:  "+listaDeSalidas.get(i).getHoraLLegada();
+            cont++;
+        }
+
+        return listaSal;
+    }
+    public static Integer numeroDeSalidasRegistradasHastaELMomento(){
+
+        return listaDeSalidas.size();
+        
+    }
+    public static void borrarSalidaDelRegistro(String pos){
+        
+        int index=Integer.parseInt(pos);
+        index--;
+        listaDeSalidas.remove(index);
+
     }
 }
