@@ -452,6 +452,7 @@ public class NuevoParte extends javax.swing.JDialog {
         // BOTON PARA ELIMINAR UNA SALIDA REGISTRADA:
         
         G2vJovi.borrarSalidaDelRegistro(jCBsalidas.getSelectedItem().toString());
+        G2vJovi.restarDeltotalDeHorasTrabajadas(jCBsalidas.getSelectedItem().toString());
         jCBsalidas.removeAllItems();
         jTAsalidas.setText("");
     }//GEN-LAST:event_jBeliminarSalidaActionPerformed
