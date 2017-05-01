@@ -26,84 +26,66 @@ public class VentanaLogistica extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLfondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        mAdminCentros = new javax.swing.JMenu();
-        mNuevoCentro = new javax.swing.JMenuItem();
-        mModificarCentro = new javax.swing.JMenuItem();
-        mAdministrarTrabajadores = new javax.swing.JMenu();
-        mNuevoTrabajador = new javax.swing.JMenuItem();
-        mModificarTrabajador = new javax.swing.JMenuItem();
+        mPerfil = new javax.swing.JMenu();
+        mVerPerfil = new javax.swing.JMenuItem();
+        mModificarPerfil = new javax.swing.JMenuItem();
+        mParte = new javax.swing.JMenu();
+        mNuevoParte = new javax.swing.JMenuItem();
+        mModificarParte = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Himevico.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
-        mAdminCentros.setText("Perfil");
+        jLfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/business.jpg"))); // NOI18N
+        getContentPane().add(jLfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        mNuevoCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/newIcon.png"))); // NOI18N
-        mNuevoCentro.setText("Ver Perfil");
-        mAdminCentros.add(mNuevoCentro);
+        mPerfil.setText("Perfil");
 
-        mModificarCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modifyIcon.png"))); // NOI18N
-        mModificarCentro.setText("Modificar Perfil");
-        mModificarCentro.addActionListener(new java.awt.event.ActionListener() {
+        mVerPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/newIcon.png"))); // NOI18N
+        mVerPerfil.setText("Ver Perfil");
+        mPerfil.add(mVerPerfil);
+
+        mModificarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modifyIcon.png"))); // NOI18N
+        mModificarPerfil.setText("Modificar Perfil");
+        mPerfil.add(mModificarPerfil);
+
+        jMenuBar1.add(mPerfil);
+
+        mParte.setText("Parte");
+
+        mNuevoParte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/newIcon.png"))); // NOI18N
+        mNuevoParte.setText("Nuevo Parte");
+        mNuevoParte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mModificarCentroActionPerformed(evt);
+                mNuevoParteActionPerformed(evt);
             }
         });
-        mAdminCentros.add(mModificarCentro);
+        mParte.add(mNuevoParte);
 
-        jMenuBar1.add(mAdminCentros);
+        mModificarParte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modifyIcon.png"))); // NOI18N
+        mModificarParte.setText("Modificar Parte");
+        mParte.add(mModificarParte);
 
-        mAdministrarTrabajadores.setText("Parte");
-
-        mNuevoTrabajador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/newIcon.png"))); // NOI18N
-        mNuevoTrabajador.setText("Nuevo Parte");
-        mNuevoTrabajador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mNuevoTrabajadorActionPerformed(evt);
-            }
-        });
-        mAdministrarTrabajadores.add(mNuevoTrabajador);
-
-        mModificarTrabajador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modifyIcon.png"))); // NOI18N
-        mModificarTrabajador.setText("Modificar Parte");
-        mAdministrarTrabajadores.add(mModificarTrabajador);
-
-        jMenuBar1.add(mAdministrarTrabajadores);
+        jMenuBar1.add(mParte);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1)
-                .addContainerGap(111, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jLabel1)
-                .addContainerGap(167, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mModificarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mModificarCentroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mModificarCentroActionPerformed
-
-    private void mNuevoTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mNuevoTrabajadorActionPerformed
-        // BOTON DEL MENU PARA ABRIR LA VANETANA DE LA CREACION DE LOS PARTES:
+    private void mNuevoParteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mNuevoParteActionPerformed
+        // BOTON PARA ABRIR LA VENTANA DE CREACION DE LOS PARTES:
         
         G2vJovi.abrirVentanaCreacionPartes();
         
-    }//GEN-LAST:event_mNuevoTrabajadorActionPerformed
+        
+        
+    }//GEN-LAST:event_mNuevoParteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,12 +124,13 @@ public class VentanaLogistica extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLfondo;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu mAdminCentros;
-    private javax.swing.JMenu mAdministrarTrabajadores;
-    private javax.swing.JMenuItem mModificarCentro;
-    private javax.swing.JMenuItem mModificarTrabajador;
-    private javax.swing.JMenuItem mNuevoCentro;
-    private javax.swing.JMenuItem mNuevoTrabajador;
+    private javax.swing.JMenuItem mModificarParte;
+    private javax.swing.JMenuItem mModificarPerfil;
+    private javax.swing.JMenuItem mNuevoParte;
+    private javax.swing.JMenu mParte;
+    private javax.swing.JMenu mPerfil;
+    private javax.swing.JMenuItem mVerPerfil;
     // End of variables declaration//GEN-END:variables
 }

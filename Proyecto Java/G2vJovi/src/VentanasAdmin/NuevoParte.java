@@ -6,12 +6,14 @@
 package VentanasAdmin;
 
 
+import ModeloUML.Parte;
 import g2vjovi.G2vJovi;
 
 public class NuevoParte extends javax.swing.JDialog {
 
     
-    
+    private Parte parte;
+    private String tipo;
     
     /**
      * Creates new form NuevoParte
@@ -21,6 +23,7 @@ public class NuevoParte extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         jPeliminarSalida.setVisible(false);
+        tipo="SinCerrar";
     }
     
     public void limpiarCamposDeSalidas(){
@@ -77,8 +80,8 @@ public class NuevoParte extends javax.swing.JDialog {
         jFThsalida = new javax.swing.JFormattedTextField();
         jFThllegada = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBaceptar = new javax.swing.JButton();
+        jBcerrar = new javax.swing.JButton();
         jBmostrar = new javax.swing.JButton();
         jPsalidas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -91,6 +94,7 @@ public class NuevoParte extends javax.swing.JDialog {
         jTextField9.setText("jTextField9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -227,16 +231,22 @@ public class NuevoParte extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("ACEPTAR");
-
-        jButton3.setText("X");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBaceptar.setText("ACEPTAR");
+        jBaceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBaceptarActionPerformed(evt);
+            }
+        });
+
+        jBcerrar.setText("X");
+        jBcerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBcerrarActionPerformed(evt);
             }
         });
 
         jBmostrar.setText("MOSTRAR");
+        jBmostrar.setEnabled(false);
         jBmostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBmostrarActionPerformed(evt);
@@ -324,7 +334,7 @@ public class NuevoParte extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(159, 159, 159)
-                        .addComponent(jButton3))
+                        .addComponent(jBcerrar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPeliminarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,9 +346,7 @@ public class NuevoParte extends javax.swing.JDialog {
                                     .addComponent(jButton1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jBmostrar))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(13, 13, 13)
-                                    .addComponent(jButton2)))
+                                .addComponent(jBaceptar))
                             .addComponent(jPsalidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -347,10 +355,12 @@ public class NuevoParte extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBcerrar)))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,25 +383,25 @@ public class NuevoParte extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPeliminarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jBaceptar)
                 .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBcerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcerrarActionPerformed
         // BOTON PARA CERRAR LA VENTANA DE LOS PARTES:
-        
-        G2vJovi.cerrarVentanaCreacionPartes();
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+        jBaceptar.doClick();
+   
+    }//GEN-LAST:event_jBcerrarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // BOTON PARA REGISTRAR LAS SALIDAS DEL TRABAJADOR DE LOGISTICA EN UNA LISTA:
         
         G2vJovi.registrarSalidas(jTalbaran.getText(), jFThsalida.getText(), jFThllegada.getText());
         limpiarCamposDeSalidas();
+        jBmostrar.setEnabled(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -411,8 +421,14 @@ public class NuevoParte extends javax.swing.JDialog {
         
         G2vJovi.borrarSalidaDelRegistro(jCBsalidas.getSelectedItem().toString());
         jCBsalidas.removeAllItems();
-        
+        jTAsalidas.setText("");
     }//GEN-LAST:event_jBeliminarSalidaActionPerformed
+
+    private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
+        // BOTON DE ACEPTAR PARTE, UNA VEZ QUE HAS FINALIZADO DE RELLENARLO:
+        
+        G2vJovi.cerrarVentanaCreacionPartes();
+    }//GEN-LAST:event_jBaceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -457,11 +473,11 @@ public class NuevoParte extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBaceptar;
+    private javax.swing.JButton jBcerrar;
     private javax.swing.JButton jBeliminarSalida;
     private javax.swing.JButton jBmostrar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jCBsalidas;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFormattedTextField jFThllegada;
