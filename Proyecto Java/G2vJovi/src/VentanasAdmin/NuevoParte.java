@@ -6,14 +6,17 @@
 package VentanasAdmin;
 
 
+import ModeloUML.Gasto;
 import ModeloUML.Parte;
 import g2vjovi.G2vJovi;
+import java.util.Date;
+
 
 public class NuevoParte extends javax.swing.JDialog {
 
-    
-    private Parte parte;
     private String tipo;
+    
+    
     
     /**
      * Creates new form NuevoParte
@@ -23,7 +26,8 @@ public class NuevoParte extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         jPeliminarSalida.setVisible(false);
-        tipo="SinCerrar";
+       
+       
     }
     
     public void limpiarCamposDeSalidas(){
@@ -44,6 +48,28 @@ public class NuevoParte extends javax.swing.JDialog {
         }
 
     }
+ 
+    
+    public void crearParte(String tipo){
+        
+        Gasto gast=G2vJovi.registrarGastos(jTggasoil.getText(), jTgpeajes.getText(), jTgdietas.getText(), jTotros.getText());
+        Date fsistema= new Date();
+        
+        
+        //darle una vuelta, no me gusta
+        Parte parte=new Parte();       
+        parte.setKmInicial(Float.parseFloat(jTkini.getText()));
+        parte.setKmFinal(Float.parseFloat(jTkfinal.getText()));
+        parte.setTipo(tipo);
+        parte.setFechaDelSistema(fsistema);
+        parte.setHorasTrabajadas(null);
+        parte.setLogistica(null);
+        parte.setAdministradores(null);
+        parte.setVehiculo(null);
+        parte.setSalidas(null);
+        parte.setGasto(gast);
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,21 +83,21 @@ public class NuevoParte extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTkini = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTkfinal = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTggasoil = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTgdietas = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jTgpeajes = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jTotros = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jTalbaran = new javax.swing.JTextField();
@@ -147,18 +173,18 @@ public class NuevoParte extends javax.swing.JDialog {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                    .addComponent(jTggasoil)
+                    .addComponent(jTgpeajes, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTgdietas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField6)))
+                        .addComponent(jTotros)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -167,15 +193,15 @@ public class NuevoParte extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTggasoil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTgdietas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTgpeajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTotros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -324,11 +350,11 @@ public class NuevoParte extends javax.swing.JDialog {
                         .addGap(26, 26, 26)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTkini, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(26, 26, 26)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTkfinal, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 61, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -365,9 +391,9 @@ public class NuevoParte extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTkini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTkfinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -392,7 +418,9 @@ public class NuevoParte extends javax.swing.JDialog {
 
     private void jBcerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcerrarActionPerformed
         // BOTON PARA CERRAR LA VENTANA DE LOS PARTES:
-        jBaceptar.doClick();
+        tipo="SinCerrar";
+        //crearParte(tipo);
+        G2vJovi.cerrarVentanaCreacionPartes();
    
     }//GEN-LAST:event_jBcerrarActionPerformed
 
@@ -400,7 +428,10 @@ public class NuevoParte extends javax.swing.JDialog {
         // BOTON PARA REGISTRAR LAS SALIDAS DEL TRABAJADOR DE LOGISTICA EN UNA LISTA:
         
         G2vJovi.registrarSalidas(jTalbaran.getText(), jFThsalida.getText(), jFThllegada.getText());
+        G2vJovi.calcularHorasTotalesTrabajadasXSalida(jFThsalida.getText(), jFThllegada.getText());
         limpiarCamposDeSalidas();
+        jTAsalidas.setText("");
+        jCBsalidas.removeAllItems();
         jBmostrar.setEnabled(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -411,6 +442,7 @@ public class NuevoParte extends javax.swing.JDialog {
         String lista=G2vJovi.verListaDeSalidasRegistradas();
         jTAsalidas.setText(lista);
         Integer numTotalSalidas=G2vJovi.numeroDeSalidasRegistradasHastaELMomento();
+        jCBsalidas.removeAllItems();
         rellenarComboBoxSalidas(numTotalSalidas);
         jPeliminarSalida.setVisible(true);
         
@@ -426,7 +458,8 @@ public class NuevoParte extends javax.swing.JDialog {
 
     private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
         // BOTON DE ACEPTAR PARTE, UNA VEZ QUE HAS FINALIZADO DE RELLENARLO:
-        
+        tipo="Cerrado";
+        //crearParte(tipo);
         G2vJovi.cerrarVentanaCreacionPartes();
     }//GEN-LAST:event_jBaceptarActionPerformed
 
@@ -503,12 +536,12 @@ public class NuevoParte extends javax.swing.JDialog {
     private javax.swing.JTextArea jTAsalidas;
     private javax.swing.JTextField jTalbaran;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTgdietas;
+    private javax.swing.JTextField jTggasoil;
+    private javax.swing.JTextField jTgpeajes;
+    private javax.swing.JTextField jTkfinal;
+    private javax.swing.JTextField jTkini;
+    private javax.swing.JTextField jTotros;
     // End of variables declaration//GEN-END:variables
 }

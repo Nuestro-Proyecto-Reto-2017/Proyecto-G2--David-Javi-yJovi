@@ -2,6 +2,7 @@
 package ModeloUML;
 
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,7 +12,7 @@ public class Parte {
    private Float kmFinal;
    private String tipo;
    private Date fechaDelSistema;
-   private Time horasTrabajadas;
+   private LocalTime horasTrabajadas;
    
    private Logistica logistica;
    private ArrayList <Administracion> administradores;
@@ -22,7 +23,7 @@ public class Parte {
     public Parte() {
     }
 
-    public Parte(Float kmInicial, Float kmFinal, String tipo, Date fechaDelSistema, Time horasTrabajadas) {
+    public Parte(Float kmInicial, Float kmFinal, String tipo, Date fechaDelSistema, LocalTime horasTrabajadas) {
         this.kmInicial = kmInicial;
         this.kmFinal = kmFinal;
         this.tipo = tipo;
@@ -62,11 +63,11 @@ public class Parte {
         this.fechaDelSistema = fechaDelSistema;
     }
 
-    public Time getHorasTrabajadas() {
+    public LocalTime getHorasTrabajadas() {
         return horasTrabajadas;
     }
 
-    public void setHorasTrabajadas(Time horasTrabajadas) {
+    public void setHorasTrabajadas(LocalTime horasTrabajadas) {
         this.horasTrabajadas = horasTrabajadas;
     }
 
@@ -110,7 +111,11 @@ public class Parte {
         this.gasto = gasto;
     }
 
-   
+    public void calcularHorasTrabajadas(ArrayList<Salida>salidas){
+        
+        
+        
+    }
    
    
    

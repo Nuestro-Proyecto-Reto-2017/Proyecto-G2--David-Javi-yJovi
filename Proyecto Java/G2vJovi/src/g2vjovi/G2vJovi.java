@@ -31,6 +31,8 @@ public class G2vJovi {
     private static TrabajadorBD bdTrabajador = new TrabajadorBD();
     private static CentroBD bdCentro = new CentroBD();
     private static ArrayList<Salida>listaDeSalidas;
+    private static Integer totalHorasTrabajadas;
+    private static Integer totalMinutosTrabajados;
     
     public static void main(String[] args) {
         listaDeSalidas=new ArrayList();
@@ -231,9 +233,13 @@ public class G2vJovi {
         vLogistica.setVisible(true);
     }
     public static void abrirVentanaCreacionPartes(){
+        
+        totalHorasTrabajadas=0;
+        totalMinutosTrabajados=0;
         vNuevoParte=new NuevoParte(vLogistica, true);
         vNuevoParte.setVisible(true);
-  
+       
+                
     }
     public static void cerrarVentanaCreacionPartes(){
         
@@ -280,4 +286,84 @@ public class G2vJovi {
         listaDeSalidas.remove(index);
 
     }
+    public static void calcularHorasTotalesTrabajadasXSalida(String horaI, String horaLLeg){
+        
+    String [] horaIni =horaI.split(":");
+
+    Integer hora1 = Integer.parseInt(horaIni[0]);
+    Integer min1=Integer.parseInt(horaIni[1]);
+    
+    Integer minTotales=(hora1*60)+min1;
+
+    String [] horaLLegada =horaLLeg.split(":");
+
+    Integer hora2 = Integer.parseInt(horaLLegada[0]);
+    Integer min2=Integer.parseInt(horaLLegada[1]);
+    
+    Integer minTotales2=(hora2*60)+min2;
+    
+    Integer minEntreHoras=minTotales2-minTotales;
+    Integer resto=minEntreHoras%60;
+    Integer horasTotales=minEntreHoras/60;
+    
+     //PARA COMPROBAR
+    //System.out.println(horasTotales+" hora y "+resto+ " minutos");
+    
+    sumaTotalDeHorasTrabajadas(horasTotales,resto);
+    
+   
+   
+    }
+    public static void sumaTotalDeHorasTrabajadas(Integer horas,Integer min){
+
+        Integer exmin=0;
+        
+        totalMinutosTrabajados+=min;
+        
+        if(totalMinutosTrabajados>60){
+           
+            totalMinutosTrabajados=totalMinutosTrabajados%60;
+            exmin=totalMinutosTrabajados/60;
+
+        }
+        
+        totalHorasTrabajadas+=horas+exmin;
+        
+        //Para comprobar
+        System.out.println(totalHorasTrabajadas+" "+totalMinutosTrabajados);
+    }
+   
+    public static Gasto registrarGastos(String gastoGasoil, String gastoPeajes, String gastoDietas, String otrosGastos ){
+        
+        Float gg=0f;
+        Float gp=0f;
+        Float gd=0f;
+        Float og=0f;
+       
+        if(!gastoGasoil.isEmpty()){
+            
+            gg=Float.parseFloat(gastoGasoil);
+            
+        }
+        if(!gastoGasoil.isEmpty()){
+            
+            gp=Float.parseFloat(gastoPeajes);
+            
+        }
+        if(!gastoGasoil.isEmpty()){
+            
+            gd=Float.parseFloat(gastoDietas);
+            
+        }
+        if(!gastoGasoil.isEmpty()){
+            
+            og=Float.parseFloat(otrosGastos);
+            
+        }
+        Gasto gasto= new Gasto(gg,gp,gd,og);
+        
+        return gasto;
+        
+    }
+
 }
