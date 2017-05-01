@@ -141,19 +141,26 @@ public class BuscarCentro extends javax.swing.JDialog {
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
+        ArrayList <Centro> listaCentro;
         if (cbBuscarTodo.isSelected()){
-            ArrayList <Centro> listaCentro=new ArrayList();
             String cadenaSalida="";
             listaCentro=main.procConsultaCentro();
+            if(listaCentro.size()>0){
             for(int x=0;x<listaCentro.size();x++){
                 cadenaSalida+="Nombre: "+listaCentro.get(x).getNombre()+"\nDirección (calle,numero,codigo postal, ciudad, provincia) : "+listaCentro.get(x).getCalle()+", "+listaCentro.get(x).getNumero()+", "+listaCentro.get(x).getCodigoPostal()+", "+listaCentro.get(x).getCiudad()+", "+listaCentro.get(x).getProvincia()+"\nTelefono: "+listaCentro.get(x).getTelefono()+"\n---------------------------\n";
-            }
+            }}
+            else cadenaSalida="No hay centros";
             javax.swing.JOptionPane.showMessageDialog(null, cadenaSalida);
         }
         if (cbBuscarNombre.isSelected()){
             String cadenaSalida="";
-            cCentro=main.procConsultaCentroNombre(tfNombre.getText().toUpperCase());
-            cadenaSalida+="Nombre: "+cCentro.getNombre()+"\nDirección (calle,numero,codigo postal, ciudad, provincia) : "+cCentro.getCalle()+", "+cCentro.getNumero()+", "+cCentro.getCodigoPostal()+", "+cCentro.getCiudad()+", "+cCentro.getProvincia()+"\nTelefono: "+cCentro.getTelefono()+"\n---------------------------\n";
+            listaCentro=main.procConsultaCentroNombre(tfNombre.getText().toUpperCase());
+            if(listaCentro.size()>0){
+                for(int x=0;x<listaCentro.size();x++){
+                    cadenaSalida+="Nombre: "+listaCentro.get(x).getNombre()+"\nDirección (calle,numero,codigo postal, ciudad, provincia) : "+listaCentro.get(x).getCalle()+", "+listaCentro.get(x).getNumero()+", "+listaCentro.get(x).getCodigoPostal()+", "+listaCentro.get(x).getCiudad()+", "+listaCentro.get(x).getProvincia()+"\nTelefono: "+listaCentro.get(x).getTelefono()+"\n---------------------------\n";
+                }
+            }
+            else{ cadenaSalida="No hay centros";}
             javax.swing.JOptionPane.showMessageDialog(null, cadenaSalida);
         }
     }//GEN-LAST:event_bBuscarActionPerformed

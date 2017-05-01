@@ -7,7 +7,9 @@ package VentanasAdmin;
 
 import ModeloUML.*;
 import g2vjovi.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -52,7 +54,7 @@ public class ModificarTrabajador extends javax.swing.JDialog {
         tfTelefonoPersonal.setText(trabajadorEncontrado.get(0).getTelefonoPersonal());
         tfTelefonoEmpresa.setText(trabajadorEncontrado.get(0).getTelefonoEmpresa());
         tfSalario.setText(String.valueOf(trabajadorEncontrado.get(0).getSalario()));
-        if(trabajadorEncontrado.get(0).getTipoTrabajador().compareToIgnoreCase("Administracion")==0){
+        if(trabajadorEncontrado.get(0).getClass().getSimpleName().compareToIgnoreCase("Administracion")==0){
             rbAdmin.setSelected(true);
         }
         else{
@@ -288,8 +290,6 @@ public class ModificarTrabajador extends javax.swing.JDialog {
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Trabajadores.png"))); // NOI18N
 
-        dcFechaNac.setEnabled(false);
-
         jLabel28.setText("Centro:");
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -479,41 +479,25 @@ public class ModificarTrabajador extends javax.swing.JDialog {
     }//GEN-LAST:event_rbAdminActionPerformed
 
     private void bCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearActionPerformed
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date fechaNac;
+            fechaNac = sdf.parse(dcFechaNac.getText());
         if(rbAdmin.isSelected()){
             Administracion tAdmin;
-            tAdmin=G2vJovi.trabajadorAdministracion();
-            tAdmin.setDni(tfDni.getText().toUpperCase());
-            tAdmin.setNombre(tfNombre.getText().toUpperCase());
-            tAdmin.setApellidoUno(tfApellidoUno.getText().toUpperCase());
-            tAdmin.setApellidoDos(tfApellidoDos.getText().toUpperCase());
-            tAdmin.setCalle(tfCalle.getText().toUpperCase());
-            tAdmin.setPostal(tfPortal.getText().toUpperCase());
-            tAdmin.setPiso(tfPiso.getText().toUpperCase());
-            tAdmin.setMano(tfMano.getText().toUpperCase());
-            tAdmin.setTelefonoPersonal(tfTelefonoPersonal.getText().toUpperCase());
-            tAdmin.setTelefonoEmpresa(tfTelefonoEmpresa.getText().toUpperCase());
-            tAdmin.setSalario(Float.valueOf(tfSalario.getText()));
-            tAdmin.setTipoTrabajador("Administracion");
+            tAdmin=G2vJovi.trabajadorAdministracion(tfDni.getText().toUpperCase(),tfNombre.getText().toUpperCase(),tfApellidoUno.getText().toUpperCase(),tfApellidoDos.getText().toUpperCase(),tfCalle.getText().toUpperCase(),tfPortal.getText().toUpperCase(),tfPiso.getText().toUpperCase(),tfMano.getText().toUpperCase(),tfTelefonoPersonal.getText().toUpperCase(),tfTelefonoEmpresa.getText().toUpperCase(),Float.valueOf(tfSalario.getText()),fechaNac);
             main.procUpdateTrabajador(vdni,tAdmin,cbCentroNombre.getSelectedItem().toString());
             javax.swing.JOptionPane.showMessageDialog(null,"Tabla actualizada " );
         }
         else{
             Logistica tLogis;
-            tLogis=G2vJovi.trabajadorLogistica();
-            tLogis.setDni(tfDni.getText().toUpperCase());
-            tLogis.setNombre(tfNombre.getText().toUpperCase());
-            tLogis.setApellidoUno(tfApellidoUno.getText().toUpperCase());
-            tLogis.setApellidoDos(tfApellidoDos.getText().toUpperCase());
-            tLogis.setCalle(tfCalle.getText().toUpperCase());
-            tLogis.setPostal(tfPortal.getText().toUpperCase());
-            tLogis.setPiso(tfPiso.getText().toUpperCase());
-            tLogis.setMano(tfMano.getText().toUpperCase());
-            tLogis.setTelefonoPersonal(tfTelefonoPersonal.getText().toUpperCase());
-            tLogis.setTelefonoEmpresa(tfTelefonoEmpresa.getText().toUpperCase());
-            tLogis.setSalario(Float.valueOf(tfSalario.getText()));
-            tLogis.setTipoTrabajador("Logistica");
+            tLogis=G2vJovi.trabajadorLogistica(tfDni.getText().toUpperCase(),tfNombre.getText().toUpperCase(),tfApellidoUno.getText().toUpperCase(),tfApellidoDos.getText().toUpperCase(),tfCalle.getText().toUpperCase(),tfPortal.getText().toUpperCase(),tfPiso.getText().toUpperCase(),tfMano.getText().toUpperCase(),tfTelefonoPersonal.getText().toUpperCase(),tfTelefonoEmpresa.getText().toUpperCase(),Float.valueOf(tfSalario.getText()),fechaNac);
             main.procUpdateTrabajador(vdni,tLogis,cbCentroNombre.getSelectedItem().toString());
             javax.swing.JOptionPane.showMessageDialog(null,"Tabla actualizada " );
+        }
+        }
+        catch(Exception e){
+            System.out.println(e);
         }
     }//GEN-LAST:event_bCrearActionPerformed
 

@@ -77,12 +77,16 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tfDni" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                                       <Component id="tfNombre" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="tfApellidoUno" min="-2" pref="109" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel18" min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="tfApellidoUno" min="-2" pref="109" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jLabel18" min="-2" pref="18" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="tfDni" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -424,6 +428,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfDni">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfNombre">
     </Component>
@@ -574,9 +581,6 @@
       </Properties>
     </Component>
     <Component class="datechooser.beans.DateChooserCombo" name="dcFechaNac">
-      <Properties>
-        <Property name="dch_enabled" type="boolean" value="false"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel28">
       <Properties>

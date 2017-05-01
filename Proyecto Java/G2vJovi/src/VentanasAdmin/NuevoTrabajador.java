@@ -7,6 +7,8 @@ package VentanasAdmin;
 
 import ModeloUML.*;
 import g2vjovi.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +26,7 @@ public class NuevoTrabajador extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
-    public NuevoTrabajador(java.awt.Frame parent, boolean modal,ArrayList listaC) {
+    public NuevoTrabajador(java.awt.Frame parent, boolean modal,ArrayList listaC,String pdni) {
         super(parent, modal);
         initComponents();
         this.centrosEncontrados=listaC;
@@ -32,6 +34,7 @@ public class NuevoTrabajador extends javax.swing.JDialog {
         for(int x=0;x<centrosEncontrados.size();x++){
             cbCentroNombre.insertItemAt(centrosEncontrados.get(x).getNombre(), x);
         }
+        tfDni.setText(pdni);
     }
 
     /**
@@ -200,6 +203,8 @@ public class NuevoTrabajador extends javax.swing.JDialog {
 
         jLabel12.setText("Fecha Nacimiento:");
 
+        tfDni.setEnabled(false);
+
         bCrear.setText("Crear Trabajador");
         bCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,8 +266,6 @@ public class NuevoTrabajador extends javax.swing.JDialog {
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Trabajadores.png"))); // NOI18N
 
-        dcFechaNac.setEnabled(false);
-
         jLabel28.setText("Centro:");
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -313,12 +316,14 @@ public class NuevoTrabajador extends javax.swing.JDialog {
                                             .addComponent(jLabel3)))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(tfApellidoUno, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(tfApellidoUno, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(tfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel4)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -455,41 +460,25 @@ public class NuevoTrabajador extends javax.swing.JDialog {
     }//GEN-LAST:event_rbAdminActionPerformed
 
     private void bCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearActionPerformed
-        if(rbAdmin.isSelected()){
-            Administracion tAdmin;
-            tAdmin=G2vJovi.trabajadorAdministracion();
-            tAdmin.setDni(tfDni.getText().toUpperCase());
-            tAdmin.setNombre(tfNombre.getText().toUpperCase());
-            tAdmin.setApellidoUno(tfApellidoUno.getText().toUpperCase());
-            tAdmin.setApellidoDos(tfApellidoDos.getText().toUpperCase());
-            tAdmin.setCalle(tfCalle.getText().toUpperCase());
-            tAdmin.setPostal(tfPortal.getText().toUpperCase());
-            tAdmin.setPiso(tfPiso.getText().toUpperCase());
-            tAdmin.setMano(tfMano.getText().toUpperCase());
-            tAdmin.setTelefonoPersonal(tfTelefonoPersonal.getText().toUpperCase());
-            tAdmin.setTelefonoEmpresa(tfTelefonoEmpresa.getText().toUpperCase());
-            tAdmin.setSalario(Float.valueOf(tfSalario.getText()));
-            tAdmin.setTipoTrabajador("Administracion");
-            main.procInsertTrabajador(tAdmin);
-            javax.swing.JOptionPane.showMessageDialog(null,"Tabla actualizada " );
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date fechaNac;
+            fechaNac = sdf.parse(dcFechaNac.getText());
+            if(rbAdmin.isSelected()){
+                Administracion tAdmin;
+                tAdmin=G2vJovi.trabajadorAdministracion(tfDni.getText().toUpperCase(),tfNombre.getText().toUpperCase(),tfApellidoUno.getText().toUpperCase(),tfApellidoDos.getText().toUpperCase(),tfCalle.getText().toUpperCase(),tfPortal.getText().toUpperCase(),tfPiso.getText().toUpperCase(),tfMano.getText().toUpperCase(),tfTelefonoPersonal.getText().toUpperCase(),tfTelefonoEmpresa.getText().toUpperCase(),Float.valueOf(tfSalario.getText()),fechaNac);
+                main.procInsertTrabajador(tAdmin,cbCentroNombre.getSelectedItem().toString());
+                javax.swing.JOptionPane.showMessageDialog(null,"Tabla actualizada " );
+            }
+            else{
+                Logistica tLogis;
+                tLogis=G2vJovi.trabajadorLogistica(tfDni.getText().toUpperCase(),tfNombre.getText().toUpperCase(),tfApellidoUno.getText().toUpperCase(),tfApellidoDos.getText().toUpperCase(),tfCalle.getText().toUpperCase(),tfPortal.getText().toUpperCase(),tfPiso.getText().toUpperCase(),tfMano.getText().toUpperCase(),tfTelefonoPersonal.getText().toUpperCase(),tfTelefonoEmpresa.getText().toUpperCase(),Float.valueOf(tfSalario.getText()),fechaNac);
+                main.procInsertTrabajador(tLogis,cbCentroNombre.getSelectedItem().toString());
+                javax.swing.JOptionPane.showMessageDialog(null,"Tabla actualizada " );
         }
-        else{
-            Logistica tLogis;
-            tLogis=G2vJovi.trabajadorLogistica();
-            tLogis.setDni(tfDni.getText().toUpperCase());
-            tLogis.setNombre(tfNombre.getText().toUpperCase());
-            tLogis.setApellidoUno(tfApellidoUno.getText().toUpperCase());
-            tLogis.setApellidoDos(tfApellidoDos.getText().toUpperCase());
-            tLogis.setCalle(tfCalle.getText().toUpperCase());
-            tLogis.setPostal(tfPortal.getText().toUpperCase());
-            tLogis.setPiso(tfPiso.getText().toUpperCase());
-            tLogis.setMano(tfMano.getText().toUpperCase());
-            tLogis.setTelefonoPersonal(tfTelefonoPersonal.getText().toUpperCase());
-            tLogis.setTelefonoEmpresa(tfTelefonoEmpresa.getText().toUpperCase());
-            tLogis.setSalario(Float.valueOf(tfSalario.getText()));
-            tLogis.setTipoTrabajador("Logistica");
-            main.procInsertTrabajador(tLogis);
-            javax.swing.JOptionPane.showMessageDialog(null,"Tabla actualizada " );
+        }
+        catch(Exception e){
+            System.out.println(e);
         }
     }//GEN-LAST:event_bCrearActionPerformed
 

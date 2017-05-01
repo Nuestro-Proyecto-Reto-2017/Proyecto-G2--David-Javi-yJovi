@@ -1,8 +1,6 @@
 create or replace package body gest_centro 
 IS
 
-  --=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
-
   procedure visualizar_lista_centro(c_centros out tcursor)
   is
   begin
@@ -13,10 +11,11 @@ IS
 
   --=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
   /*MAL necesita modificacion*/
-  procedure visualizar_datos_centro_nombre (p_nombreEntrada in varchar2, p_nombre out varchar2,p_calle out varchar2,p_numero out varchar2,p_codigopostal out varchar2,p_ciudad out varchar2,p_provincia out varchar2,p_telefono out varchar2)
+  procedure visualizar_datos_centro_nombre (p_nombreEntrada in varchar2,c_centros out tcursor)
   is
   begin
-      select nombre,calle, numero,codigopostal, ciudad, provincia, telefono into p_nombre,p_calle,p_numero,p_codigopostal, p_ciudad, p_provincia, p_telefono 
+    open c_centros for
+      select *
       from centro
       where upper(nombre) = upper(p_nombreEntrada);
   exception

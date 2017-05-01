@@ -9,6 +9,7 @@ import ModeloBD.*;
 import ModeloUML.*;
 import VentanasAdmin.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -49,11 +50,11 @@ public class G2vJovi {
         vAdministracion.dispose();
         System.exit(0);
     }
-    public static void disposeBuscarTrabPk(String tipoVentana,ArrayList pTrabajador){
+    public static void disposeBuscarTrabPk(String tipoVentana,ArrayList pTrabajador,String pdni){
         switch (tipoVentana){
             case "altat":{
                 listaC =bdCentro.consultaCentro();
-                vNuevoTrabajador =new NuevoTrabajador(new javax.swing.JFrame(), true,listaC);
+                vNuevoTrabajador =new NuevoTrabajador(new javax.swing.JFrame(), true,listaC,pdni);
                 vNuevoTrabajador.setVisible(true);
                 vBuscarTrabPk.setVisible(false);
                 break;
@@ -175,12 +176,12 @@ public class G2vJovi {
         cCentro.setTelefono(telefono);
         return cCentro;
     }
-    public static Administracion trabajadorAdministracion(){
-        tAdministracion = new Administracion();
+    public static Administracion trabajadorAdministracion(String dni, String nombre,String apeUno,String apeDos,String calle, String portal,String piso, String mano,String telefonoP,String telefonoE,float Salario,Date fechaNac){
+        tAdministracion = new Administracion(dni, nombre,apeUno,apeDos,calle, portal,piso, mano,telefonoP,telefonoE,Salario,fechaNac);
         return tAdministracion;
     }
-    public static Logistica trabajadorLogistica(){
-        tLogistica = new Logistica();
+    public static Logistica trabajadorLogistica(String dni, String nombre,String apeUno,String apeDos,String calle, String portal,String piso, String mano,String telefonoP,String telefonoE,float Salario,Date fechaNac){
+        tLogistica = new Logistica(dni, nombre,apeUno,apeDos,calle, portal,piso, mano,telefonoP,telefonoE,Salario,fechaNac);
         return tLogistica;
     }
     public static void abrirVentanaBuscarTrabajador(){
@@ -197,7 +198,8 @@ public class G2vJovi {
     public static void cerrarVentanaBuscarCentro(){
         vBuscarCentro.dispose();
     }
-   /* public String ejecutarconsultas(String vdni){
+    /*Para buscar por DNI
+    public String ejecutarconsultas(String vdni){
         String cadena =bdTrabajador.consultas(vdni);
         return cadena;
     }*/
@@ -225,8 +227,8 @@ public class G2vJovi {
     public void procUpdateCentro(String vnombreC,Centro c){
         bdCentro.updateCentro(vnombreC,c);
     }
-    public void procInsertTrabajador(Trabajador t){
-        bdTrabajador.insertTrabajador(t);
+    public void procInsertTrabajador(Trabajador t, String nombreCentro){
+        bdTrabajador.insertTrabajador(t,nombreCentro);
     }
     public void procInsertCentro(Centro c){
         bdCentro.insertCentro(c);
@@ -235,8 +237,8 @@ public class G2vJovi {
         listaC =bdCentro.consultaCentro();
         return listaC;
     }
-    public Centro procConsultaCentroNombre(String vnombreC){
-        cCentro =bdCentro.consultaCentroNombre(vnombreC);
-        return cCentro;
+    public ArrayList procConsultaCentroNombre(String vnombreC){
+        listaC =bdCentro.consultaCentroNombre(vnombreC);
+        return listaC;
     }
 }

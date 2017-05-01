@@ -65,13 +65,14 @@ public class CentroBD {
         
         return listaCentros;
 }  
-    public Centro consultaCentroNombre (String vnombreC){
+    public ArrayList consultaCentroNombre (String vnombreC){
         GenericoBD generico= new GenericoBD();
         String sql;
         Centro cCentro =new Centro();
+        ArrayList <Centro> listaCentros=new ArrayList();
         try {
             //Obtenemos los códigos y nombres de todos los departamentos
-            sql = "{ call gest_centro.visualizar_datos_centro_nombre(?,?,?,?,?,?,?,?) } ";
+            sql = "{ call gest_centro.visualizar_datos_centro_nombre(?,?) } ";
             con=generico.abrirConexion(con);
             
             CallableStatement llamada = con.prepareCall(sql);
@@ -79,22 +80,18 @@ public class CentroBD {
                 // Preparamos la llamada
                 
                 llamada.setString(1, vnombreC);
-                llamada.registerOutParameter(2, Types.VARCHAR);
-                llamada.registerOutParameter(3, Types.VARCHAR);
-                llamada.registerOutParameter(4, Types.VARCHAR);
-                llamada.registerOutParameter(5, Types.VARCHAR);
-                llamada.registerOutParameter(6, Types.VARCHAR);
-                llamada.registerOutParameter(7, Types.VARCHAR);
-                llamada.registerOutParameter(8, Types.VARCHAR);
+                llamada.registerOutParameter(2, OracleTypes.CURSOR);
                 
                  
-                llamada.executeQuery(); // ejecutar el procedimiento
-                ResultSet rs = llamada.getResultSet();
+                llamada.execute(); // ejecutar el procedimiento
+               // ResultSet rs = llamada.getResultSet();
+                ResultSet rs = null;
+                rs = (ResultSet) llamada.getObject(2);
                 
-                
-                if (rs.next()){
+                while (rs.next()){
                     cCentro=G2vJovi.centroC(rs.getString("NOMBRE"),rs.getString("CALLE"),rs.getString("NUMERO"),rs.getString("CODIGOPOSTAL"),rs.getString("CIUDAD"),rs.getString("PROVINCIA"),rs.getString("TELEFONO"));
                     cCentro.setEncontrado(true);
+                    listaCentros.add(cCentro);
                 }
                 
                 //cadena = llamada.getString(2);// recupero la cadena
@@ -107,7 +104,7 @@ public class CentroBD {
 
         }
 
-        return cCentro;
+        return listaCentros;
 }  
     public void eliminarCentro (String vnombreC){
        GenericoBD generico= new GenericoBD();
