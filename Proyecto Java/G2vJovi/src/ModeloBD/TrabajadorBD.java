@@ -103,7 +103,6 @@ public class TrabajadorBD extends GenericoBD {
                     System.out.println("No hay nada");
                 }
                 
-                //cadena = llamada.getString(2);// recupero la cadena
             
             llamada.close();    
         } 
@@ -153,8 +152,53 @@ public class TrabajadorBD extends GenericoBD {
                     System.out.println("No hay nada");
                 }
                 
-                //cadena = llamada.getString(2);// recupero la cadena
+            llamada.close();    
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+
+        }
+        cerrarConexion(con);
+        return listaTrabajadores;
+    }
+    public ArrayList consultaListaTrab(){
+        GenericoBD generico= new GenericoBD();
+        String sql = "";
+        ArrayList <Trabajador> listaTrabajadores=new ArrayList();
+        try {
+            //Obtenemos los códigos y nombres de todos los departamentos
+            sql = "{ call buscar_todos(?) } ";
+            con=generico.abrirConexion(con);
             
+            CallableStatement llamada = con.prepareCall(sql);
+            
+                // Preparamos la llamada
+
+            llamada.registerOutParameter(1, OracleTypes.CURSOR); // Cadena devuelta
+                
+                
+                
+                llamada.execute(); // ejecutar el procedimiento
+                ResultSet rs = null;
+                rs = (ResultSet) llamada.getObject(1);
+
+                
+                if(rs.next()){
+                    do{
+                        if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("LOGISTICA")==0){ 
+                            Logistica tLogis=G2vJovi.trabajadorLogistica(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
+                            listaTrabajadores.add(tLogis);
+                        } 
+                        if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("ADMINISTRACION")==0){ 
+                            Administracion tAdmin=G2vJovi.trabajadorAdministracion(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
+                            listaTrabajadores.add(tAdmin);
+                        } 
+                    }while(rs.next());
+                }
+                else{
+                    System.out.println("No hay nada");
+                }
+                
             llamada.close();    
         } 
         catch (Exception e) {
@@ -195,7 +239,7 @@ public class TrabajadorBD extends GenericoBD {
         String sql = "";
         try {
             //Obtenemos los códigos y nombres de todos los departamentos
-            sql = "update trabajador set nombre = ?,apellidouno=?,apellidodos=?,calle=?,portal=?,piso=?,mano=?,telefonopersonal=?,telefonoempresa=?,salario=?,tipotrabajador=?,fechanac=?, centro_idcentro=(select idcentro from centro where upper(nombre) = ?)where upper(dni)=?";
+            sql = "update trabajador set nombre = ?,apellidouno=?,apellidodos=?,calle=?,portal=?,piso=?,mano=?,telefonopersonal=?,telefonoempresa=?,salario=?,tipotrabajador=?,fechanac=to_date(?,'dd/mm/yy'), centro_idcentro=(select idcentro from centro where upper(nombre) = ?)where upper(dni)=?";
             con=generico.abrirConexion(con);
             PreparedStatement llamada = con.prepareStatement(sql);
 

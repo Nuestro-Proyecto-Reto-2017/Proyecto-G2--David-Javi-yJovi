@@ -220,9 +220,9 @@ public class CentroBD {
                 
                 if(rs.next()){
                     do{
-                            Centro cCentro=G2vJovi.centroC(rs.getString("NOMBRE"),rs.getString("CALLE"),rs.getString("NUMERO"),rs.getString("CODIGOPOSTAL"),rs.getString("CIUDAD"),rs.getString("PROVINCIA"),rs.getString("TELEFONO"));
-                            cCentro.setEncontrado(true);
-                            listaCentros.add(cCentro);
+                        Centro cCentro=G2vJovi.centroC(rs.getString("NOMBRE"),rs.getString("CALLE"),rs.getString("NUMERO"),rs.getString("CODIGOPOSTAL"),rs.getString("CIUDAD"),rs.getString("PROVINCIA"),rs.getString("TELEFONO"));
+                        cCentro.setEncontrado(true);
+                        listaCentros.add(cCentro);
                     }while(rs.next());
                 }
                 else{

@@ -10,7 +10,6 @@ IS
   end;
 
   --=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
-  /*MAL necesita modificacion*/
   procedure visualizar_datos_centro_nombre (p_nombreEntrada in varchar2,c_centros out tcursor)
   is
   begin

@@ -211,6 +211,10 @@ public class G2vJovi {
         listaT =bdTrabajador.consultaPk(vdni);
         return listaT;
     }
+    public ArrayList ejecutarconsultasListaTrab(){
+        listaT =bdTrabajador.consultaListaTrab();
+        return listaT;
+    }
     public ArrayList ejecutarconsultasPkc(String vnombreC){
         listaC =bdCentro.consultaPk(vnombreC);
         return listaC;
