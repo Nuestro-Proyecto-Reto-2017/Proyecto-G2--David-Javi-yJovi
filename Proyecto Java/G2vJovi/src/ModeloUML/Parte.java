@@ -1,7 +1,6 @@
 
 package ModeloUML;
 
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,10 +14,10 @@ public class Parte {
    private LocalTime horasTrabajadas;
    
    private Logistica logistica;
-   private ArrayList <Administracion> administradores;
    private Vehiculo vehiculo;
    private ArrayList <Salida> salidas;
    private Gasto gasto;
+   private Aviso aviso;
 
     public Parte() {
     }
@@ -79,14 +78,6 @@ public class Parte {
         this.logistica = logistica;
     }
 
-    public ArrayList<Administracion> getAdministradores() {
-        return administradores;
-    }
-
-    public void setAdministradores(ArrayList<Administracion> administradores) {
-        this.administradores = administradores;
-    }
-
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
@@ -111,13 +102,14 @@ public class Parte {
         this.gasto = gasto;
     }
 
-    public void calcularHorasTrabajadas(ArrayList<Salida>salidas){
-        
-        
-        
+    public Aviso getAviso() {
+        return aviso;
     }
-   
-   
-   
+
+    public void setAviso(Aviso aviso) {
+        this.aviso = aviso;
+    }
+
+
    
 }

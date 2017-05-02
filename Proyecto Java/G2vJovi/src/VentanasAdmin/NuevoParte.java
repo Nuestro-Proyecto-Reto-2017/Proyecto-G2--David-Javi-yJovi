@@ -64,7 +64,6 @@ public class NuevoParte extends javax.swing.JDialog {
         parte.setFechaDelSistema(fsistema);
         parte.setHorasTrabajadas(null);
         parte.setLogistica(null);
-        parte.setAdministradores(null);
         parte.setVehiculo(null);
         parte.setSalidas(null);
         parte.setGasto(gast);

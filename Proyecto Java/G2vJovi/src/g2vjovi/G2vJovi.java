@@ -306,13 +306,8 @@ public class G2vJovi {
     Integer resto=minEntreHoras%60;
     Integer horasTotales=minEntreHoras/60;
     
-     //PARA COMPROBAR
-    //System.out.println(horasTotales+" hora y "+resto+ " minutos");
-    
     sumaTotalDeHorasTrabajadas(horasTotales,resto);
     
-   
-   
     }
     public static void sumaTotalDeHorasTrabajadas(Integer horas,Integer min){
 
@@ -322,9 +317,9 @@ public class G2vJovi {
         
         if(totalMinutosTrabajados>60){
            
-            totalMinutosTrabajados=totalMinutosTrabajados%60;
             exmin=totalMinutosTrabajados/60;
-
+            totalMinutosTrabajados=totalMinutosTrabajados%60;
+  
         }
         
         totalHorasTrabajadas+=horas+exmin;
@@ -360,6 +355,15 @@ public class G2vJovi {
         
         totalHorasTrabajadas=totalHorasTrabajadas-horasTotales;
         totalMinutosTrabajados=totalMinutosTrabajados-resto;
+        
+        while(0>totalMinutosTrabajados){
+            
+            totalHorasTrabajadas--;
+            totalMinutosTrabajados+=60;
+            
+        }
+        
+       
         
         //para comprobar
          System.out.println("TRAS RESTAR => "+totalHorasTrabajadas+" horas y  "+totalMinutosTrabajados+" miniutos");
