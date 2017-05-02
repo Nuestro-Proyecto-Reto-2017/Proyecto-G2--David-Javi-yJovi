@@ -22,7 +22,7 @@ public class GenericoBD {
 
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            conexion = DriverManager.getConnection("jdbc:oracle:thin:@10.10.10.9:1521:db12102","system", "oracle");  
+            conexion = DriverManager.getConnection("jdbc:oracle:thin:@10.10.10.9:1521:db12102","dawxml", "dawxml");  
         }
         catch(Exception e){
             javax.swing.JOptionPane.showMessageDialog(null, e);

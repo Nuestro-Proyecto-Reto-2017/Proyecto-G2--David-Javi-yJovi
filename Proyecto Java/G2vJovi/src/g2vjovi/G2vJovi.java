@@ -36,9 +36,13 @@ public class G2vJovi {
     private static TrabajadorBD bdTrabajador = new TrabajadorBD();
     private static CentroBD bdCentro = new CentroBD();
     private static UsuarioBD bdusuario= new UsuarioBD();
+    private static ModificarUsuario pu;
+    
+    
     
     public static void main(String[] args) {
         abrirVentanaAdministracion();
+       
     }
     public static void abrirVentanaAdministracion(){
         vAdministracion = new VentanaAdministracion();
@@ -233,13 +237,29 @@ public class G2vJovi {
     
     
     
-    public void generarUsuario(String usuario, String contraseña){
+    public static void abrirventanaUsuario(){
+        pu = new ModificarUsuario(new javax.swing.JFrame(),true);
+        pu.setVisible(true);
+        
+    }
+    public static void cerrarventanaUsuario(){ 
+        pu.dispose();
+    }
+    
+    public static Usuario buscarUsuario(String dni)throws Exception{
+        Usuario u = new Usuario();
+        
+        u=bdusuario.consultarTrabajador(dni);
+       return u; 
+    }
+    
+    public static int generarUsuario(String usuario, String contraseña)throws Exception{
     Usuario u= new Usuario();
     u.setUsuario(usuario);
     u.setPassword(contraseña);
-    bdusuario.actualizarTrabajador(u,String dni)
-    
-    
+   int x= bdusuario.actualizarTrabajador(u);
+      
+   return x; 
     }
     
 }

@@ -26,8 +26,8 @@ public class Fase2 {
     
      
      //centros();
-    trabajadores();
-   //vehiculos();
+    //trabajadores();
+   vehiculos();
         
       
     }

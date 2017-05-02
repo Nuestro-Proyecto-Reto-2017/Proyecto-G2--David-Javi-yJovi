@@ -42,6 +42,8 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         mNuevoTrabajador = new javax.swing.JMenuItem();
         mModificarTrabajador = new javax.swing.JMenuItem();
         mBorrarTrabajador = new javax.swing.JMenuItem();
+        jmPerfil = new javax.swing.JMenu();
+        mActualizarPerfil = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -132,6 +134,24 @@ public class VentanaAdministracion extends javax.swing.JFrame {
 
         jMenuBar1.add(mAdministrarTrabajadores);
 
+        jmPerfil.setText("Perfil");
+        jmPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmPerfilActionPerformed(evt);
+            }
+        });
+
+        mActualizarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/user2.png"))); // NOI18N
+        mActualizarPerfil.setText("Actualizar Perfil");
+        mActualizarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mActualizarPerfilActionPerformed(evt);
+            }
+        });
+        jmPerfil.add(mActualizarPerfil);
+
+        jMenuBar1.add(jmPerfil);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,6 +210,14 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         G2vJovi.abrirVentanaBuscarCentro();
     }//GEN-LAST:event_mBuscarCentroActionPerformed
 
+    private void jmPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPerfilActionPerformed
+      
+    }//GEN-LAST:event_jmPerfilActionPerformed
+
+    private void mActualizarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mActualizarPerfilActionPerformed
+         G2vJovi.abrirventanaUsuario();
+    }//GEN-LAST:event_mActualizarPerfilActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,6 +258,8 @@ public class VentanaAdministracion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JMenu jmPerfil;
+    private javax.swing.JMenuItem mActualizarPerfil;
     private javax.swing.JMenu mAdminCentros;
     private javax.swing.JMenu mAdministrarTrabajadores;
     private javax.swing.JMenuItem mBorrarCentro;
