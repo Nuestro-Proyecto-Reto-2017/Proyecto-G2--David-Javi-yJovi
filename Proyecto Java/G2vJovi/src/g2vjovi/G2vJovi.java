@@ -330,11 +330,12 @@ public class G2vJovi {
         totalHorasTrabajadas+=horas+exmin;
         
         //Para comprobar
-        System.out.println(totalHorasTrabajadas+" "+totalMinutosTrabajados);
+        System.out.println("SUMA DE HORAS POR SALIDA: "+totalHorasTrabajadas+" horas y "+totalMinutosTrabajados+ " minutos");
     }
     public static void restarDeltotalDeHorasTrabajadas(String pos){
         
         int index=Integer.parseInt(pos);
+        index--;
         LocalTime hs=listaDeSalidas.get(index).getHoraSalida();
         LocalTime hll=listaDeSalidas.get(index).getHoraLLegada();
         
@@ -357,10 +358,12 @@ public class G2vJovi {
         Integer resto=minEntreHoras%60;
         Integer horasTotales=minEntreHoras/60;
         
-        //falta completar esta funcion
+        totalHorasTrabajadas=totalHorasTrabajadas-horasTotales;
+        totalMinutosTrabajados=totalMinutosTrabajados-resto;
         
+        //para comprobar
+         System.out.println("TRAS RESTAR => "+totalHorasTrabajadas+" horas y  "+totalMinutosTrabajados+" miniutos");
     }
-   
     public static Gasto registrarGastos(String gastoGasoil, String gastoPeajes, String gastoDietas, String otrosGastos ){
         
         Float gg=0f;
