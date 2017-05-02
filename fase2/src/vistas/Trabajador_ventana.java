@@ -614,9 +614,9 @@ public class Trabajador_ventana extends javax.swing.JFrame {
         
    java.util.Date date1= dcfechaNac.getSelectedDate().getTime();
    
-        String x= date1.toString();
+     //   String x= date1.toString();
         
-        System.out.println(x);
+       // System.out.println(x);
        
 //SimpleDateFormat sdf = new SimpleDateFormat("EE MMM dd hh:mm:ss z yyyy");
 //java.util.Date sqldate = sdf.parse(x);
