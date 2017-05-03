@@ -3,46 +3,53 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package umlBD;
+package ModeloBD;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import uml.Centro;
-import uml.Vehiculo;
+import ModeloUML.Centro;
+import ModeloUML.Vehiculo;
 import excepciones.*;
+import ModeloBD.GenericoBD;
+import java.sql.Connection;
 
 
 /**
  *
  * @author 1GLM07
  */
-public class VehiculoBD {
+public class VehiculoBD extends GenericoBD{
+      Connection con ;
     
-    public  static void anadirVehiculo(Vehiculo v) throws Exception {
-      
+    public   void anadirVehiculo(Vehiculo v) throws Exception {
+       GenericoBD generico =new GenericoBD();
+       con=generico.abrirConexion(con);
         
-        PreparedStatement insertVehiculo = conexionBD.conectar().prepareStatement("insert into vehiculo values (?,?,?)");
+        PreparedStatement insertVehiculo = con.prepareStatement("insert into vehiculo values (?,?,?)");
         insertVehiculo.setString(1, v.getMatricula());
         insertVehiculo.setString(2, v.getMarca());
         insertVehiculo.setString(3, v.getModelo());
         int fila=insertVehiculo.executeUpdate();
         javax.swing.JOptionPane.showMessageDialog(null,"se ha(n) insertado "+ fila+" fila(s)");
-        conexionBD.dc();
+       con.close();
     }
 
-    public static  void borrarVehiculo(String matricula) throws Exception {
-        
-        PreparedStatement insertVehiculo = conexionBD.conectar().prepareStatement("delete from vehiculo where matricula=?");
+    public   void borrarVehiculo(String matricula) throws Exception {
+         GenericoBD generico =new GenericoBD();
+         con=generico.abrirConexion(con);
+         
+        PreparedStatement insertVehiculo =con.prepareStatement("delete from vehiculo where matricula=?");
         insertVehiculo.setString(1, matricula);
          int fila =insertVehiculo.executeUpdate();
           javax.swing.JOptionPane.showMessageDialog(null,"se ha(n) borrado "+ fila+" fila(s)");
-        conexionBD.dc();
+       con.close();;
     }
     
-     public  static String consultarVehiculos() throws Exception {
+     public  String consultarVehiculos() throws Exception {
       
-        
-        PreparedStatement selectVehiculos = conexionBD.conectar().prepareStatement("select * from vehiculo");
+         GenericoBD generico =new GenericoBD();
+         con=generico.abrirConexion(con);
+        PreparedStatement selectVehiculos = con.prepareStatement("select * from vehiculo");
         
         ResultSet vehiculos=selectVehiculos.executeQuery();
         
@@ -56,17 +63,17 @@ public class VehiculoBD {
    
        
         
-        conexionBD.dc();
+      con.close();
         return lista;
      
         
         
     }
-     public static Vehiculo buscarVehiculo(String matricula)throws Exception {
-           conexionBD.conectar();
+     public  Vehiculo buscarVehiculo(String matricula)throws Exception {
+            GenericoBD generico =new GenericoBD();
            Vehiculo v=new Vehiculo();
-            
-             PreparedStatement buscarVehiculo = conexionBD.conectar().prepareStatement("select * from vehiculo where matricula=?");
+            con=generico.abrirConexion(con);
+             PreparedStatement buscarVehiculo = con.prepareStatement("select * from vehiculo where matricula=?");
              buscarVehiculo.setString(1, matricula);
            ResultSet datos=  buscarVehiculo.executeQuery();
           if(datos.next()){ 
@@ -83,12 +90,12 @@ public class VehiculoBD {
              
      }
      
-     public static void actualizarVehiculo(Vehiculo v,String matriculaID) throws Exception{
+     public  void actualizarVehiculo(Vehiculo v,String matriculaID) throws Exception{
         
        
-             conexionBD.conectar();
-            
-             PreparedStatement actualizarVehiculo = conexionBD.conectar().prepareStatement("update vehiculo set matricula=?,marca=?,modelo=? where matricula=?");
+          GenericoBD generico =new GenericoBD();
+            con=generico.abrirConexion(con);
+             PreparedStatement actualizarVehiculo =con.prepareStatement("update vehiculo set matricula=?,marca=?,modelo=? where matricula=?");
              actualizarVehiculo.setString(1, v.getMatricula());
              actualizarVehiculo.setString(2, v.getMarca());
              actualizarVehiculo.setString(3, v.getModelo());
@@ -102,7 +109,7 @@ public class VehiculoBD {
             int x=actualizarVehiculo.executeUpdate();
             javax.swing.JOptionPane.showMessageDialog(null,"se han actualizado " +x+"filas");
             
-            conexionBD.dc();
+         con.close();
         
     
 }

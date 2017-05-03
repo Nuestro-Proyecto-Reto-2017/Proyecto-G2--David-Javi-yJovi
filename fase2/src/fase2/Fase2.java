@@ -5,11 +5,13 @@
  */
 package fase2;
 
+import VentanasAdmin.Vehiculo_ventana;
+import ModeloBD.VehiculoBD;
 import java.sql.*;
 import java.util.ArrayList;
 import uml.Centro;
 import uml.Trabajador;
-import uml.Vehiculo;
+import ModeloUML.Vehiculo;
 import vistas.*;
 import umlBD.*;
 

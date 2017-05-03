@@ -5,6 +5,7 @@
  */
 package uml;
 
+import ModeloUML.Vehiculo;
 import umlBD.AdministracionBD;
 import java.util.ArrayList;
 

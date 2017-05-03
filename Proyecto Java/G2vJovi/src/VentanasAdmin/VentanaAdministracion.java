@@ -44,6 +44,8 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         mBorrarTrabajador = new javax.swing.JMenuItem();
         jmPerfil = new javax.swing.JMenu();
         mActualizarPerfil = new javax.swing.JMenuItem();
+        mVehiculos = new javax.swing.JMenu();
+        jmvehiculos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -152,6 +154,18 @@ public class VentanaAdministracion extends javax.swing.JFrame {
 
         jMenuBar1.add(jmPerfil);
 
+        mVehiculos.setText("Vehiculos");
+
+        jmvehiculos.setText("Administrar Vehciulos");
+        jmvehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmvehiculosActionPerformed(evt);
+            }
+        });
+        mVehiculos.add(jmvehiculos);
+
+        jMenuBar1.add(mVehiculos);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,6 +232,10 @@ public class VentanaAdministracion extends javax.swing.JFrame {
          G2vJovi.abrirventanaUsuario();
     }//GEN-LAST:event_mActualizarPerfilActionPerformed
 
+    private void jmvehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmvehiculosActionPerformed
+        g2vjovi.G2vJovi.abrirVentanaVehiculos();
+    }//GEN-LAST:event_jmvehiculosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -259,6 +277,7 @@ public class VentanaAdministracion extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenu jmPerfil;
+    private javax.swing.JMenuItem jmvehiculos;
     private javax.swing.JMenuItem mActualizarPerfil;
     private javax.swing.JMenu mAdminCentros;
     private javax.swing.JMenu mAdministrarTrabajadores;
@@ -270,5 +289,6 @@ public class VentanaAdministracion extends javax.swing.JFrame {
     private javax.swing.JMenuItem mModificarTrabajador;
     private javax.swing.JMenuItem mNuevoCentro;
     private javax.swing.JMenuItem mNuevoTrabajador;
+    private javax.swing.JMenu mVehiculos;
     // End of variables declaration//GEN-END:variables
 }

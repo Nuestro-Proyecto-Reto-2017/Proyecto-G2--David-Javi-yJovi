@@ -37,7 +37,7 @@ public class G2vJovi {
     private static CentroBD bdCentro = new CentroBD();
     private static UsuarioBD bdusuario= new UsuarioBD();
     private static ModificarUsuario pu;
-    
+    private static VehiculoBD bdvehiculo =new VehiculoBD();
     
     
     public static void main(String[] args) {
@@ -262,4 +262,64 @@ public class G2vJovi {
    return x; 
     }
     
-}
+    
+    
+     public static void abrirVentanaVehiculos(){
+        VentanaVehiculo vehiculo= new VentanaVehiculo(new javax.swing.JFrame(),true);
+        vehiculo.setVisible(true);
+        
+        
+    }
+    
+       public static void generarVehiculo(String matricula, String marca, String modelo) throws Exception{
+         
+           
+             Vehiculo v =new Vehiculo();
+             v.setMatricula(matricula);
+             v.setMarca(marca);
+             v.setModelo(modelo);
+             
+             bdvehiculo.anadirVehiculo(v);
+             
+           
+         }
+
+    public static void borrarVehiculo(String matricula)throws Exception {
+     
+            Vehiculo v2 =new Vehiculo();
+            v2.setMatricula(matricula);
+            
+            bdvehiculo.borrarVehiculo(matricula);
+        
+        
+    }
+    public static String consultarVehiculos()throws Exception{
+        
+        
+ String vehiculos= bdvehiculo.consultarVehiculos();
+    
+    return vehiculos;
+       }
+    public static void actualizarVehiculo(String matricula,String marca, String modelo,String matriculaID)throws Exception{
+        Vehiculo v1=new Vehiculo();
+        
+        v1.setMatricula(matricula);
+        v1.setMarca(marca);
+        v1.setModelo(modelo);
+        
+        bdvehiculo.actualizarVehiculo(v1,matriculaID);
+        
+    }
+     public static Vehiculo consultarVehiculo(String matricula)throws Exception{
+        Vehiculo v =new Vehiculo();
+        
+        v= bdvehiculo.buscarVehiculo(matricula);
+         
+        return v;
+     }
+    
+         }
+    
+    
+    
+
