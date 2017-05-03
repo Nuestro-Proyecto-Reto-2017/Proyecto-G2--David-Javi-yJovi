@@ -282,31 +282,31 @@ public class TrabajadorBD extends GenericoBD {
         String sql = "";
         try {
             //Obtenemos los códigos y nombres de todos los departamentos
-            sql = "insert into trabajador (dni,nombre,apellidouno,apellidodos,calle,portal,piso,mano,telefonopersonal,telefonoempresa,salario,tipotrabajador,fechanac,centro_idcentro=(select idcentro from centro where upper(nombre) = ?)) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            sql = "insert into trabajador (dni,nombre,apellidouno,apellidodos,calle,portal,piso,mano,telefonopersonal,telefonoempresa,salario,tipotrabajador,fechanac,centro_idcentro) values(?,?,?,?,?,?,?,?,?,?,?,?,to_date(?,'dd/mm/yy'),(select idcentro from centro where upper(nombre) = ?))";
             con=generico.abrirConexion(con);
             PreparedStatement llamada = con.prepareStatement(sql);
 
                 // Preparamos la llamada
-                llamada.setString(1, nombreCentro.toUpperCase());
-                llamada.setString(2, t.getDni());
-                llamada.setString(3, t.getNombre()); // param de entrada    
-                llamada.setString(4, t.getApellidoUno());
-                llamada.setString(5, t.getApellidoDos());
-                llamada.setString(6, t.getCalle());
-                llamada.setString(7, t.getPostal());
-                llamada.setString(8, t.getPiso());
-                llamada.setString(9, t.getMano());
-                llamada.setString(10, t.getTelefonoPersonal());
-                llamada.setString(11, t.getTelefonoEmpresa());
-                llamada.setFloat(12, t.getSalario());
+                llamada.setString(14, nombreCentro.toUpperCase());
+                llamada.setString(1, t.getDni());
+                llamada.setString(2, t.getNombre()); // param de entrada    
+                llamada.setString(3, t.getApellidoUno());
+                llamada.setString(4, t.getApellidoDos());
+                llamada.setString(5, t.getCalle());
+                llamada.setString(6, t.getPostal());
+                llamada.setString(7, t.getPiso());
+                llamada.setString(8, t.getMano());
+                llamada.setString(9, t.getTelefonoPersonal());
+                llamada.setString(10, t.getTelefonoEmpresa());
+                llamada.setFloat(11, t.getSalario());
                 if(t.getClass().getSimpleName().compareToIgnoreCase("Administracion")==0){
-                    llamada.setString(13, "ADMINISTRACION");
+                    llamada.setString(12, "ADMINISTRACION");
                 }
                 else{
-                    llamada.setString(14, "LOGISTICA");
+                    llamada.setString(12, "LOGISTICA");
                 }
                 java.sql.Date sqlFechaNac = new java.sql.Date(t.getFechaNac().getTime());
-                llamada.setDate(15, sqlFechaNac);
+                llamada.setDate(13, sqlFechaNac);
                 
                 
                 llamada.executeUpdate(); // ejecutar el procedimiento

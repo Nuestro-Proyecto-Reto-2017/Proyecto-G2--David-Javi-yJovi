@@ -12,13 +12,14 @@ import java.util.ArrayList;
  * @author 1ged02
  */
 public class Parte {
+    private int ID;
     private float kmInicio;
     private float kmFinal;
     private String tipoParte;
     private Trabajador trabajadorDelParte;
     private ArrayList <Salida> salidasDelParte;
     private Vehiculo vehiculoDelParte;
-    private ArrayList<Aviso> avisosDelParte;
+    private Aviso avisoDelParte;
     private Gasto gastoDelParte;
 
     public Parte() {
@@ -30,14 +31,25 @@ public class Parte {
         this.tipoParte = tipoParte;
     }
 
-    public Parte(float kmInicio, float kmFinal, String tipoParte, Trabajador trabajadorDelParte, ArrayList<Salida> salidasDelParte, Vehiculo vehiculoDelParte, ArrayList<Aviso> avisosDelParte, Gasto gastoDelParte) {
+    public Parte(int ID, float kmInicio, float kmFinal, String tipoParte, Trabajador trabajadorDelParte, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte) {
+        this.ID = ID;
+        this.kmInicio = kmInicio;
+        this.kmFinal = kmFinal;
+        this.tipoParte = tipoParte;
+        this.trabajadorDelParte = trabajadorDelParte;
+        this.vehiculoDelParte = vehiculoDelParte;
+        this.avisoDelParte = avisoDelParte;
+        this.gastoDelParte = gastoDelParte;
+    }
+    
+    public Parte(float kmInicio, float kmFinal, String tipoParte, Trabajador trabajadorDelParte, ArrayList<Salida> salidasDelParte, Vehiculo vehiculoDelParte, Aviso avisosDelParte, Gasto gastoDelParte) {
         this.kmInicio = kmInicio;
         this.kmFinal = kmFinal;
         this.tipoParte = tipoParte;
         this.trabajadorDelParte = trabajadorDelParte;
         this.salidasDelParte = salidasDelParte;
         this.vehiculoDelParte = vehiculoDelParte;
-        this.avisosDelParte = avisosDelParte;
+        this.avisoDelParte = avisosDelParte;
         this.gastoDelParte = gastoDelParte;
     }
 
@@ -91,12 +103,12 @@ public class Parte {
         this.vehiculoDelParte = vehiculoDelParte;
     }
 
-    public ArrayList<Aviso> getAvisosDelParte() {
-        return avisosDelParte;
+    public Aviso getAvisosDelParte() {
+        return avisoDelParte;
     }
 
-    public void setAvisosDelParte(ArrayList<Aviso> avisosDelParte) {
-        this.avisosDelParte = avisosDelParte;
+    public void setAvisosDelParte(Aviso avisoDelParte) {
+        this.avisoDelParte = avisoDelParte;
     }
 
     public Gasto getGastoDelParte() {

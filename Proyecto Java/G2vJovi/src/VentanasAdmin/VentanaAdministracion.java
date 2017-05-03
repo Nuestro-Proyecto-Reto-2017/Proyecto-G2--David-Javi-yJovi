@@ -42,6 +42,8 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         mNuevoTrabajador = new javax.swing.JMenuItem();
         mModificarTrabajador = new javax.swing.JMenuItem();
         mBorrarTrabajador = new javax.swing.JMenuItem();
+        mAdministrarPartes = new javax.swing.JMenu();
+        mValidarPartes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -132,6 +134,18 @@ public class VentanaAdministracion extends javax.swing.JFrame {
 
         jMenuBar1.add(mAdministrarTrabajadores);
 
+        mAdministrarPartes.setText("Administrar Partes");
+
+        mValidarPartes.setText("Validar Partes");
+        mValidarPartes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mValidarPartesActionPerformed(evt);
+            }
+        });
+        mAdministrarPartes.add(mValidarPartes);
+
+        jMenuBar1.add(mAdministrarPartes);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,6 +204,10 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         G2vJovi.abrirVentanaBuscarCentro();
     }//GEN-LAST:event_mBuscarCentroActionPerformed
 
+    private void mValidarPartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mValidarPartesActionPerformed
+        G2vJovi.abrirVentanaValidarPartes();
+    }//GEN-LAST:event_mValidarPartesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,6 +249,7 @@ public class VentanaAdministracion extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenu mAdminCentros;
+    private javax.swing.JMenu mAdministrarPartes;
     private javax.swing.JMenu mAdministrarTrabajadores;
     private javax.swing.JMenuItem mBorrarCentro;
     private javax.swing.JMenuItem mBorrarTrabajador;
@@ -240,5 +259,6 @@ public class VentanaAdministracion extends javax.swing.JFrame {
     private javax.swing.JMenuItem mModificarTrabajador;
     private javax.swing.JMenuItem mNuevoCentro;
     private javax.swing.JMenuItem mNuevoTrabajador;
+    private javax.swing.JMenuItem mValidarPartes;
     // End of variables declaration//GEN-END:variables
 }
