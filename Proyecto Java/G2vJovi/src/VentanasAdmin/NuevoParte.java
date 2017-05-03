@@ -7,9 +7,8 @@ package VentanasAdmin;
 
 
 import ModeloUML.Gasto;
-import ModeloUML.Parte;
 import g2vjovi.G2vJovi;
-import java.util.Date;
+
 
 
 public class NuevoParte extends javax.swing.JDialog {
@@ -52,21 +51,12 @@ public class NuevoParte extends javax.swing.JDialog {
     
     public void crearParte(String tipo){
         
+        G2vJovi.registarAviso();
         Gasto gast=G2vJovi.registrarGastos(jTggasoil.getText(), jTgpeajes.getText(), jTgdietas.getText(), jTotros.getText());
-        Date fsistema= new Date();
+        G2vJovi.registrarSalidas();
+        G2vJovi.registrarParte(Float.parseFloat(jTkini.getText()),Float.parseFloat(jTkfinal.getText()),tipo,gast,jCBvehiculos.getSelectedItem().toString());
         
-        
-        //darle una vuelta, no me gusta
-        Parte parte=new Parte();       
-        parte.setKmInicial(Float.parseFloat(jTkini.getText()));
-        parte.setKmFinal(Float.parseFloat(jTkfinal.getText()));
-        parte.setTipo(tipo);
-        parte.setFechaDelSistema(fsistema);
-        parte.setHorasTrabajadas(null);
-        parte.setLogistica(null);
-        parte.setVehiculo(null);
-        parte.setSalidas(null);
-        parte.setGasto(gast);
+      
 
     }
     /**
@@ -80,7 +70,7 @@ public class NuevoParte extends javax.swing.JDialog {
 
         jTextField9 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCBvehiculos = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jTkini = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -345,7 +335,7 @@ public class NuevoParte extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCBvehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -388,7 +378,7 @@ public class NuevoParte extends javax.swing.JDialog {
                         .addComponent(jBcerrar)))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCBvehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jTkini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
@@ -417,7 +407,7 @@ public class NuevoParte extends javax.swing.JDialog {
 
     private void jBcerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcerrarActionPerformed
         // BOTON PARA CERRAR LA VENTANA DE LOS PARTES:
-        tipo="SinCerrar";
+        tipo="SC";
         //crearParte(tipo);
         G2vJovi.cerrarVentanaCreacionPartes();
    
@@ -459,7 +449,7 @@ public class NuevoParte extends javax.swing.JDialog {
 
     private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
         // BOTON DE ACEPTAR PARTE, UNA VEZ QUE HAS FINALIZADO DE RELLENARLO:
-        tipo="Cerrado";
+        tipo="C";
         //crearParte(tipo);
         G2vJovi.cerrarVentanaCreacionPartes();
     }//GEN-LAST:event_jBaceptarActionPerformed
@@ -513,7 +503,7 @@ public class NuevoParte extends javax.swing.JDialog {
     private javax.swing.JButton jBmostrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCBsalidas;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCBvehiculos;
     private javax.swing.JFormattedTextField jFThllegada;
     private javax.swing.JFormattedTextField jFThsalida;
     private javax.swing.JLabel jLabel1;

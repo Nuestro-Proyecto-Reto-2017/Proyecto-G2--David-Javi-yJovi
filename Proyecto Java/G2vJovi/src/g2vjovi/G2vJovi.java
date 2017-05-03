@@ -7,6 +7,7 @@ import VentanasAdmin.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class G2vJovi {
@@ -33,6 +34,10 @@ public class G2vJovi {
     private static ArrayList<Salida>listaDeSalidas;
     private static Integer totalHorasTrabajadas;
     private static Integer totalMinutosTrabajados;
+    private static AvisoBD avisoBD;
+    private static GastoBD gastoBD;
+    private static SalidaBD salidaBD;
+    private static Integer idParte;// id obtenido al iniciar sesion, igual sobra pero mañana lo comento 
     
     public static void main(String[] args) {
         listaDeSalidas=new ArrayList();
@@ -236,6 +241,7 @@ public class G2vJovi {
         
         totalHorasTrabajadas=0;
         totalMinutosTrabajados=0;
+        listaDeSalidas.clear();;
         vNuevoParte=new NuevoParte(vLogistica, true);
         vNuevoParte.setVisible(true);
        
@@ -397,7 +403,42 @@ public class G2vJovi {
         }
         Gasto gasto= new Gasto(gg,gp,gd,og);
         
+        gastoBD.registrarGastosEBD(gg, gp, gd, og);
+        
         return gasto;
+        
+    }
+    public static void registrarParte(Float kmInicial, Float kmFinal, String tipo, Gasto gasto, String vehiculo  ){
+   
+        Date fsistema= new Date();
+        
+        
+        
+        
+    }
+    public static void registrarSalidas(){
+        
+        salidaBD.registrarSalidasEBD(listaDeSalidas, idParte );
+        
+
+    }
+    public static void registarAviso(){
+
+        String mensaje="";
+        
+        if (totalHorasTrabajadas>8){
+
+            int hextra=totalHorasTrabajadas-8;
+            
+            mensaje="HAS TRABAJADO "+hextra+ " HORAS";
+            
+        }else{
+            
+            
+            mensaje="NO HAS CUMPLIDO CON EL MINIMO DE HORAS ESTABLECIDO";
+        }
+        
+        avisoBD.registrarAvidoEBD(mensaje);
         
     }
 
