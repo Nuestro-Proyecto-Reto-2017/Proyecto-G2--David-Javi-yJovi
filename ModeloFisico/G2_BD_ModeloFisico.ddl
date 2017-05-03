@@ -11,6 +11,8 @@ drop table usuario cascade constraints;
 drop table trabajador cascade constraints;
 drop table centro cascade constraints;
 drop table vehiculo cascade constraints;
+drop table parteBasura cascade constraints;
+drop table salidaBasura cascade constraints;
 
 CREATE TABLE aviso (
     idaviso       NUMBER (5)
@@ -136,7 +138,46 @@ CREATE TABLE vehiculo (
     modelo          VARCHAR2(15) NOT NULL
 );
 
+CREATE TABLE parteBasura (
+    idpartebasura               NUMBER (5)
+      GENERATED ALWAYS AS IDENTITY 
+                        MINVALUE 1 
+                        MAXVALUE 99999
+                        INCREMENT BY 1 
+                        START WITH 1  
+                        NOORDER  
+                        NOCYCLE  NOT NULL ENABLE
+      CONSTRAINT parteBasura_pk PRIMARY KEY,
+    kminicio             float ,
+    kmfinal              float ,
+    tipoparte            VARCHAR2(15) ,
+    creado               VARCHAR2(9) ,
+    vehiculo_matricula   VARCHAR2(12) ,
+    aviso_idaviso        varchar2(100),
+    gastoG_idgasto        NUMBER(5),
+    gastoP_idgasto        NUMBER(5),
+    gastoD_idgasto        NUMBER(5),
+    gastoO_idgasto        NUMBER(5)
+);
 
+CREATE TABLE salidaBasura (
+    idsalida         NUMBER (5)
+      GENERATED ALWAYS AS IDENTITY 
+                        MINVALUE 1 
+                        MAXVALUE 99999
+                        INCREMENT BY 1 
+                        START WITH 1  
+                        NOORDER  
+                        NOCYCLE  NOT NULL ENABLE
+     CONSTRAINT salidaBasura_pk PRIMARY KEY,
+    horasalida      DATE,
+    horallegada     DATE,
+    albaran         VARCHAR2(15),
+    parteBasura_idparte   NUMBER(5) not null
+);
+
+ALTER TABLE salidaBasura ADD CONSTRAINT parteBasura_salida_fk FOREIGN KEY ( parteBasura_idparte )
+    REFERENCES parteBasura (idpartebasura);
 
 ALTER TABLE vehiculo ADD CONSTRAINT vehiculo_pk PRIMARY KEY ( matricula );
 

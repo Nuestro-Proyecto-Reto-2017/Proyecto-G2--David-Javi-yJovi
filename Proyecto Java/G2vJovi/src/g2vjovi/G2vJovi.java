@@ -7,7 +7,10 @@ package g2vjovi;
 
 import ModeloBD.*;
 import ModeloUML.*;
+import Parser.*;
 import VentanasAdmin.*;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -38,8 +41,17 @@ public class G2vJovi {
     private static TrabajadorBD bdTrabajador = new TrabajadorBD();
     private static CentroBD bdCentro = new CentroBD();
     
-    public static void main(String[] args) {
-        abrirVentanaAdministracion();
+    public static void main(String[] args ) throws ParseException, IOException  {
+        //abrirVentanaAdministracion();
+        
+        
+        DOMParserPartes dpe = new DOMParserPartes();
+
+        //call run example
+        
+        dpe.runExample();
+        
+        
     }
     public static void abrirVentanaAdministracion(){
         vAdministracion = new VentanaAdministracion();
