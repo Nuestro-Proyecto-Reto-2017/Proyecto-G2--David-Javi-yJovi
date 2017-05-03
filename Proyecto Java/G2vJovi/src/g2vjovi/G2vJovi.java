@@ -38,10 +38,27 @@ public class G2vJovi {
     private static UsuarioBD bdusuario= new UsuarioBD();
     private static ModificarUsuario pu;
     private static VehiculoBD bdvehiculo =new VehiculoBD();
+    private static LoginBD bdLogin =new LoginBD();
     
     
     public static void main(String[] args) {
-        abrirVentanaAdministracion();
+        String usuario="manolete12";
+        String contraseña="54";
+        
+        Credenciales c =new Credenciales();
+        c.setUser(usuario);
+        c.setPassw(contraseña);
+     try{   
+         
+        String tipo=bdLogin.login(c);
+     javax.swing.JOptionPane.showMessageDialog(null,tipo );
+     
+     }catch(Exception e){
+         javax.swing.JOptionPane.showMessageDialog(null, "Error"+e);
+     }
+        
+        
+      //  abrirVentanaAdministracion();
        
     }
     public static void abrirVentanaAdministracion(){
