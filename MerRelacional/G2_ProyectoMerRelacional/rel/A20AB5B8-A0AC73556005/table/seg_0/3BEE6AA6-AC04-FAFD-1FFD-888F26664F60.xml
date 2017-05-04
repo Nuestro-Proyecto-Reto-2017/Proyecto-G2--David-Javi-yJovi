@@ -16,8 +16,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>9</dataTypeSize>
-<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="nombre" id="0A218E06-143C-48A3-D78F-E974FE5C2779">
@@ -172,9 +171,10 @@
 <ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
 <dataTypeSize>5</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -188,14 +188,10 @@
 <ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>5</dataTypeSize>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="80A86200-97C5-5AA0-80C0-840CA822EB41" referredColumn="7BAA1D3B-8C90-F7C0-2727-EAE5F22C0F45"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -231,17 +227,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="9AFDB6D5-AF77-513D-CF1C-4BC872647B41"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="1EBDB85E-F901-E76A-612E-CA9DB36DDDC3" name="Trabajador_Usuario_FK">
-<createdBy>Jovi</createdBy>
-<createdTime>2017-04-01 07:53:15 UTC</createdTime>
-<generatorID>D44A99CD-6C7B-D9BA-BA26-A0438C014043</generatorID>
-<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="F45CD7ED-A292-ABF4-F2E3-816B554FC666"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

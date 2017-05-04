@@ -577,9 +577,6 @@
       </Properties>
     </Component>
     <Component class="datechooser.beans.DateChooserCombo" name="dcFechaNac">
-      <Properties>
-        <Property name="dch_enabled" type="boolean" value="false"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel28">
       <Properties>

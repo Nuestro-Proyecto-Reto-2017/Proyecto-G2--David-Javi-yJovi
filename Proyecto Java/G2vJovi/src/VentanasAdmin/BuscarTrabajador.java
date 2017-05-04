@@ -184,6 +184,7 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar por trabajador"));
 
+        tfNombre.setEnabled(false);
         tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfNombreFocusGained(evt);
@@ -208,7 +209,6 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         buttonGroup1.add(rbTrabajadorDni);
         rbTrabajadorDni.setText("buscar por DNI");
-        rbTrabajadorDni.setEnabled(false);
         rbTrabajadorDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbTrabajadorDniActionPerformed(evt);
@@ -217,7 +217,6 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         buttonGroup1.add(rbTrabajadorNombre);
         rbTrabajadorNombre.setText("buscar por Nombre");
-        rbTrabajadorNombre.setEnabled(false);
         rbTrabajadorNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbTrabajadorNombreActionPerformed(evt);
@@ -316,10 +315,6 @@ public class BuscarTrabajador extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tfNombreCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreCentroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfNombreCentroActionPerformed
     private void funcionCheckBox(boolean tipoCheck){
         if(cbTrabajador.isSelected()&&cbCentro.isSelected()){
             rbTrabajadorDni.setEnabled(true);
@@ -374,6 +369,7 @@ public class BuscarTrabajador extends javax.swing.JDialog {
             tfIdCentro.setEnabled(true);
         }
     }
+    /*
     private void funcionDisableRb(boolean tipoRb){
         if(tipoRb==true){
            rbTrabajadorNombre.setEnabled(false);
@@ -382,9 +378,8 @@ public class BuscarTrabajador extends javax.swing.JDialog {
         if(tipoRb==false){
            rbCentroNombre.setEnabled(false);
            rbCentroId.setEnabled(false); 
-        }
-        
-    }
+        }  
+    }*/
     private void cbTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTrabajadorActionPerformed
          funcionCheckBox(true);
     }//GEN-LAST:event_cbTrabajadorActionPerformed
@@ -392,10 +387,6 @@ public class BuscarTrabajador extends javax.swing.JDialog {
     private void cbTrabajadorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cbTrabajadorStateChanged
         
     }//GEN-LAST:event_cbTrabajadorStateChanged
-
-    private void cbCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCentroActionPerformed
-        funcionCheckBox(false);
-    }//GEN-LAST:event_cbCentroActionPerformed
 
     private void rbTrabajadorDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTrabajadorDniActionPerformed
         funcionRadioBoton(true);
@@ -405,47 +396,64 @@ public class BuscarTrabajador extends javax.swing.JDialog {
         funcionRadioBoton(true);
     }//GEN-LAST:event_rbTrabajadorNombreActionPerformed
 
-    private void rbCentroIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCentroIdActionPerformed
-        funcionRadioBoton(false);
-    }//GEN-LAST:event_rbCentroIdActionPerformed
-
-    private void rbCentroNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCentroNombreActionPerformed
-        funcionRadioBoton(false);
-    }//GEN-LAST:event_rbCentroNombreActionPerformed
-
     private void tfDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfDniActionPerformed
 
     private void tfDniFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDniFocusGained
-        funcionDisableRb(true);
+       // funcionDisableRb(true);
     }//GEN-LAST:event_tfDniFocusGained
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
-        funcionDisableRb(true);
+       // funcionDisableRb(true);
     }//GEN-LAST:event_tfNombreFocusGained
-
-    private void tfIdCentroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfIdCentroFocusGained
-        funcionDisableRb(false);
-    }//GEN-LAST:event_tfIdCentroFocusGained
-
-    private void tfNombreCentroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreCentroFocusLost
-        funcionDisableRb(false);
-    }//GEN-LAST:event_tfNombreCentroFocusLost
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
         G2vJovi.cerrarVentanaBuscarTrabajador();
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        ArrayList <Trabajador> consulta;
+        ArrayList <Trabajador> consulta = new ArrayList();
         String cadenaSalida="";
-        consulta=main.ejecutarconsultaNombreC(tfNombre.getText().toUpperCase());
-        for(int x=0;x<consulta.size();x++){
-            cadenaSalida+="DNI: "+consulta.get(x).getDni()+"\nNombre: "+consulta.get(x).getNombre()+"\nApellidos: "+consulta.get(x).getApellidoUno()+" "+consulta.get(x).getApellidoDos()+"\nDirección (Calle,Portal,Piso,Mano): "+consulta.get(x).getCalle()+", "+consulta.get(x).getPostal()+", "+consulta.get(x).getPiso()+", "+consulta.get(x).getMano()+"\nTelefono Personal: "+consulta.get(x).getTelefonoPersonal()+"\nTelefono Empresa: "+consulta.get(x).getTelefonoEmpresa()+"\nSalario: "+consulta.get(x).getSalario()+"\nFecha Nacimiento: "+consulta.get(x).getFechaNac()+"\nTipo: "+consulta.get(x).getDni()+"\n---------------------------\n";
+        if(rbTrabajadorNombre.isSelected()){
+            consulta=main.ejecutarconsultaNombreC(tfNombre.getText().toUpperCase());
         }
+        if (rbTrabajadorDni.isSelected()){
+            consulta=main.ejecutarconsultasPk(tfDni.getText().toUpperCase());
+        }
+        if (!rbTrabajadorDni.isSelected()&&!rbTrabajadorNombre.isSelected()){
+            consulta=main.ejecutarconsultasListaTrab();   
+        }
+        for(int x=0;x<consulta.size();x++){
+            cadenaSalida+="DNI: "+consulta.get(x).getDni()+"\nNombre: "+consulta.get(x).getNombre()+"\nApellidos: "+consulta.get(x).getApellidoUno()+" "+consulta.get(x).getApellidoDos()+"\nDirección (Calle,Portal,Piso,Mano): "+consulta.get(x).getCalle()+", "+consulta.get(x).getPostal()+", "+consulta.get(x).getPiso()+", "+consulta.get(x).getMano()+"\nTelefono Personal: "+consulta.get(x).getTelefonoPersonal()+"\nTelefono Empresa: "+consulta.get(x).getTelefonoEmpresa()+"\nSalario: "+consulta.get(x).getSalario()+"\nFecha Nacimiento: "+consulta.get(x).getFechaNac()+"\nTipo: "+consulta.get(x).getClass().getSimpleName()+"\n---------------------------\n";
+        }
+       
         javax.swing.JOptionPane.showMessageDialog(null, cadenaSalida);
     }//GEN-LAST:event_bBuscarActionPerformed
+
+    private void cbCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCentroActionPerformed
+        funcionCheckBox(false);
+    }//GEN-LAST:event_cbCentroActionPerformed
+
+    private void rbCentroNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCentroNombreActionPerformed
+        funcionRadioBoton(false);
+    }//GEN-LAST:event_rbCentroNombreActionPerformed
+
+    private void rbCentroIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCentroIdActionPerformed
+        funcionRadioBoton(false);
+    }//GEN-LAST:event_rbCentroIdActionPerformed
+
+    private void tfIdCentroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfIdCentroFocusGained
+       // funcionDisableRb(false);
+    }//GEN-LAST:event_tfIdCentroFocusGained
+
+    private void tfNombreCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreCentroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNombreCentroActionPerformed
+
+    private void tfNombreCentroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreCentroFocusLost
+       // funcionDisableRb(false);
+    }//GEN-LAST:event_tfNombreCentroFocusLost
 
     /**
      * @param args the command line arguments

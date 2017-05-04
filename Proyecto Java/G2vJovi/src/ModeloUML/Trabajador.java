@@ -24,10 +24,8 @@ public abstract class Trabajador {
     protected String telefonoEmpresa;
     protected float salario;
     protected Date fechaNac;
-    protected String tipoTrabajador;
     protected Centro centroDelTrabajador;
     protected Usuario usuarioDelTrabajador;
-    protected boolean estado;
     
     public String getDni() {
         return dni;
@@ -141,20 +139,6 @@ public abstract class Trabajador {
         this.usuarioDelTrabajador = usuarioDelTrabajador;
     }
 
-    public String getTipoTrabajador() {
-        return tipoTrabajador;
-    }
-
-    public void setTipoTrabajador(String tipoTrabajador) {
-        this.tipoTrabajador = tipoTrabajador;
-    }
-    
-    public void setEncontrado(boolean estado){
-        this.estado = estado;
-    }
-    public boolean getEncontrado (){
-        return estado;
-    }
 
     
     

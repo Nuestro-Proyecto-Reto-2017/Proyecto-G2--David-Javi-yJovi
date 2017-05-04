@@ -15,8 +15,7 @@ public class Administracion extends Trabajador{
 
     public Administracion() {
     }
-    
-    public Administracion(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String postal, String piso, String mano, String telefonoPersonal, String telefonoEmpresa, float salario, Date fechaNac, String tipoTrabajador,Centro centroDelTrabajador) {
+    public Administracion(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String postal, String piso, String mano, String telefonoPersonal, String telefonoEmpresa, float salario, Date fechaNac) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidoUno = apellidoUno;
@@ -29,7 +28,20 @@ public class Administracion extends Trabajador{
         this.telefonoEmpresa = telefonoEmpresa;
         this.salario = salario;
         this.fechaNac = fechaNac;
-        this.tipoTrabajador= tipoTrabajador;
+    }
+    public Administracion(String dni, String nombre, String apellidoUno, String apellidoDos, String calle, String postal, String piso, String mano, String telefonoPersonal, String telefonoEmpresa, float salario, Date fechaNac,Centro centroDelTrabajador) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidoUno = apellidoUno;
+        this.apellidoDos = apellidoDos;
+        this.calle = calle;
+        this.postal = postal;
+        this.piso = piso;
+        this.mano = mano;
+        this.telefonoPersonal = telefonoPersonal;
+        this.telefonoEmpresa = telefonoEmpresa;
+        this.salario = salario;
+        this.fechaNac = fechaNac;
         this.centroDelTrabajador = centroDelTrabajador; 
     }
     

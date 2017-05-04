@@ -18,6 +18,8 @@ public class Centro {
     private String provincia;
     private String telefono;
     private boolean estado;
+    
+    
     public Centro() {
     }
 

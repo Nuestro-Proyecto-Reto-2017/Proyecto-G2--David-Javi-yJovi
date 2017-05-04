@@ -26,9 +26,8 @@ import java.util.ArrayList;
 public class TrabajadorBD extends GenericoBD {
     
     Connection con ;
-    public static void main(String[] args) {
-
-    }//de main
+    //de main
+    /*Para buscar por DNI
     public String consultas (String vdni){
         GenericoBD generico= new GenericoBD();
         String sql = "";
@@ -48,14 +47,11 @@ public class TrabajadorBD extends GenericoBD {
                 
                 llamada.execute(); // ejecutar el procedimiento
                 final ResultSet rs = llamada.getResultSet();
-                /*if(rs.next()){
-                    while(rs.next()){
-                        cadena += llamada.getString(2)+"\n";
-                    }
+                if(rs.next()){
+                        cadena=llamada.getString(2);
                 }
-                else{*/
-                    cadena = llamada.getString(2);
-                //}
+                else cadena=llamada.getString(2);
+                
                 
                 //cadena = llamada.getString(2);// recupero la cadena
             
@@ -63,12 +59,11 @@ public class TrabajadorBD extends GenericoBD {
         } 
         catch (Exception e) {
             System.out.println(e);
-
         }
         cerrarConexion(con);
         return cadena;
     }
-
+*/
     public ArrayList consultaPk (String vdni){
         GenericoBD generico= new GenericoBD();
         String sql = "";
@@ -95,39 +90,11 @@ public class TrabajadorBD extends GenericoBD {
                 if(rs.next()){
                     do{
                         if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("LOGISTICA")==0){ 
-                            Logistica tLogis=G2vJovi.trabajadorLogistica();
-                            tLogis.setDni(rs.getString("DNI"));
-                            tLogis.setNombre(rs.getString("NOMBRE"));
-                            tLogis.setApellidoUno(rs.getString("APELLIDOUNO"));
-                            tLogis.setApellidoDos(rs.getString("APELLIDODOS"));
-                            tLogis.setCalle(rs.getString("CALLE"));
-                            tLogis.setPostal(rs.getString("Portal"));
-                            tLogis.setPiso(rs.getString("PISO"));
-                            tLogis.setMano(rs.getString("MANO"));
-                            tLogis.setTelefonoPersonal(rs.getString("TELEFONOPERSONAL"));
-                            tLogis.setTelefonoEmpresa(rs.getString("TELEFONOEMPRESA"));
-                            tLogis.setSalario(rs.getFloat("SALARIO"));
-                            tLogis.setFechaNac(rs.getDate("FECHANAC"));
-                            tLogis.setTipoTrabajador(rs.getString("TIPOTRABAJADOR"));
-                            tLogis.setEncontrado(true);
+                            Logistica tLogis=G2vJovi.trabajadorLogistica(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
                             listaTrabajadores.add(tLogis);
                         } 
                         if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("ADMINISTRACION")==0){ 
-                            Administracion tAdmin=G2vJovi.trabajadorAdministracion();
-                            tAdmin.setDni(rs.getString("DNI"));
-                            tAdmin.setNombre(rs.getString("NOMBRE"));
-                            tAdmin.setApellidoUno(rs.getString("APELLIDOUNO"));
-                            tAdmin.setApellidoDos(rs.getString("APELLIDODOS"));
-                            tAdmin.setCalle(rs.getString("CALLE"));
-                            tAdmin.setPostal(rs.getString("Portal"));
-                            tAdmin.setPiso(rs.getString("PISO"));
-                            tAdmin.setMano(rs.getString("MANO"));
-                            tAdmin.setTelefonoPersonal(rs.getString("TELEFONOPERSONAL"));
-                            tAdmin.setTelefonoEmpresa(rs.getString("TELEFONOEMPRESA"));
-                            tAdmin.setSalario(rs.getFloat("SALARIO"));
-                            tAdmin.setFechaNac(rs.getDate("FECHANAC"));
-                            tAdmin.setTipoTrabajador(rs.getString("TIPOTRABAJADOR"));
-                            tAdmin.setEncontrado(true);
+                            Administracion tAdmin=G2vJovi.trabajadorAdministracion(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
                             listaTrabajadores.add(tAdmin);
                         } 
                     }while(rs.next());
@@ -136,7 +103,6 @@ public class TrabajadorBD extends GenericoBD {
                     System.out.println("No hay nada");
                 }
                 
-                //cadena = llamada.getString(2);// recupero la cadena
             
             llamada.close();    
         } 
@@ -173,37 +139,11 @@ public class TrabajadorBD extends GenericoBD {
                 if(rs.next()){
                     do{
                         if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("LOGISTICA")==0){ 
-                            Logistica tLogis=G2vJovi.trabajadorLogistica();
-                            tLogis.setDni(rs.getString("DNI"));
-                            tLogis.setNombre(rs.getString("NOMBRE"));
-                            tLogis.setApellidoUno(rs.getString("APELLIDOUNO"));
-                            tLogis.setApellidoDos(rs.getString("APELLIDODOS"));
-                            tLogis.setCalle(rs.getString("CALLE"));
-                            tLogis.setPostal(rs.getString("Portal"));
-                            tLogis.setPiso(rs.getString("PISO"));
-                            tLogis.setMano(rs.getString("MANO"));
-                            tLogis.setTelefonoPersonal(rs.getString("TELEFONOPERSONAL"));
-                            tLogis.setTelefonoEmpresa(rs.getString("TELEFONOEMPRESA"));
-                            tLogis.setSalario(rs.getFloat("SALARIO"));
-                            tLogis.setFechaNac(rs.getDate("FECHANAC"));
-                            tLogis.setTipoTrabajador(rs.getString("TIPOTRABAJADOR"));
+                            Logistica tLogis=G2vJovi.trabajadorLogistica(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
                             listaTrabajadores.add(tLogis);
                         } 
                         if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("ADMINISTRACION")==0){ 
-                            Administracion tAdmin=G2vJovi.trabajadorAdministracion();
-                            tAdmin.setDni(rs.getString("DNI"));
-                            tAdmin.setNombre(rs.getString("NOMBRE"));
-                            tAdmin.setApellidoUno(rs.getString("APELLIDOUNO"));
-                            tAdmin.setApellidoDos(rs.getString("APELLIDODOS"));
-                            tAdmin.setCalle(rs.getString("CALLE"));
-                            tAdmin.setPostal(rs.getString("Portal"));
-                            tAdmin.setPiso(rs.getString("PISO"));
-                            tAdmin.setMano(rs.getString("MANO"));
-                            tAdmin.setTelefonoPersonal(rs.getString("TELEFONOPERSONAL"));
-                            tAdmin.setTelefonoEmpresa(rs.getString("TELEFONOEMPRESA"));
-                            tAdmin.setSalario(rs.getFloat("SALARIO"));
-                            tAdmin.setFechaNac(rs.getDate("FECHANAC"));
-                            tAdmin.setTipoTrabajador(rs.getString("TIPOTRABAJADOR"));
+                            Administracion tAdmin=G2vJovi.trabajadorAdministracion(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
                             listaTrabajadores.add(tAdmin);
                         } 
                     }while(rs.next());
@@ -212,8 +152,53 @@ public class TrabajadorBD extends GenericoBD {
                     System.out.println("No hay nada");
                 }
                 
-                //cadena = llamada.getString(2);// recupero la cadena
+            llamada.close();    
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+
+        }
+        cerrarConexion(con);
+        return listaTrabajadores;
+    }
+    public ArrayList consultaListaTrab(){
+        GenericoBD generico= new GenericoBD();
+        String sql = "";
+        ArrayList <Trabajador> listaTrabajadores=new ArrayList();
+        try {
+            //Obtenemos los códigos y nombres de todos los departamentos
+            sql = "{ call buscar_todos(?) } ";
+            con=generico.abrirConexion(con);
             
+            CallableStatement llamada = con.prepareCall(sql);
+            
+                // Preparamos la llamada
+
+            llamada.registerOutParameter(1, OracleTypes.CURSOR); // Cadena devuelta
+                
+                
+                
+                llamada.execute(); // ejecutar el procedimiento
+                ResultSet rs = null;
+                rs = (ResultSet) llamada.getObject(1);
+
+                
+                if(rs.next()){
+                    do{
+                        if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("LOGISTICA")==0){ 
+                            Logistica tLogis=G2vJovi.trabajadorLogistica(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
+                            listaTrabajadores.add(tLogis);
+                        } 
+                        if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("ADMINISTRACION")==0){ 
+                            Administracion tAdmin=G2vJovi.trabajadorAdministracion(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
+                            listaTrabajadores.add(tAdmin);
+                        } 
+                    }while(rs.next());
+                }
+                else{
+                    System.out.println("No hay nada");
+                }
+                
             llamada.close();    
         } 
         catch (Exception e) {
@@ -254,12 +239,11 @@ public class TrabajadorBD extends GenericoBD {
         String sql = "";
         try {
             //Obtenemos los códigos y nombres de todos los departamentos
-            sql = "update trabajador set nombre = ?,apellidouno=?,apellidodos=?,calle=?,portal=?,piso=?,mano=?,telefonopersonal=?,telefonoempresa=?,salario=?,tipotrabajador=?, centro_idcentro=(select idcentro from centro where upper(nombre) = ?)where upper(dni)=?";
+            sql = "update trabajador set nombre = ?,apellidouno=?,apellidodos=?,calle=?,portal=?,piso=?,mano=?,telefonopersonal=?,telefonoempresa=?,salario=?,tipotrabajador=?,fechanac=to_date(?,'dd/mm/yy'), centro_idcentro=(select idcentro from centro where upper(nombre) = ?)where upper(dni)=?";
             con=generico.abrirConexion(con);
             PreparedStatement llamada = con.prepareStatement(sql);
 
                 // Preparamos la llamada
-
                 llamada.setString(1, t.getNombre()); // param de entrada    
                 llamada.setString(2, t.getApellidoUno());
                 llamada.setString(3, t.getApellidoDos());
@@ -270,9 +254,16 @@ public class TrabajadorBD extends GenericoBD {
                 llamada.setString(8, t.getTelefonoPersonal());
                 llamada.setString(9, t.getTelefonoEmpresa());
                 llamada.setFloat(10, t.getSalario());
-                llamada.setString(11, t.getTipoTrabajador());
-                llamada.setString(12, nombreCentro.toUpperCase());
-                llamada.setString(13, vdni);
+                if(t.getClass().getSimpleName().compareToIgnoreCase("Administracion")==0){
+                    llamada.setString(11, "ADMINISTRACION");
+                }
+                else{
+                    llamada.setString(11, "LOGISTICA");
+                }
+                java.sql.Date sqlFechaNac = new java.sql.Date(t.getFechaNac().getTime());
+                llamada.setDate(12, sqlFechaNac);
+                llamada.setString(13, nombreCentro.toUpperCase());
+                llamada.setString(14, vdni);
                 
                 llamada.executeUpdate(); // ejecutar el procedimiento
 
@@ -286,16 +277,17 @@ public class TrabajadorBD extends GenericoBD {
         }
         cerrarConexion(con);
     }
-    public void insertTrabajador (Trabajador t){
+    public void insertTrabajador (Trabajador t,String nombreCentro){
         GenericoBD generico= new GenericoBD();
         String sql = "";
         try {
             //Obtenemos los códigos y nombres de todos los departamentos
-            sql = "insert into trabajador (dni,nombre,apellidouno,apellidodos,calle,portal,piso,mano,telefonopersonal,telefonoempresa,salario,tipotrabajador,centro_idcentro) values(?,?,?,?,?,?,?,?,?,?,?,?,1)";
+            sql = "insert into trabajador (dni,nombre,apellidouno,apellidodos,calle,portal,piso,mano,telefonopersonal,telefonoempresa,salario,tipotrabajador,fechanac,centro_idcentro) values(?,?,?,?,?,?,?,?,?,?,?,?,to_date(?,'dd/mm/yy'),(select idcentro from centro where upper(nombre) = ?))";
             con=generico.abrirConexion(con);
             PreparedStatement llamada = con.prepareStatement(sql);
 
                 // Preparamos la llamada
+                llamada.setString(14, nombreCentro.toUpperCase());
                 llamada.setString(1, t.getDni());
                 llamada.setString(2, t.getNombre()); // param de entrada    
                 llamada.setString(3, t.getApellidoUno());
@@ -307,7 +299,14 @@ public class TrabajadorBD extends GenericoBD {
                 llamada.setString(9, t.getTelefonoPersonal());
                 llamada.setString(10, t.getTelefonoEmpresa());
                 llamada.setFloat(11, t.getSalario());
-                llamada.setString(12, t.getTipoTrabajador());
+                if(t.getClass().getSimpleName().compareToIgnoreCase("Administracion")==0){
+                    llamada.setString(12, "ADMINISTRACION");
+                }
+                else{
+                    llamada.setString(12, "LOGISTICA");
+                }
+                java.sql.Date sqlFechaNac = new java.sql.Date(t.getFechaNac().getTime());
+                llamada.setDate(13, sqlFechaNac);
                 
                 
                 llamada.executeUpdate(); // ejecutar el procedimiento

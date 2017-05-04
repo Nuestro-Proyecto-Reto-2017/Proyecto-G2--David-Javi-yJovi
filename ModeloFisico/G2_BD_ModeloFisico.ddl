@@ -11,9 +11,19 @@ drop table usuario cascade constraints;
 drop table trabajador cascade constraints;
 drop table centro cascade constraints;
 drop table vehiculo cascade constraints;
+drop table parteBasura cascade constraints;
+drop table salidaBasura cascade constraints;
 
 CREATE TABLE aviso (
-    idaviso       VARCHAR2(5) Constraint aviso_pk PRIMARY KEY,
+    idaviso       NUMBER (5)
+      GENERATED ALWAYS AS IDENTITY 
+                        MINVALUE 1 
+                        MAXVALUE 99999
+                        INCREMENT BY 1 
+                        START WITH 1  
+                        NOORDER  
+                        NOCYCLE  NOT NULL ENABLE 
+    Constraint aviso_pk PRIMARY KEY,
     descripcion   VARCHAR2(100) NOT NULL
 );
 
@@ -39,7 +49,15 @@ CREATE TABLE centro (
 
 
 CREATE TABLE gasto (
-    idgasto       VARCHAR2(5) CONSTRAINT gasto_pk PRIMARY KEY,
+    idgasto      NUMBER (5)
+      GENERATED ALWAYS AS IDENTITY 
+                        MINVALUE 1 
+                        MAXVALUE 99999
+                        INCREMENT BY 1 
+                        START WITH 1  
+                        NOORDER  
+                        NOCYCLE  NOT NULL ENABLE  
+     CONSTRAINT gasto_pk PRIMARY KEY,
     gastogasoil   float,
     gastopeajes   float,
     gastodietas   float,
@@ -48,24 +66,40 @@ CREATE TABLE gasto (
 
 
 CREATE TABLE parte (
-    idparte              VARCHAR2(5) CONSTRAINT parte_pk PRIMARY KEY,
+    idparte               NUMBER (5)
+      GENERATED ALWAYS AS IDENTITY 
+                        MINVALUE 1 
+                        MAXVALUE 99999
+                        INCREMENT BY 1 
+                        START WITH 1  
+                        NOORDER  
+                        NOCYCLE  NOT NULL ENABLE
+      CONSTRAINT parte_pk PRIMARY KEY,
     kminicio             float NOT NULL,
     kmfinal              float NOT NULL,
     tipoparte            VARCHAR2(15) NOT NULL,
-    revisado             VARCHAR2(9) NOT NULL,
     creado               VARCHAR2(9) NOT NULL,
     vehiculo_matricula   VARCHAR2(12) NOT NULL,
-    aviso_idaviso        VARCHAR2(5),
-    gasto_idgasto        VARCHAR2(5)
+    aviso_idaviso        NUMBER(5),
+    gasto_idgasto        NUMBER(5),
+    CONSTRAINT tp_part_ck CHECK (tipoparte IN ('SC','C','R'))
 );
 
 
 CREATE TABLE salida (
-    idsalida        VARCHAR2(5) CONSTRAINT salida_pk PRIMARY KEY,
+    idsalida         NUMBER (5)
+      GENERATED ALWAYS AS IDENTITY 
+                        MINVALUE 1 
+                        MAXVALUE 99999
+                        INCREMENT BY 1 
+                        START WITH 1  
+                        NOORDER  
+                        NOCYCLE  NOT NULL ENABLE
+     CONSTRAINT salida_pk PRIMARY KEY,
     horasalida      DATE NOT NULL,
     horallegada     DATE NOT NULL,
     albaran         VARCHAR2(15) NOT NULL,
-    parte_idparte   VARCHAR2(5) NOT NULL
+    parte_idparte   NUMBER(5) NOT NULL
 );
 
 
@@ -83,8 +117,8 @@ CREATE TABLE trabajador (
     salario             float,
     fechanac            DATE,
     tipotrabajador      VARCHAR2(15) NOT NULL,
-    centro_idcentro     number(5) NOT NULL
-
+    centro_idcentro     number(5) NOT NULL,
+    CONSTRAINT tt_trab_ck CHECK (tipotrabajador IN ('LOGISTICA','ADMINISTRACION'))
 );
 
 
@@ -104,7 +138,46 @@ CREATE TABLE vehiculo (
     modelo          VARCHAR2(15) NOT NULL
 );
 
+CREATE TABLE parteBasura (
+    idpartebasura               NUMBER (5)
+      GENERATED ALWAYS AS IDENTITY 
+                        MINVALUE 1 
+                        MAXVALUE 99999
+                        INCREMENT BY 1 
+                        START WITH 1  
+                        NOORDER  
+                        NOCYCLE  NOT NULL ENABLE
+      CONSTRAINT parteBasura_pk PRIMARY KEY,
+    kminicio             float ,
+    kmfinal              float ,
+    tipoparte            VARCHAR2(15) ,
+    creado               VARCHAR2(9) ,
+    vehiculo_matricula   VARCHAR2(12) ,
+    aviso_idaviso        varchar2(100),
+    gastoG_idgasto        NUMBER(5),
+    gastoP_idgasto        NUMBER(5),
+    gastoD_idgasto        NUMBER(5),
+    gastoO_idgasto        NUMBER(5)
+);
 
+CREATE TABLE salidaBasura (
+    idsalida         NUMBER (5)
+      GENERATED ALWAYS AS IDENTITY 
+                        MINVALUE 1 
+                        MAXVALUE 99999
+                        INCREMENT BY 1 
+                        START WITH 1  
+                        NOORDER  
+                        NOCYCLE  NOT NULL ENABLE
+     CONSTRAINT salidaBasura_pk PRIMARY KEY,
+    horasalida      DATE,
+    horallegada     DATE,
+    albaran         VARCHAR2(15),
+    parteBasura_idparte   NUMBER(5) not null
+);
+
+ALTER TABLE salidaBasura ADD CONSTRAINT parteBasura_salida_fk FOREIGN KEY ( parteBasura_idparte )
+    REFERENCES parteBasura (idpartebasura);
 
 ALTER TABLE vehiculo ADD CONSTRAINT vehiculo_pk PRIMARY KEY ( matricula );
 
@@ -113,9 +186,6 @@ ALTER TABLE parte ADD CONSTRAINT parte_aviso_fk FOREIGN KEY ( aviso_idaviso )
 
 ALTER TABLE parte ADD CONSTRAINT parte_gasto_fk FOREIGN KEY ( gasto_idgasto )
     REFERENCES gasto ( idgasto );
-
-ALTER TABLE parte ADD CONSTRAINT parte_trabajador_fk FOREIGN KEY ( revisado )
-    REFERENCES trabajador ( dni );
 
 ALTER TABLE parte ADD CONSTRAINT parte_trabajador_fkv2 FOREIGN KEY ( creado )
     REFERENCES trabajador ( dni );
@@ -134,46 +204,3 @@ ALTER TABLE usuario ADD CONSTRAINT usuario_trabajador_fk FOREIGN KEY ( trabajado
 
 
 
-
--- Informe de Resumen de Oracle SQL Developer Data Modeler: 
--- 
--- CREATE TABLE                             8
--- CREATE INDEX                             6
--- ALTER TABLE                             18
--- CREATE VIEW                              0
--- ALTER VIEW                               0
--- CREATE PACKAGE                           0
--- CREATE PACKAGE BODY                      0
--- CREATE PROCEDURE                         0
--- CREATE FUNCTION                          0
--- CREATE TRIGGER                           0
--- ALTER TRIGGER                            0
--- CREATE COLLECTION TYPE                   0
--- CREATE STRUCTURED TYPE                   0
--- CREATE STRUCTURED TYPE BODY              0
--- CREATE CLUSTER                           0
--- CREATE CONTEXT                           0
--- CREATE DATABASE                          0
--- CREATE DIMENSION                         0
--- CREATE DIRECTORY                         0
--- CREATE DISK GROUP                        0
--- CREATE ROLE                              0
--- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          0
--- CREATE MATERIALIZED VIEW                 0
--- CREATE SYNONYM                           0
--- CREATE TABLESPACE                        0
--- CREATE USER                              0
--- 
--- DROP TABLESPACE                          0
--- DROP DATABASE                            0
--- 
--- REDACTION POLICY                         0
--- TSDP POLICY                              0
--- 
--- ORDS DROP SCHEMA                         0
--- ORDS ENABLE SCHEMA                       0
--- ORDS ENABLE OBJECT                       0
--- 
--- ERRORS                                   0
--- WARNINGS                                 0

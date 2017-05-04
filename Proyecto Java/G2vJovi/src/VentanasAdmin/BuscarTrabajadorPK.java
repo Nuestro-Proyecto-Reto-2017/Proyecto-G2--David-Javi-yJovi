@@ -150,17 +150,17 @@ public class BuscarTrabajadorPK extends javax.swing.JDialog {
         switch(tipoVentana){
             case "altat":{
                 
-                if(listaTrabajador.size()>0&&listaTrabajador.get(0).getEncontrado()){
+                if(listaTrabajador.size()>0){
                     javax.swing.JOptionPane.showMessageDialog(null, "El DNI insertado ya esta en la Base de datos, asegurate de introducir bien el DNI ");
                 }
                 else {
-                    G2vJovi.disposeBuscarTrabPk(tipoVentana,listaTrabajador);
+                    G2vJovi.disposeBuscarTrabPk(tipoVentana,listaTrabajador,tfDNITrabajador.getText());
                 }
                 break;
             }
             case "modt":{
-                if(listaTrabajador.size()>0&&listaTrabajador.get(0).getEncontrado()){
-                    G2vJovi.disposeBuscarTrabPk(tipoVentana,listaTrabajador);
+                if(listaTrabajador.size()>0){
+                    G2vJovi.disposeBuscarTrabPk(tipoVentana,listaTrabajador,tfDNITrabajador.getText());
                 }
                 else {
                     javax.swing.JOptionPane.showMessageDialog(null, "El DNI insertado NO esta en la Base de datos, asegurate de introducir bien el DNI ");
@@ -168,7 +168,7 @@ public class BuscarTrabajadorPK extends javax.swing.JDialog {
                 break;
             }
             case "bajat":{
-                if(listaTrabajador.size()>0&&listaTrabajador.get(0).getEncontrado()){
+                if(listaTrabajador.size()>0){
                     main.ProcEliminarTrabajador(tfDNITrabajador.getText().toUpperCase());
                     javax.swing.JOptionPane.showMessageDialog(null,"Ha sido eliminada con exito persona con el DNI: "+tfDNITrabajador.getText() );
 
