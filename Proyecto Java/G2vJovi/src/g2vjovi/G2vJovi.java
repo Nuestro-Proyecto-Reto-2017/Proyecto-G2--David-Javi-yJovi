@@ -38,6 +38,8 @@ public class G2vJovi {
     private static GastoBD gastoBD;
     private static SalidaBD salidaBD;
     private static Integer idParte;// id obtenido al iniciar sesion, igual sobra pero mañana lo comento 
+    private static ParteBD parteBD;
+    private static String mensajeDeAviso;
     
     public static void main(String[] args) {
         listaDeSalidas=new ArrayList();
@@ -368,9 +370,7 @@ public class G2vJovi {
             totalMinutosTrabajados+=60;
             
         }
-        
-       
-        
+
         //para comprobar
          System.out.println("TRAS RESTAR => "+totalHorasTrabajadas+" horas y  "+totalMinutosTrabajados+" miniutos");
     }
@@ -408,13 +408,13 @@ public class G2vJovi {
         return gasto;
         
     }
-    public static void registrarParte(Float kmInicial, Float kmFinal, String tipo, Gasto gasto, String vehiculo  ){
+    public static void registrarParte(Float kmi ,Float kmf ,String tipoparte,String matricula ,String observaciones , Float gastoG, Float gastoP , Float gastoD, Float ogastos){
    
         Date fsistema= new Date();
+        java.sql.Date sqlFechaParte = new java.sql.Date(fsistema.getTime());
         
-        
-        
-        
+        parteBD.registrarParteEBD(kmi, kmf, tipoparte, Logistica, matricula, observaciones, mensajeDeAviso, gastoG, gastoP, gastoD, ogastos, sqlFechaParte);
+
     }
     public static void registrarSalidas(){
         
@@ -423,23 +423,26 @@ public class G2vJovi {
 
     }
     public static void registarAviso(){
-
-        String mensaje="";
-        
+ 
         if (totalHorasTrabajadas>8){
 
             int hextra=totalHorasTrabajadas-8;
             
-            mensaje="HAS TRABAJADO "+hextra+ " HORAS";
+            mensajeDeAviso="HAS TRABAJADO "+hextra+ " HORAS";
             
         }else{
             
             
-            mensaje="NO HAS CUMPLIDO CON EL MINIMO DE HORAS ESTABLECIDO";
+            mensajeDeAviso="NO HAS CUMPLIDO CON EL MINIMO DE HORAS ESTABLECIDO";
         }
         
-        avisoBD.registrarAvidoEBD(mensaje);
+    }
+    public static ArrayList obtenerMatricukas(){
+        //falta terminar necesito parte vehiculos
         
+        ArrayList<String>matri=new ArrayList();
+        
+        return matri;
     }
 
 }

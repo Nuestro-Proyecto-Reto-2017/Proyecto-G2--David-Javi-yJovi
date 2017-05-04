@@ -5,9 +5,8 @@
  */
 package VentanasAdmin;
 
-
-import ModeloUML.Gasto;
 import g2vjovi.G2vJovi;
+import java.util.ArrayList;
 
 
 
@@ -23,6 +22,9 @@ public class NuevoParte extends javax.swing.JDialog {
     public NuevoParte(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        rellenarComboBoxMatriculas();
+        jBmodificar.setVisible(false);
+        jBpermitirEditar.setVisible(false);
         this.setLocationRelativeTo(null);
         jPeliminarSalida.setVisible(false);
        
@@ -37,6 +39,16 @@ public class NuevoParte extends javax.swing.JDialog {
         
         
     }
+    public void rellenarComboBoxMatriculas(){
+        
+        ArrayList <String >matriculas=G2vJovi.obtenerMatricukas();
+        
+        for(int i=0;i<matriculas.size();i++){
+             
+             jCBsalidas.insertItemAt(matriculas.get(i), i);
+        }
+        
+    }
     public void rellenarComboBoxSalidas(Integer num){
         
         Integer cont =0;
@@ -47,16 +59,33 @@ public class NuevoParte extends javax.swing.JDialog {
         }
 
     }
+    public void formatoVentanaModificar(){
+        
+        jCBvehiculos.setEditable(false);
+        jTkini.setEditable(false);
+        jTkfinal.setEditable(false);
+        jTAincidencias.setEditable(false);
+        jTggasoil.setEditable(false);
+        jTgpeajes.setEditable(false);
+        jTgdietas.setEditable(false);
+        jTotros.setEditable(false);
+        jTalbaran.setEditable(false);
+        jFThsalida.setEditable(false);
+        jFThllegada.setEditable(false);
+        jBañadirSalidas.setEnabled(false);
+        
+
+    }
  
     
     public void crearParte(String tipo){
         
-        G2vJovi.registarAviso();
+       /* G2vJovi.registarAviso();
         Gasto gast=G2vJovi.registrarGastos(jTggasoil.getText(), jTgpeajes.getText(), jTgdietas.getText(), jTotros.getText());
-        G2vJovi.registrarSalidas();
-        G2vJovi.registrarParte(Float.parseFloat(jTkini.getText()),Float.parseFloat(jTkfinal.getText()),tipo,gast,jCBvehiculos.getSelectedItem().toString());
-        
-      
+        G2vJovi.registrarSalidas();*/
+        G2vJovi.registrarParte(Float.parseFloat(jTkini.getText()),Float.parseFloat(jTkfinal.getText()),tipo,jCBvehiculos.getSelectedItem().toString(),jTAincidencias.getText(),
+                               Float.parseFloat(jTggasoil.getText()),Float.parseFloat(jTgpeajes.getText()),Float.parseFloat(jTgdietas.getText()),Float.parseFloat(jTotros.getText()));
+       
 
     }
     /**
@@ -77,7 +106,7 @@ public class NuevoParte extends javax.swing.JDialog {
         jTkfinal = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTAincidencias = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTggasoil = new javax.swing.JTextField();
@@ -94,7 +123,7 @@ public class NuevoParte extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jFThsalida = new javax.swing.JFormattedTextField();
         jFThllegada = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
+        jBañadirSalidas = new javax.swing.JButton();
         jBaceptar = new javax.swing.JButton();
         jBcerrar = new javax.swing.JButton();
         jBmostrar = new javax.swing.JButton();
@@ -105,6 +134,8 @@ public class NuevoParte extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         jCBsalidas = new javax.swing.JComboBox<>();
         jBeliminarSalida = new javax.swing.JButton();
+        jBmodificar = new javax.swing.JButton();
+        jBpermitirEditar = new javax.swing.JButton();
 
         jTextField9.setText("jTextField9");
 
@@ -121,9 +152,9 @@ public class NuevoParte extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("INCIDENCIAS"));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTAincidencias.setColumns(20);
+        jTAincidencias.setRows(5);
+        jScrollPane1.setViewportView(jTAincidencias);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,10 +270,10 @@ public class NuevoParte extends javax.swing.JDialog {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jButton1.setText("AÑADIR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBañadirSalidas.setText("AÑADIR");
+        jBañadirSalidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBañadirSalidasActionPerformed(evt);
             }
         });
 
@@ -326,6 +357,15 @@ public class NuevoParte extends javax.swing.JDialog {
                     .addComponent(jLabel11)))
         );
 
+        jBmodificar.setText("MODIFICAR");
+
+        jBpermitirEditar.setText("PERMITIR EDITAR");
+        jBpermitirEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBpermitirEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -358,10 +398,15 @@ public class NuevoParte extends javax.swing.JDialog {
                                 .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton1)
+                                    .addComponent(jBañadirSalidas)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jBmostrar))
-                                .addComponent(jBaceptar))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jBmodificar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jBpermitirEditar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jBaceptar)))
                             .addComponent(jPsalidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -391,14 +436,17 @@ public class NuevoParte extends javax.swing.JDialog {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jBañadirSalidas)
                     .addComponent(jBmostrar))
                 .addGap(18, 18, 18)
                 .addComponent(jPsalidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPeliminarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBaceptar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBaceptar)
+                    .addComponent(jBmodificar)
+                    .addComponent(jBpermitirEditar))
                 .addGap(17, 17, 17))
         );
 
@@ -413,7 +461,7 @@ public class NuevoParte extends javax.swing.JDialog {
    
     }//GEN-LAST:event_jBcerrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBañadirSalidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBañadirSalidasActionPerformed
         // BOTON PARA REGISTRAR LAS SALIDAS DEL TRABAJADOR DE LOGISTICA EN UNA LISTA:
         
         G2vJovi.registrarSalidas(jTalbaran.getText(), jFThsalida.getText(), jFThllegada.getText());
@@ -423,7 +471,7 @@ public class NuevoParte extends javax.swing.JDialog {
         jCBsalidas.removeAllItems();
         jBmostrar.setEnabled(true);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBañadirSalidasActionPerformed
 
     private void jBmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmostrarActionPerformed
         // BOTON DE MOSTRAR TODAS LAS SALIDAS REGISTRADAS EN EL PARTE ANTES DE CERRARLO:
@@ -453,6 +501,23 @@ public class NuevoParte extends javax.swing.JDialog {
         //crearParte(tipo);
         G2vJovi.cerrarVentanaCreacionPartes();
     }//GEN-LAST:event_jBaceptarActionPerformed
+
+    private void jBpermitirEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBpermitirEditarActionPerformed
+        // BOTON PARA PERMITIR EDITAR LOS CAMPOS:
+        
+        jCBvehiculos.setEditable(true);
+        jTkini.setEditable(true);
+        jTkfinal.setEditable(true);
+        jTAincidencias.setEditable(true);
+        jTggasoil.setEditable(true);
+        jTgpeajes.setEditable(true);
+        jTgdietas.setEditable(true);
+        jTotros.setEditable(true);
+        jTalbaran.setEditable(true);
+        jFThsalida.setEditable(true);
+        jFThllegada.setEditable(true);
+        jBañadirSalidas.setEnabled(true);
+    }//GEN-LAST:event_jBpermitirEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,10 +563,12 @@ public class NuevoParte extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBaceptar;
+    private javax.swing.JButton jBañadirSalidas;
     private javax.swing.JButton jBcerrar;
     private javax.swing.JButton jBeliminarSalida;
+    private javax.swing.JButton jBmodificar;
     private javax.swing.JButton jBmostrar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBpermitirEditar;
     private javax.swing.JComboBox<String> jCBsalidas;
     private javax.swing.JComboBox<String> jCBvehiculos;
     private javax.swing.JFormattedTextField jFThllegada;
@@ -524,9 +591,9 @@ public class NuevoParte extends javax.swing.JDialog {
     private javax.swing.JPanel jPsalidas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTAincidencias;
     private javax.swing.JTextArea jTAsalidas;
     private javax.swing.JTextField jTalbaran;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField jTgdietas;
     private javax.swing.JTextField jTggasoil;

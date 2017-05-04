@@ -82,9 +82,7 @@ public class VentanaLogistica extends javax.swing.JFrame {
         // BOTON PARA ABRIR LA VENTANA DE CREACION DE LOS PARTES:
         
         G2vJovi.abrirVentanaCreacionPartes();
-        
-        
-        
+
     }//GEN-LAST:event_mNuevoParteActionPerformed
 
     /**

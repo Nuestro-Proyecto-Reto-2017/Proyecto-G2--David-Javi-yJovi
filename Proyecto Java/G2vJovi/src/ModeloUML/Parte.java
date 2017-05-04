@@ -17,11 +17,8 @@ public class Parte {
    private Vehiculo vehiculoDelParte;
    private Aviso avisoDelParte;
    private Gasto gastoDelParte;
-   
-   private Date fechaDelSistema;
-   private LocalTime horasTrabajadas;
-   
-
+   private Date fechaParte;
+  
     public Parte() {
     }
 
@@ -31,7 +28,7 @@ public class Parte {
         this.tipoParte = tipoParte;
     }
 
-    public Parte(int id, Float kmInicio, Float kmFinal, String tipoParte, Logistica logistica, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte) {
+    public Parte(int id, Float kmInicio, Float kmFinal, String tipoParte, Logistica logistica, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte,Date FechaParte) {
         this.id = id;
         this.kmInicio = kmInicio;
         this.kmFinal = kmFinal;
@@ -40,6 +37,7 @@ public class Parte {
         this.vehiculoDelParte = vehiculoDelParte;
         this.avisoDelParte = avisoDelParte;
         this.gastoDelParte = gastoDelParte;
+        this.fechaParte=FechaParte;
     }
 
     public Parte(Float kmInicio, Float kmFinal, String tipoParte, Logistica logistica, ArrayList<Salida> salidasDelParte, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte) {
@@ -117,11 +115,12 @@ public class Parte {
         this.gastoDelParte = gastoDelParte;
     }
 
-  
-    
+    public Date getFechaParte() {
+        return fechaParte;
+    }
 
- 
+    public void setFechaParte(Date fechaParte) {
+        this.fechaParte = fechaParte;
+    }
 
-
-   
 }
