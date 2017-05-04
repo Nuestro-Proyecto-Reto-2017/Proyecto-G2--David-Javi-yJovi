@@ -42,20 +42,7 @@ public class G2vJovi {
     
     
     public static void main(String[] args) {
-        String usuario="manolete12";
-        String contraseña="54";
-        
-        Credenciales c =new Credenciales();
-        c.setUser(usuario);
-        c.setPassw(contraseña);
-     try{   
-         
-        String tipo=bdLogin.login(c);
-     javax.swing.JOptionPane.showMessageDialog(null,tipo );
-     
-     }catch(Exception e){
-         javax.swing.JOptionPane.showMessageDialog(null, "Error"+e);
-     }
+        abrirVentanaLogin();
         
         
       //  abrirVentanaAdministracion();
@@ -211,6 +198,25 @@ public class G2vJovi {
     }
     public static void cerrarVentanaBuscarCentro(){
         vBuscarCentro.dispose();
+    }
+
+    public static void generarCredenciales(String usuario, String contraseña) {
+      Credenciales c =new Credenciales();
+     c.setUser(usuario);
+        c.setPassw(contraseña);
+     try{   
+       
+         bdLogin.login(c);
+   
+     
+     }catch(Exception e){
+         javax.swing.JOptionPane.showMessageDialog(null, "Error"+e);
+     }
+    }
+
+    private static void abrirVentanaLogin() {
+      VentanaLogin vlogin =new VentanaLogin();
+      vlogin.setVisible(true);
     }
     public String ejecutarconsultas(String vdni){
         String cadena =bdTrabajador.consultas(vdni);

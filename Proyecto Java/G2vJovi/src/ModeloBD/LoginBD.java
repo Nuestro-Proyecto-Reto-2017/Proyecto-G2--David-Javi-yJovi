@@ -5,58 +5,102 @@
  */
 package ModeloBD;
 
+import ModeloUML.Administracion;
 import ModeloUML.Credenciales;
+import ModeloUML.Logistica;
+import ModeloUML.Trabajador;
+import excepciones.UserNoEncontrado;
+import g2vjovi.G2vJovi;
 import java.sql.*;
 import oracle.jdbc.OracleTypes;
-
+import excepciones.*;
 /**
  *
  * @author 1GLM07
  */
 public class LoginBD extends GenericoBD{
       Connection con ;
-      public String login(Credenciales c)throws Exception{         
+      private Trabajador t1;
+      
+      
+      public void login(Credenciales c)throws Exception{         
            GenericoBD generico= new GenericoBD();
         con=   generico.abrirConexion(con);
            
-           String sql="select tipoTrabajador from trabajador where dni =(select trabajador_dni from usuario where usuario =? and contraseña=?) ";
+           String sql="select * from trabajador where dni =(select trabajador_dni from usuario where usuario =? and contraseña=?) ";
           PreparedStatement logn=con.prepareStatement(sql);
           logn.setString(1, c.getUser());
           logn.setString(2, c.getPassw());
+          
+         
           ResultSet datos =logn.executeQuery();
          
                
          
            String tipo="";
           if(datos.next()){
-             tipo=  datos.getString(1);
+             tipo=  datos.getString("TIPOTRABAJADOR");
           }
+          else{
+              throw new UserNoEncontrado() ;
+          }
+          char x =tipo.charAt(0);
           
+          switch(x){
+              case 'A': recojerAdmin(datos);
+              break;
+              case 'L':   recojerLogis(datos); 
+              break;
+          }
+               
+                            
+          
+     
+        
           con.close();
-         return tipo;        
-      }
+         }       
       
-       public String login1(String usuario,String contraseña)throws Exception{         
-           GenericoBD generico= new GenericoBD();
-           generico.abrirConexion(con);
-           
-           String sql="{ call login(?,?,?) } ";
-          CallableStatement logn=con.prepareCall(sql);
-          logn.setString(1, usuario);
-          logn.setString(2, contraseña);
-          logn.registerOutParameter(3,OracleTypes.VARCHAR );
+      
+       public void recojerAdmin(ResultSet datos)throws Exception{ 
+                  Administracion t1 =new Administracion();
+
+                            t1.setDni(datos.getString("DNI"));
+                            t1.setNombre(datos.getString("NOMBRE"));
+                            t1.setApellidoUno(datos.getString("APELLIDOUNO"));
+                            t1.setApellidoDos(datos.getString("APELLIDODOS"));
+                            t1.setCalle(datos.getString("CALLE"));
+                            t1.setPostal(datos.getString("Portal"));
+                            t1.setPiso(datos.getString("PISO"));
+                            t1.setMano(datos.getString("MANO"));
+                            t1.setTelefonoPersonal(datos.getString("TELEFONOPERSONAL"));
+                            t1.setTelefonoEmpresa(datos.getString("TELEFONOEMPRESA"));
+                            t1.setSalario(datos.getFloat("SALARIO"));
+                            t1.setFechaNac(datos.getDate("FECHANAC"));
+                            t1.setTipoTrabajador(datos.getString("TIPOTRABAJADOR"));
          
-                logn.execute(); // ejecutar el procedimiento
-                ResultSet datos = null;
-                datos = (ResultSet) logn.getObject(3);
-         
-           String tipo="";
-          while(datos.next()){
-             tipo=  datos.getString(1);
-          }
-          
-          con.close();
-         return tipo;        
+                            
+                            g2vjovi.G2vJovi.abrirVentanaAdministracion();
+                // javax.swing.JOptionPane.showMessageDialog(null, "creado admin");
       }
     
+       
+        public void recojerLogis (ResultSet datos)throws Exception{ 
+        Logistica t1=new Logistica();
+                            t1.setDni(datos.getString("DNI"));
+                            t1.setNombre(datos.getString("NOMBRE"));
+                            t1.setApellidoUno(datos.getString("APELLIDOUNO"));
+                            t1.setApellidoDos(datos.getString("APELLIDODOS"));
+                            t1.setCalle(datos.getString("CALLE"));
+                            t1.setPostal(datos.getString("Portal"));
+                            t1.setPiso(datos.getString("PISO"));
+                            t1.setMano(datos.getString("MANO"));
+                            t1.setTelefonoPersonal(datos.getString("TELEFONOPERSONAL"));
+                            t1.setTelefonoEmpresa(datos.getString("TELEFONOEMPRESA"));
+                            t1.setSalario(datos.getFloat("SALARIO"));
+                            t1.setFechaNac(datos.getDate("FECHANAC"));
+                            t1.setTipoTrabajador(datos.getString("TIPOTRABAJADOR"));
+                            
+                            g2vjovi.G2vJovi.abrirVentanaLogistica();
+   //javax.swing.JOptionPane.showMessageDialog(null, "creado logis");
+        }
 }
