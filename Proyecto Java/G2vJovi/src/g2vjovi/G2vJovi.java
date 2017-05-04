@@ -50,14 +50,14 @@ public class G2vJovi {
     private static ValidarPartes vValidarPartes;
     
     public static void main(String[] args ) throws ParseException, IOException  {
-        abrirVentanaAdministracion();
+        //abrirVentanaAdministracion();
         
         
         DOMParserPartes dpe = new DOMParserPartes();
 
         //call run example
         
-        //dpe.runExample();
+        dpe.runExample();
         
         
     }
@@ -208,8 +208,8 @@ public class G2vJovi {
         tLogistica = new Logistica(dni, nombre,apeUno,apeDos,calle, portal,piso, mano,telefonoP,telefonoE,Salario,fechaNac);
         return tLogistica;
     }
-    public static Parte rellenarParte(int ID, float kmInicio, float kmFinal, String tipoParte, Trabajador trabajadorDelParte, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte){
-        pParte = new Parte(ID,kmInicio,kmFinal,tipoParte,trabajadorDelParte,vehiculoDelParte,avisoDelParte,gastoDelParte);
+    public static Parte rellenarParte(int ID, float kmInicio, float kmFinal, String tipoParte, Logistica logistica, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte){
+        pParte = new Parte(ID,kmInicio,kmFinal,tipoParte,logistica,vehiculoDelParte,avisoDelParte,gastoDelParte);
         return pParte;
     }
     public static Aviso rellenarAviso(String descripcion){

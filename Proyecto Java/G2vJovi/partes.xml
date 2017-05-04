@@ -4,5 +4,18 @@
         <kmInicio>300.0</kmInicio>
         <kmFinal>400.0</kmFinal>
         <tipoParte>C</tipoParte>
+        <Trabajador>
+            <dni>12345678G</dni>
+        </Trabajador>
+        <Vehiculo>
+            <matricula>1234mat</matricula>
+            <marca>Opel</marca>
+            <modelo>Corsa</modelo>
+        </Vehiculo>
+        <Salida>
+            <horaSalida>Thu Jan 01 05:23:00 CET 1970</horaSalida>
+            <horaLlegada>Thu Jan 01 05:23:00 CET 1970</horaLlegada>
+            <albaran>12345alb</albaran>
+        </Salida>
     </Parte>
 </listaPartes>

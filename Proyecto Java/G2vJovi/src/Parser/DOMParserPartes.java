@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,7 +21,12 @@ import java.util.Iterator;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
@@ -41,6 +47,7 @@ public class DOMParserPartes {
         createDOMDoc();
         createDOMTree();        
         printToFile();
+        parseHtml();
     }
     private ArrayList pruebaRellenarParte(){
         try{
@@ -53,7 +60,7 @@ public class DOMParserPartes {
             fechaNac = sdf.parse("05/05/2017");
             hora= sdf2.parse("5:23");
             Logistica tLogistica = new Logistica("12345678G", "Parse","ApeParse","ApeParse","CalleParse", "33","4", "b","987654321","987654321",200f,fechaNac);
-            p1.setTrabajadorDelParte(tLogistica);
+            p1.setLogistica(tLogistica);
             ArrayList <Salida> salidas = new ArrayList();
             Salida s1 = new Salida(hora,hora,"12345alb");
             salidas.add(s1);
@@ -111,13 +118,15 @@ public class DOMParserPartes {
         elementoParte.appendChild(tipoPartele);
         
         Element elementoTrabajador = dom.createElement("Trabajador");
-            
+        elementoParte.appendChild(elementoTrabajador);  
+        
         Element dniele = dom.createElement("dni");
-        Text dni = dom.createTextNode(String.valueOf(c.getTrabajadorDelParte().getDni()));
+        Text dni = dom.createTextNode(String.valueOf(c.getLogistica().getDni()));
         dniele.appendChild(dni);
         elementoTrabajador.appendChild(dniele);
         
         Element elementoVehiculo = dom.createElement("Vehiculo");
+        elementoParte.appendChild(elementoVehiculo);  
             
         Element matriculaele = dom.createElement("matricula");
         Text matricula = dom.createTextNode(String.valueOf(c.getVehiculoDelParte().getMatricula()));
@@ -137,6 +146,7 @@ public class DOMParserPartes {
         for (int x = 0;x<c.getSalidasDelParte().size();x++){
             
             Element elementoSalida = dom.createElement("Salida");
+            elementoParte.appendChild(elementoSalida);  
             
             Element horaSele = dom.createElement("horaSalida");
             Text horaSalida = dom.createTextNode(String.valueOf(c.getSalidasDelParte().get(x).getHoraSalida()));
@@ -214,5 +224,24 @@ public class DOMParserPartes {
             ie.printStackTrace();
         }
     }
+    public static void parseHtml() {
+        try {
+
+          TransformerFactory tFactory=TransformerFactory.newInstance();
+
+            Source xslDoc=new StreamSource("C:/Users/1ged02/Documents/Fork-Jovi/Proyecto-G2--David-Javi-yJovi/Proyecto Java/G2vJovi/partesXsl.xsl");
+            Source xmlDoc=new StreamSource("C:/Users/1ged02/Documents/Fork-Jovi/Proyecto-G2--David-Javi-yJovi/Proyecto Java/G2vJovi/partes.xml");
+
+            String outputFileName="InformeParte.html";
+
+            OutputStream htmlFile=new FileOutputStream(outputFileName);
+            Transformer trasform=tFactory.newTransformer(xslDoc);
+            trasform.transform(xmlDoc, new StreamResult(htmlFile));
+          }
+        catch (Exception e) {
+          e.printStackTrace( );
+          }
+    }
+
 
 }

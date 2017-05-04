@@ -31,7 +31,7 @@ public class ValidarPartes extends javax.swing.JDialog {
         
        listaPartes= main.procConsultarPartesJoin(filasMin,filasMax);
        for(int x =0;x<listaPartes.size();x++){
-          tTablaParte.getModel().setValueAt(listaPartes.get(x).getTrabajadorDelParte().getDni(), x, 0); 
+          tTablaParte.getModel().setValueAt(listaPartes.get(x).getLogistica().getDni(), x, 0); 
           tTablaParte.getModel().setValueAt("KM Inicio: "+listaPartes.get(x).getKmInicio()+" KM Fin: "+listaPartes.get(x).getKmFinal(), x, 1); 
           tTablaParte.getModel().setValueAt(listaPartes.get(x).getTipoParte(), x, 2); 
           tTablaParte.getModel().setValueAt(listaPartes.get(x).getVehiculoDelParte().getMatricula(), x, 3); 
@@ -51,10 +51,19 @@ public class ValidarPartes extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tTablaParte = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("jButton1");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
+
+        jButton2.setText("jButton2");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, -1, -1));
 
         tTablaParte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,22 +84,7 @@ public class ValidarPartes extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tTablaParte);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(253, 253, 253))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 676, 219));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,6 +132,8 @@ public class ValidarPartes extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tTablaParte;
     // End of variables declaration//GEN-END:variables

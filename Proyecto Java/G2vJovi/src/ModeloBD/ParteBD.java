@@ -54,15 +54,6 @@ public class ParteBD {
                             Parte pParte=G2vJovi.rellenarParte(rs.getInt("IDPARTE"),rs.getFloat("KMINICIO"),rs.getFloat("KMFINAL"),rs.getString("TIPOPARTE"),tLogis,vVehiculo,aAviso,gGasto);
                             listaPartes.add(pParte);
                         } 
-                        if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("ADMINISTRACION")==0){ 
-                            Administracion tAdmin=G2vJovi.trabajadorAdministracion(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
-                            Aviso aAviso = G2vJovi.rellenarAviso(rs.getString("DESCRIPCION"));
-                            Vehiculo vVehiculo= G2vJovi.rellenarVehiculo(rs.getString("MATRICULA"),rs.getString("MARCA"),rs.getString("MODELO"));
-                            Gasto gGasto = G2vJovi.rellenarGasto(rs.getFloat("GASTOGASOIL"),rs.getFloat("GASTOPEAJES"),rs.getFloat("GASTODIETAS"),rs.getFloat("OTROSGASTOS"));
-                            Parte pParte=G2vJovi.rellenarParte(rs.getInt("IDPARTE"),rs.getFloat("KMINICIO"),rs.getFloat("KMFINAL"),rs.getString("TIPOPARTE"),tAdmin,vVehiculo,aAviso,gGasto);
-                            listaPartes.add(pParte);
-                        } 
-
                     }while(rs.next());
                 }
                 else{
