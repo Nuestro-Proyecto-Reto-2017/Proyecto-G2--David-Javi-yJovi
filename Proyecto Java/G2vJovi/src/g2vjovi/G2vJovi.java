@@ -241,7 +241,7 @@ public class G2vJovi {
         
         totalHorasTrabajadas=0;
         totalMinutosTrabajados=0;
-        listaDeSalidas.clear();;
+        listaDeSalidas.clear();
         vNuevoParte=new NuevoParte(vLogistica, true);
         vNuevoParte.setVisible(true);
        

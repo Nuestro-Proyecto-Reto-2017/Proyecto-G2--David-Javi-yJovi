@@ -7,35 +7,58 @@ import java.util.Date;
 
 
 public class Parte {
-   private Float kmInicial;
+   private int id;
+   private Float kmInicio;
    private Float kmFinal;
-   private String tipo;
+   private String tipoParte;
+
+   private Logistica logistica;
+   private ArrayList <Salida> salidasDelParte;
+   private Vehiculo vehiculoDelParte;
+   private Aviso avisoDelParte;
+   private Gasto gastoDelParte;
+   
    private Date fechaDelSistema;
    private LocalTime horasTrabajadas;
    
-   private Logistica logistica;
-   private Vehiculo vehiculo;
-   private ArrayList <Salida> salidas;
-   private Gasto gasto;
-   private Aviso aviso;
 
     public Parte() {
     }
 
-    public Parte(Float kmInicial, Float kmFinal, String tipo, Date fechaDelSistema, LocalTime horasTrabajadas) {
-        this.kmInicial = kmInicial;
+    public Parte(Float kmInicio, Float kmFinal, String tipoParte) {
+        this.kmInicio = kmInicio;
         this.kmFinal = kmFinal;
-        this.tipo = tipo;
-        this.fechaDelSistema = fechaDelSistema;
-        this.horasTrabajadas = horasTrabajadas;
+        this.tipoParte = tipoParte;
     }
 
-    public Float getKmInicial() {
-        return kmInicial;
+    public Parte(int id, Float kmInicio, Float kmFinal, String tipoParte, Logistica logistica, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte) {
+        this.id = id;
+        this.kmInicio = kmInicio;
+        this.kmFinal = kmFinal;
+        this.tipoParte = tipoParte;
+        this.logistica = logistica;
+        this.vehiculoDelParte = vehiculoDelParte;
+        this.avisoDelParte = avisoDelParte;
+        this.gastoDelParte = gastoDelParte;
     }
 
-    public void setKmInicial(Float kmInicial) {
-        this.kmInicial = kmInicial;
+    public Parte(Float kmInicio, Float kmFinal, String tipoParte, Logistica logistica, ArrayList<Salida> salidasDelParte, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte) {
+        this.kmInicio = kmInicio;
+        this.kmFinal = kmFinal;
+        this.tipoParte = tipoParte;
+        this.logistica = logistica;
+        this.salidasDelParte = salidasDelParte;
+        this.vehiculoDelParte = vehiculoDelParte;
+        this.avisoDelParte = avisoDelParte;
+        this.gastoDelParte = gastoDelParte;
+    }
+
+    public Float getKmInicio() {
+        return kmInicio;
+    }
+
+    public void setKmInicio(Float kmInicio) {
+        this.kmInicio = kmInicio;
     }
 
     public Float getKmFinal() {
@@ -46,28 +69,12 @@ public class Parte {
         this.kmFinal = kmFinal;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTipoParte() {
+        return tipoParte;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public Date getFechaDelSistema() {
-        return fechaDelSistema;
-    }
-
-    public void setFechaDelSistema(Date fechaDelSistema) {
-        this.fechaDelSistema = fechaDelSistema;
-    }
-
-    public LocalTime getHorasTrabajadas() {
-        return horasTrabajadas;
-    }
-
-    public void setHorasTrabajadas(LocalTime horasTrabajadas) {
-        this.horasTrabajadas = horasTrabajadas;
+    public void setTipoParte(String tipoParte) {
+        this.tipoParte = tipoParte;
     }
 
     public Logistica getLogistica() {
@@ -78,37 +85,42 @@ public class Parte {
         this.logistica = logistica;
     }
 
-    public Vehiculo getVehiculo() {
-        return vehiculo;
+    public ArrayList<Salida> getSalidasDelParte() {
+        return salidasDelParte;
     }
 
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setSalidasDelParte(ArrayList<Salida> salidasDelParte) {
+        this.salidasDelParte = salidasDelParte;
     }
 
-    public ArrayList<Salida> getSalidas() {
-        return salidas;
+    public Vehiculo getVehiculoDelParte() {
+        return vehiculoDelParte;
     }
 
-    public void setSalidas(ArrayList<Salida> salidas) {
-        this.salidas = salidas;
+    public void setVehiculoDelParte(Vehiculo vehiculoDelParte) {
+        this.vehiculoDelParte = vehiculoDelParte;
     }
 
-    public Gasto getGasto() {
-        return gasto;
+    public Aviso getAvisoDelParte() {
+        return avisoDelParte;
     }
 
-    public void setGasto(Gasto gasto) {
-        this.gasto = gasto;
+    public void setAvisoDelParte(Aviso avisoDelParte) {
+        this.avisoDelParte = avisoDelParte;
     }
 
-    public Aviso getAviso() {
-        return aviso;
+    public Gasto getGastoDelParte() {
+        return gastoDelParte;
     }
 
-    public void setAviso(Aviso aviso) {
-        this.aviso = aviso;
+    public void setGastoDelParte(Gasto gastoDelParte) {
+        this.gastoDelParte = gastoDelParte;
     }
+
+  
+    
+
+ 
 
 
    
