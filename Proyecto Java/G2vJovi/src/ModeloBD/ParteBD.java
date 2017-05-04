@@ -51,7 +51,7 @@ public class ParteBD {
                             Aviso aAviso = G2vJovi.rellenarAviso(rs.getString("DESCRIPCION"));
                             Vehiculo vVehiculo= G2vJovi.rellenarVehiculo(rs.getString("MATRICULA"),rs.getString("MARCA"),rs.getString("MODELO"));
                             Gasto gGasto = G2vJovi.rellenarGasto(rs.getFloat("GASTOGASOIL"),rs.getFloat("GASTOPEAJES"),rs.getFloat("GASTODIETAS"),rs.getFloat("OTROSGASTOS"));
-                            Parte pParte=G2vJovi.rellenarParte(rs.getInt("IDPARTE"),rs.getFloat("KMINICIO"),rs.getFloat("KMFINAL"),rs.getString("TIPOPARTE"),tLogis,vVehiculo,aAviso,gGasto);
+                            Parte pParte=G2vJovi.rellenarParte(rs.getInt("IDPARTE"),rs.getFloat("KMINICIO"),rs.getFloat("KMFINAL"),rs.getString("TIPOPARTE"),rs.getString("INCIDENCIAS"),tLogis,vVehiculo,aAviso,gGasto);
                             listaPartes.add(pParte);
                         } 
                     }while(rs.next());
@@ -68,5 +68,150 @@ public class ParteBD {
         }
         
         return listaPartes;
+    }
+    public ArrayList consultarPartesMensuales (){
+        
+        GenericoBD generico= new GenericoBD();
+        String sql = "";
+        ArrayList <Parte> listaPartes=new ArrayList();
+        ArrayList <Salida> listaSalidas=new ArrayList();
+        try {
+            //Obtenemos los códigos y nombres de todos los departamentos
+            sql = "{call buscar_partesMensualesJoin(?) } ";
+            con=generico.abrirConexion(con);
+            
+            CallableStatement llamada = con.prepareCall(sql);
+            
+                // Preparamos la llamada
+
+
+            llamada.registerOutParameter(1, OracleTypes.CURSOR); // Cadena devuelta
+                
+                
+                llamada.execute(); // ejecutar el procedimiento
+                ResultSet rs = null;
+                rs = (ResultSet) llamada.getObject(1);
+
+                
+                if(rs.next()){
+                    do{
+                        if(rs.getString("TIPOTRABAJADOR").compareToIgnoreCase("LOGISTICA")==0){ 
+                            Logistica tLogis=G2vJovi.trabajadorLogistica(rs.getString("DNI"),rs.getString("NOMBRE"),rs.getString("APELLIDOUNO"),rs.getString("APELLIDODOS"),rs.getString("CALLE"),rs.getString("Portal"),rs.getString("PISO"),rs.getString("MANO"),rs.getString("TELEFONOPERSONAL"),rs.getString("TELEFONOEMPRESA"),rs.getFloat("SALARIO"),rs.getDate("FECHANAC"));
+                            Aviso aAviso = G2vJovi.rellenarAviso(rs.getString("DESCRIPCION"));
+                            Vehiculo vVehiculo= G2vJovi.rellenarVehiculo(rs.getString("MATRICULA"),rs.getString("MARCA"),rs.getString("MODELO"));
+                            Gasto gGasto = G2vJovi.rellenarGasto(rs.getFloat("GASTOGASOIL"),rs.getFloat("GASTOPEAJES"),rs.getFloat("GASTODIETAS"),rs.getFloat("OTROSGASTOS"));
+                            Parte pParte=G2vJovi.rellenarParte(rs.getInt("IDPARTE"),rs.getFloat("KMINICIO"),rs.getFloat("KMFINAL"),rs.getString("TIPOPARTE"),rs.getString("INCIDENCIAS"),tLogis,vVehiculo,aAviso,gGasto);
+                            listaSalidas=consultarSalidasParte(pParte.getID());
+                            pParte.setSalidasDelParte(listaSalidas);
+                            listaPartes.add(pParte);
+                        } 
+                    }while(rs.next());
+                }
+                else{
+                    System.out.println("No hay nada");
+                }
+        llamada.close();    
+        con.close();
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+
+        }
+        
+        return listaPartes;
+    }
+    public ArrayList consultarSalidasParte (int vIdParte){
+        
+        GenericoBD generico= new GenericoBD();
+        String sql = "";
+        ArrayList <Salida> listaSalidas=new ArrayList();
+        try {
+            //Obtenemos los códigos y nombres de todos los departamentos
+            sql = "{call buscar_salidasParte(?,?) } ";
+            con=generico.abrirConexion(con);
+            
+            CallableStatement llamada = con.prepareCall(sql);
+                // Preparamos la llamada
+
+            llamada.setInt(1, vIdParte); // param de entrada
+            llamada.registerOutParameter(2, OracleTypes.CURSOR); // Cadena devuelta
+                
+                
+                llamada.execute(); // ejecutar el procedimiento
+                ResultSet rs = null;
+                rs = (ResultSet) llamada.getObject(2);
+
+                
+                if(rs.next()){
+                    do{
+                        Salida sSalida=G2vJovi.rellenarSalida(rs.getDate("HORASALIDA"),rs.getDate("HORALLEGADA"),rs.getString("ALBARAN"));
+                        listaSalidas.add(sSalida); 
+                    }while(rs.next());
+                }
+                else{
+                    System.out.println("No hay nada");
+                }
+        llamada.close();    
+        con.close();
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+
+        }
+        
+        return listaSalidas;
+    }
+    public void updateParteRevisado (int vIdParte){
+        GenericoBD generico= new GenericoBD();
+        String sql = "";
+        try {
+            //Obtenemos los códigos y nombres de todos los departamentos
+            sql = "update parte set tipoparte = 'R' where idparte=?";
+            con=generico.abrirConexion(con);
+            PreparedStatement llamada = con.prepareStatement(sql);
+
+                // Preparamos la llamada
+
+                llamada.setInt(1, vIdParte); // param de entrada    
+
+                
+                llamada.executeUpdate(); // ejecutar el procedimiento
+
+
+                
+            llamada.close();   
+            con.close();
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+
+        }
+        
+    }
+    public void deleteParteSinRevisar (int vIdParte){
+        GenericoBD generico= new GenericoBD();
+        String sql = "";
+        try {
+            //Obtenemos los códigos y nombres de todos los departamentos
+            sql = "delete from parte where idparte = ?";
+            con=generico.abrirConexion(con);
+            PreparedStatement llamada = con.prepareStatement(sql);
+
+                // Preparamos la llamada
+
+                llamada.setInt(1, vIdParte); // param de entrada    
+
+                
+                llamada.executeUpdate(); // ejecutar el procedimiento
+
+
+                
+            llamada.close();   
+            con.close();
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+
+        }  
     }
 }

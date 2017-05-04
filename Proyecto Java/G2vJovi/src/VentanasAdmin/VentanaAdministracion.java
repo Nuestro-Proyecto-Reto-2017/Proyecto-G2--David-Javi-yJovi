@@ -5,7 +5,9 @@
  */
 package VentanasAdmin;
 
+import ModeloUML.*;
 import g2vjovi.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +18,7 @@ public class VentanaAdministracion extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+
     public VentanaAdministracion() {
         initComponents();
     }
@@ -44,6 +47,8 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         mBorrarTrabajador = new javax.swing.JMenuItem();
         mAdministrarPartes = new javax.swing.JMenu();
         mValidarPartes = new javax.swing.JMenuItem();
+        mPartesMensuales = new javax.swing.JMenu();
+        mInforme = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -146,6 +151,18 @@ public class VentanaAdministracion extends javax.swing.JFrame {
 
         jMenuBar1.add(mAdministrarPartes);
 
+        mPartesMensuales.setText("Partes Mensuales");
+
+        mInforme.setText("Informe");
+        mInforme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mInformeActionPerformed(evt);
+            }
+        });
+        mPartesMensuales.add(mInforme);
+
+        jMenuBar1.add(mPartesMensuales);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,6 +225,15 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         G2vJovi.abrirVentanaValidarPartes();
     }//GEN-LAST:event_mValidarPartesActionPerformed
 
+    private void mInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInformeActionPerformed
+        try{
+            G2vJovi.ejecutarParse();
+        }
+        catch(Exception e){
+           //necesita exception 
+        }
+    }//GEN-LAST:event_mInformeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -255,10 +281,12 @@ public class VentanaAdministracion extends javax.swing.JFrame {
     private javax.swing.JMenuItem mBorrarTrabajador;
     private javax.swing.JMenuItem mBuscarCentro;
     private javax.swing.JMenuItem mBuscarTrabajador;
+    private javax.swing.JMenuItem mInforme;
     private javax.swing.JMenuItem mModificarCentro;
     private javax.swing.JMenuItem mModificarTrabajador;
     private javax.swing.JMenuItem mNuevoCentro;
     private javax.swing.JMenuItem mNuevoTrabajador;
+    private javax.swing.JMenu mPartesMensuales;
     private javax.swing.JMenuItem mValidarPartes;
     // End of variables declaration//GEN-END:variables
 }

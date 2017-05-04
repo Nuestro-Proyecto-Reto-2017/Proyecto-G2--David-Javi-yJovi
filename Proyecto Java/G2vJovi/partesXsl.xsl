@@ -3,7 +3,7 @@
 	<xsl:template match="/">
 	     <html>
 	      	<body>
-	      		<table>
+	      		<table border="1">
 	      			<tr>
 	      				<th>kmInicio</th>
 	      				<th>kmFinal</th>
@@ -24,13 +24,13 @@
 	      					<xsl:value-of select="tipoParte" />
 	      				</th>
 	      				<th>
-	      					<xsl:value-of select="dni" />
+	      					<xsl:value-of select="Trabajador/dni" />
 	      				</th>
 	      				<th>
-	      					<xsl:value-of select="matricula" />
+	      					<xsl:value-of select="Vehiculo/matricula" />
 	      				</th>
 	      				<th>
-	      					<xsl:value-of select="albaran" />
+	      					<xsl:value-of select="Salida/albaran" />
 	      				</th>>
 	      			</tr>
 	      			</xsl:for-each>

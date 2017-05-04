@@ -32,6 +32,7 @@ public class G2vJovi {
     private static Salida sSalida;
     private static Trabajador tTrab;
     private static Centro cCentro;
+    private static ArrayList <Salida> listaS;
     private static ArrayList <Trabajador> listaT;
     private static ArrayList <Centro> listaC;
     private static ArrayList <Parte> listaP;
@@ -48,16 +49,15 @@ public class G2vJovi {
     private static CentroBD bdCentro = new CentroBD();
     private static ParteBD bdParte = new ParteBD();
     private static ValidarPartes vValidarPartes;
+    private static int minFilas =0;
+    private static int maxFilas =10;
     
-    public static void main(String[] args ) throws ParseException, IOException  {
-        //abrirVentanaAdministracion();
+    public static void main(String[] args ) {
+        abrirVentanaAdministracion();
         
         
-        DOMParserPartes dpe = new DOMParserPartes();
+        
 
-        //call run example
-        
-        dpe.runExample();
         
         
     }
@@ -71,7 +71,18 @@ public class G2vJovi {
         System.exit(0);
     }
     public static void abrirVentanaValidarPartes(){
-        vValidarPartes = new ValidarPartes(new javax.swing.JFrame(), true,0,10);
+        vValidarPartes = new ValidarPartes(new javax.swing.JFrame(), true,minFilas,maxFilas);
+        vValidarPartes.setVisible(true);
+    }
+    public static void cerrarVentanaValidarPartes(){
+        vValidarPartes.dispose();
+    }
+    public static void abrirVentanaValidarPartesAnterior(){
+        vValidarPartes = new ValidarPartes(new javax.swing.JFrame(), true,(minFilas-10),(maxFilas-10));
+        vValidarPartes.setVisible(true);
+    }
+    public static void abrirVentanaValidarPartesSiguiente(){
+        vValidarPartes = new ValidarPartes(new javax.swing.JFrame(), true,(minFilas+10),(maxFilas+10));
         vValidarPartes.setVisible(true);
     }
     public static void disposeBuscarTrabPk(String tipoVentana,ArrayList pTrabajador,String pdni){
@@ -208,8 +219,8 @@ public class G2vJovi {
         tLogistica = new Logistica(dni, nombre,apeUno,apeDos,calle, portal,piso, mano,telefonoP,telefonoE,Salario,fechaNac);
         return tLogistica;
     }
-    public static Parte rellenarParte(int ID, float kmInicio, float kmFinal, String tipoParte, Logistica logistica, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte){
-        pParte = new Parte(ID,kmInicio,kmFinal,tipoParte,logistica,vehiculoDelParte,avisoDelParte,gastoDelParte);
+    public static Parte rellenarParte(int ID, float kmInicio, float kmFinal, String tipoParte,String incidencias, Logistica logistica, Vehiculo vehiculoDelParte, Aviso avisoDelParte, Gasto gastoDelParte){
+        pParte = new Parte(ID,kmInicio,kmFinal,tipoParte,incidencias,logistica,vehiculoDelParte,avisoDelParte,gastoDelParte);
         return pParte;
     }
     public static Aviso rellenarAviso(String descripcion){
@@ -293,5 +304,32 @@ public class G2vJovi {
         listaP =bdParte.consultarPartesJoin(filasMin,filasMax);
         return listaP;
     }
+    public ArrayList procConsultarSalidasParte(int vIdParte){
+        listaS = bdParte.consultarSalidasParte(vIdParte);
+        return listaS;
+    }
+    public ArrayList procConsultarPartesMensuales(){
+        listaP =bdParte.consultarPartesMensuales();
+        return listaP;
+    }
     
+    public void procUpdateParteRevisado(int vIdParte){
+        bdParte.updateParteRevisado(vIdParte);
+    }
+    public void procDeleteParteSinRevisar (int vIdParte){
+        bdParte.deleteParteSinRevisar(vIdParte);
+    }
+    public void abrirVentanaModificarParte (Parte p){
+        //Aqui va la ventana de David pasandole el parte
+    }
+    public static void ejecutarParse()throws ParseException, IOException,InterruptedException {
+        DOMParserPartes dpe = new DOMParserPartes();
+        dpe.runExample();
+        
+        //Esto para ejecutar el HTML
+        Runtime rt = Runtime.getRuntime();           
+        Process p = rt.exec("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"+" "+"InformeParte.html");            
+        p.waitFor();        
+
+    } 
 }

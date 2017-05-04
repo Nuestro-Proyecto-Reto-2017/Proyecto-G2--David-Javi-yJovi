@@ -8,6 +8,7 @@ package Parser;
 import ModeloUML.*;
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
+import g2vjovi.G2vJovi;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,18 +38,20 @@ import org.w3c.dom.Text;
 
 public class DOMParserPartes {
     //ArrayList misanimales; aqui arraylist partes
-    Document dom;
-    Element rootElement;
-    ArrayList <Parte> Partes;
+    private Document dom;
+    private G2vJovi main = new G2vJovi();
+    private Element rootElement;
+    private ArrayList <Parte> Partes;
         //create a list to hold the contact objects
     
     public void runExample() throws IOException {        
-        Partes = pruebaRellenarParte();
+        Partes = main.procConsultarPartesMensuales();
         createDOMDoc();
         createDOMTree();        
         printToFile();
         parseHtml();
     }
+    /*Prueba para crear parse (borrar al terminar)
     private ArrayList pruebaRellenarParte(){
         try{
             ArrayList <Parte> Partes1 = new ArrayList();
@@ -77,6 +80,7 @@ public class DOMParserPartes {
         
         
     }
+    */
     private void createDOMDoc() {   
          try {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -224,13 +228,13 @@ public class DOMParserPartes {
             ie.printStackTrace();
         }
     }
-    public static void parseHtml() {
+    private static void parseHtml() {
         try {
 
           TransformerFactory tFactory=TransformerFactory.newInstance();
 
-            Source xslDoc=new StreamSource("C:/Users/1ged02/Documents/Fork-Jovi/Proyecto-G2--David-Javi-yJovi/Proyecto Java/G2vJovi/partesXsl.xsl");
-            Source xmlDoc=new StreamSource("C:/Users/1ged02/Documents/Fork-Jovi/Proyecto-G2--David-Javi-yJovi/Proyecto Java/G2vJovi/partes.xml");
+            Source xslDoc=new StreamSource("partesXsl.xsl");
+            Source xmlDoc=new StreamSource("partes.xml");
 
             String outputFileName="InformeParte.html";
 
