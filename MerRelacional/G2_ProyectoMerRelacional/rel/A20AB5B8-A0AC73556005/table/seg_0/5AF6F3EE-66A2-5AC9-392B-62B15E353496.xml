@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5AF6F3EE-66A2-5AC9-392B-62B15E353496" name="Centro">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>EF8AAF4B-08DC-3CFD-7B46-8E39A907AEED</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idCentro" id="A1C6F67B-316C-2008-40A3-B3601A9BC11C">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>9030D400-FB62-8B91-3E33-56F64C71620E</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="13182C28-8AB2-A2FB-4D09-63C3D30B56F9">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>7D110D8A-F35F-4F51-680F-506A45AEFC72</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="calle" id="1AB3A063-BBA4-4318-47D9-E8953EDB0CC5">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>AF0210C6-4760-373C-A427-A77EAF9A4761</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="numero" id="A8D02BB8-1B7D-0B90-698A-048DF93CD383">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>BB64741B-6197-EDD2-FFE2-90F21FF6DA40</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="codigoPostal" id="065A3D91-CBF2-A1EA-812A-414E0E896604">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>E105E164-4AEC-EBB5-4F80-9D418EAFEF1F</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ciudad" id="BBE6852E-5BAA-2AE9-70B8-B4E5308BC504">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>9C698A4B-070F-0AC7-A36A-989FAC12CF04</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="provincia" id="8F74EF60-BD2B-8B05-7099-2FB1B40F8471">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>6BA9C123-7CE6-FB0C-16F2-0893556A4FDC</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefono" id="E971F0B6-2342-7F47-D1AE-0CCBEC6ADBAA">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>77E6FE95-6FF1-D4B6-C061-ED2A30C74BCF</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="24F89E0C-DB48-68EA-1DFB-F9D8E8D5E505" name="Centro_PK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>55D52E76-08A3-4D4B-B52E-2FA5026ADE04</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A1C6F67B-316C-2008-40A3-B3601A9BC11C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

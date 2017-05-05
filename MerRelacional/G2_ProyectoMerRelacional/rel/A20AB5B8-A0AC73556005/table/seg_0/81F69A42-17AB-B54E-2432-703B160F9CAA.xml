@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="81F69A42-17AB-B54E-2432-703B160F9CAA" name="Vehiculo">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>7D4EFC57-7C35-663E-17A6-F61E708869D7</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="matricula" id="2FF0B25A-9284-4603-50F0-1512273EE699">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>5792C37C-FC4D-D21C-3678-9D6ADD72C32F</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>12</dataTypeSize>
+<ownDataTypeParameters>12,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="marca" id="6E19DF4E-47D1-5A06-3F20-6D57C4DD719A">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>D26C27CD-B186-ABF6-E3BB-39E08A1E4310</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="modelo" id="FB20FBDA-AEC8-8A99-BA69-4E1B2B80F309">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>1460C7F0-36E5-089F-53AD-941C913F6CAD</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Parte_idParte" id="A3D30F80-9FC8-46C7-CFF5-CD4CAC2857C1">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>C6FB7A63-5300-DD79-254F-F7179DD72483</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A1E0E151-5CB2-88C0-9F94-E52592681DA2" name="Vehiculo_PK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>0E737796-4588-EA5B-9180-A66361DDBF1D</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2FF0B25A-9284-4603-50F0-1512273EE699"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="71C5645F-D656-BB8A-92E4-A85A4945296A" name="Vehiculo__IDX">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>2DD31F08-BEF4-EC20-F8CD-74FD228076D5</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="A3D30F80-9FC8-46C7-CFF5-CD4CAC2857C1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C46D72A1-8427-9E9C-CCA4-D0B3C2A2A357" name="aviso">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>A094E24F-3477-22DC-EFEA-18C899F800C1</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idAviso" id="E6037B34-FC0B-49EE-DD3C-5ECFFE24520F">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>7E84BEB4-4FB9-E9B7-2423-49CE45F7F5EB</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="91FAABD2-3C0C-2512-9F2A-A5348C970E42">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>ECA2294B-1B7B-C611-710B-17A1A8E6753E</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1E33D971-4845-B413-FC51-A41ACB00EAE2" name="aviso_PK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>C0ED7783-647D-51E0-9D9B-A7307DBE2592</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E6037B34-FC0B-49EE-DD3C-5ECFFE24520F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

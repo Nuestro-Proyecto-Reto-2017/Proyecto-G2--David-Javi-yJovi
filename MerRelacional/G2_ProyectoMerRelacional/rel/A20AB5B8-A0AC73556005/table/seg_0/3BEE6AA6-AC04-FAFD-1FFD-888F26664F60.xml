@@ -1,0 +1,233 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3BEE6AA6-AC04-FAFD-1FFD-888F26664F60" name="Trabajador">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>3A69DA40-6CE5-727E-E702-62CAAC6D036E</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="dni" id="479DCE1A-EAF3-DF79-7B86-24AF2F7A09FF">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>45906423-9CE6-6512-A03E-D5B6BE72562A</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="0A218E06-143C-48A3-D78F-E974FE5C2779">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>C2056BE7-83CF-D04F-77DB-B0972ADEDFAF</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellidoUno" id="14F6F20E-AC96-8BA8-90C9-E69D6F0AF13C">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>9FD76424-882A-B52D-770A-FADFC6623644</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellidoDos" id="DEE7B8F8-16B8-C310-42C9-53B717BB6014">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>DE2C3EDE-9EC7-01E1-2743-A1FC7B1F0BDF</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="calle" id="89453874-17E3-DBDE-0778-914B924309F3">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>925D78CE-559A-2E0F-3B66-E4047F031CAB</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="portal" id="56B258CB-D955-1267-ED42-B8CEA250369A">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>0BB782AB-CB5C-66D4-FAE4-23149A150E55</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="piso" id="7B766FA6-0877-3104-EE0A-B25AF6CBA339">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>CD9A7053-762A-B5E9-C724-ED5CA5EBBE9A</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mano" id="65AEB14F-6D01-EE6C-74D8-48000177FEAA">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>CB6AF5CF-18B3-50BB-2B94-01110D5AF3BE</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefonoPersonal" id="7BA83C0E-C394-B7A0-F626-12A29EA59AF5">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>4355507C-E766-FBD4-09EB-E50B91BDF84D</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefonoEmpresa" id="D8F3170C-DB24-616B-FF26-A605B1675FCE">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>2C74F04B-CED7-7EB2-85ED-40F90292CE64</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="salario" id="13149778-EFDB-4A95-9579-CEF9F9C12D2A">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>16F6AE1D-A093-1837-99CD-06F0F438E06B</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fechaNac" id="6A6B4FD9-6980-5EE1-936A-07A9182D48C2">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>9419C565-46AE-67B7-9187-FB36E5874C13</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipoTrabajador" id="4C4E73A7-53AE-DCE0-E180-5DE0B1744A3A">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>BAAA9E64-070F-2392-A22D-5CB5331CBB79</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Centro_idCentro" id="9AFDB6D5-AF77-513D-CF1C-4BC872647B41">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>BED4E1CC-3FED-0487-CF5A-919E30140A54</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="47E92001-470D-0678-E547-E8BA1036F260" referredColumn="A1C6F67B-316C-2008-40A3-B3601A9BC11C"/>
+</associations>
+</Column>
+<Column name="Usuario_idUsuario" id="F45CD7ED-A292-ABF4-F2E3-816B554FC666">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>FE6E4770-E600-8865-EAAD-5DF73C68A0C8</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6D908B0F-8F3A-608F-6800-D84FEEA0EC6B" name="Trabajador_PK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>A473590B-E3F4-CA54-0CFF-0F1B000DC308</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="479DCE1A-EAF3-DF79-7B86-24AF2F7A09FF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1D59DB12-A4A9-A4AE-2DE2-5D43406C8042" name="Trabajador__IDX">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>D44A99CD-6C7B-D9BA-BA26-A0438C014043</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="F45CD7ED-A292-ABF4-F2E3-816B554FC666"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="94731709-75FD-BEE0-F031-AFCCF8C47F6E" name="Trabajador_Centro_FK">
+<createdBy>Jovi</createdBy>
+<createdTime>2017-04-01 07:53:15 UTC</createdTime>
+<generatorID>964C2E61-7A93-44F9-C6D9-B31C9D811175</generatorID>
+<ownerDesignName>G2_ProyectoMerRelacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9AFDB6D5-AF77-513D-CF1C-4BC872647B41"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
