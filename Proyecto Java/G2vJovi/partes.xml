@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <listaPartes>
     <Parte>
-        <kmInicio>300.0</kmInicio>
-        <kmFinal>400.0</kmFinal>
-        <tipoParte>C</tipoParte>
+        <kmInicio>25.0</kmInicio>
+        <kmFinal>32.0</kmFinal>
+        <tipoParte>R</tipoParte>
+        <Trabajador>
+            <dni>12345678b</dni>
+        </Trabajador>
+        <Vehiculo>
+            <matricula>1234ba</matricula>
+            <marca>Opel</marca>
+            <modelo>Corsa</modelo>
+        </Vehiculo>
+        <Salida>
+            <horaSalida>2017-05-01</horaSalida>
+            <horaLlegada>2017-05-01</horaLlegada>
+            <albaran>4321alb</albaran>
+        </Salida>
     </Parte>
 </listaPartes>
