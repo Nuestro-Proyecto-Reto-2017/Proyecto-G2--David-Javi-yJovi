@@ -1,1 +1,4 @@
 /Proyecto Java/G2vJovi/dist/
+*.class
+
+*.form

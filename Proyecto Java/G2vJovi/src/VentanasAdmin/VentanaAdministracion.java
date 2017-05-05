@@ -49,6 +49,10 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         mValidarPartes = new javax.swing.JMenuItem();
         mPartesMensuales = new javax.swing.JMenu();
         mInforme = new javax.swing.JMenuItem();
+        jmPerfil = new javax.swing.JMenu();
+        mActualizarPerfil = new javax.swing.JMenuItem();
+        mVehiculos = new javax.swing.JMenu();
+        jmvehiculos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -138,6 +142,36 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         mAdministrarTrabajadores.add(mBorrarTrabajador);
 
         jMenuBar1.add(mAdministrarTrabajadores);
+
+        jmPerfil.setText("Perfil");
+        jmPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmPerfilActionPerformed(evt);
+            }
+        });
+
+        mActualizarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/user2.png"))); // NOI18N
+        mActualizarPerfil.setText("Actualizar Perfil");
+        mActualizarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mActualizarPerfilActionPerformed(evt);
+            }
+        });
+        jmPerfil.add(mActualizarPerfil);
+
+        jMenuBar1.add(jmPerfil);
+
+        mVehiculos.setText("Vehiculos");
+
+        jmvehiculos.setText("Administrar Vehciulos");
+        jmvehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmvehiculosActionPerformed(evt);
+            }
+        });
+        mVehiculos.add(jmvehiculos);
+
+        jMenuBar1.add(mVehiculos);
 
         mAdministrarPartes.setText("Administrar Partes");
 
@@ -234,6 +268,18 @@ public class VentanaAdministracion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mInformeActionPerformed
 
+    private void jmPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPerfilActionPerformed
+      
+    }//GEN-LAST:event_jmPerfilActionPerformed
+
+    private void mActualizarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mActualizarPerfilActionPerformed
+         G2vJovi.abrirventanaUsuario();
+    }//GEN-LAST:event_mActualizarPerfilActionPerformed
+
+    private void jmvehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmvehiculosActionPerformed
+        g2vjovi.G2vJovi.abrirVentanaVehiculos();
+    }//GEN-LAST:event_jmvehiculosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,6 +320,9 @@ public class VentanaAdministracion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JMenu jmPerfil;
+    private javax.swing.JMenuItem jmvehiculos;
+    private javax.swing.JMenuItem mActualizarPerfil;
     private javax.swing.JMenu mAdminCentros;
     private javax.swing.JMenu mAdministrarPartes;
     private javax.swing.JMenu mAdministrarTrabajadores;
@@ -288,5 +337,6 @@ public class VentanaAdministracion extends javax.swing.JFrame {
     private javax.swing.JMenuItem mNuevoTrabajador;
     private javax.swing.JMenu mPartesMensuales;
     private javax.swing.JMenuItem mValidarPartes;
+    private javax.swing.JMenu mVehiculos;
     // End of variables declaration//GEN-END:variables
 }
